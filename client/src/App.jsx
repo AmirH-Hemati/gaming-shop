@@ -1,5 +1,10 @@
+import { Route, Routes } from "react-router-dom";
 function App() {
-  return <div className="bg-red-500 h-screen">app</div>;
+  return (
+    <Routes>
+      <Route element={<Layout />}></Route>
+    </Routes>
+  );
 }
 
 export default App;
