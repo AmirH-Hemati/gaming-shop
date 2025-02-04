@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import Layout from "./ui/Layout";
 function App() {
   return (
     <Routes>
