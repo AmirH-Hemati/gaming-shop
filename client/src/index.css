@@ -1,7 +1,5 @@
 @import "tailwindcss";
 @theme {
- 
-  --color-test: red;
+  --shadow-custom: -5px -5px 15px hsla(0, 0%, 100%, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.35);
 }
-/* -5px , -5px, 15px, hsla(0, 0%, 100%, 0.1),
-    5px 5px 15px rgba(0, 0, 0, 0.35) */
