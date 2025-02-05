@@ -15,7 +15,7 @@ mongoose
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRouter);
-app.use("/api/products");
+app.use("/api/products", productRouter);
 app.listen(1212, () => {
   console.log("listen on port 1212");
 });
