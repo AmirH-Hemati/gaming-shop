@@ -23,8 +23,22 @@ function Layout() {
           />
 
           <div className="flex gap-4">
-            <Heart size="32" color="white" />
-            <ShoppingCart size="32" color="white" />
+            <div className="relative">
+              <Heart size="36" color="white" className="cursor-pointer" />
+              <p className="text-sm flex items-center justify-center w-5 h-5 absolute -bottom-1 -right-1 bg-[#0998a8] p-1 rounded-full ">
+                0
+              </p>
+            </div>
+            <div className="relative">
+              <ShoppingCart
+                size="36"
+                color="white"
+                className="cursor-pointer"
+              />
+              <p className="text-sm flex items-center justify-center w-5 h-5 absolute -bottom-1 -right-1 bg-[#0998a8] p-1 rounded-full ">
+                {totalQty()}
+              </p>
+            </div>
             <p>usename</p>
           </div>
         </div>
