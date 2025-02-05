@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose, { mongo } from "mongoose";
 import authRouter from "./routes/auth.js";
+import userRouter from "./routes/userRoute.js";
 import productRouter from "./routes/product.js";
 import cors from "cors";
 const app = express();
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(express.static("images"));
 app.use("/api/auth", authRouter);
 app.use("/api/products", productRouter);
+app.use("/api/user", userRouter);
 app.listen(1212, () => {
   console.log("listen on port 1212");
 });
