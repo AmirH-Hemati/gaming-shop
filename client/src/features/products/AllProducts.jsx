@@ -1,7 +1,7 @@
-import { useGetProducts } from "../features/products/useGetProducts";
+import { useGetProducts } from "./useGetProducts";
 import ProductItem from "./ProductItem";
 
-function Products() {
+function AllProducts() {
   const { products } = useGetProducts();
   return (
     <ul className="grid grid-cols-3 w-full h-1/2 gap-6">
@@ -12,4 +12,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default AllProducts;

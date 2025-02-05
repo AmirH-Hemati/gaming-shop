@@ -1,4 +1,5 @@
-import Products from "../ui/Products";
+import Products from "./Products";
+
 
 function Home() {
   return (
