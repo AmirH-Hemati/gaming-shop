@@ -1,8 +1,10 @@
 import { AddSquare, Heart, Star1 } from "iconsax-react";
 import { useAddToCart } from "../../context/ShoppingContext";
+import { useAddToFavorites } from "../../context/FavorietsContext";
 
 function ProductItem({ product }) {
   const { handelIncreaseProduct } = useAddToCart();
+  const { handelAddToFavorites } = useAddToFavorites();
   return (
     <li className=" relative flex flex-col gap-2  bg-bg-main p-4 rounded-xl shadow-custom cursor-pointer">
       <div className="relative w-full">
@@ -12,7 +14,11 @@ function ProductItem({ product }) {
           alt=""
         />
         <div className="flex items-center justify-center absolute top-0 right-0 bg-bg-main rounded-bl-xl p-2">
-          <Heart size="28" color="white" />
+          <Heart
+            size="28"
+            color="white"
+            onClick={() => handelAddToFavorites(product)}
+          />
         </div>
       </div>
       <div className="flex self-end">
