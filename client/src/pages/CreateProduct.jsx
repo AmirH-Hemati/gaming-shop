@@ -18,7 +18,7 @@ function CreateProduct() {
       className="w-full  h-full flex flex-col"
     >
       <input type="text" placeholder="title product" name="title" />
-      <input type="text" placeholder="price" name="price" />
+      <input type="number" placeholder="price" name="price" />
       <input type="file" name="file" />
       <button type="submit">create Product</button>
     </form>

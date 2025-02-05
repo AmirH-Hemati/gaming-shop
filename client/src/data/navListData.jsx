@@ -22,7 +22,7 @@ const data = [
   {
     id: 4,
     name: "My Bag",
-    route: "/bag",
+    route: "/shopCart",
     icon: <ShopAdd size="32" color="#FF8A65" />,
   },
 ];
