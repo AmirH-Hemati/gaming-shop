@@ -9,7 +9,9 @@ function Layout() {
     <div className="w-full bg-[#192938] h-screen flex p-4 gap-4 text-white">
       <Header isActive={isActive} />
       <main
-        className={`relative ${isActive ? "w-[92%] " : "w-[80%] "}bg-[#192938] h-full rounded-sm shadow-custom p-4`}
+        className={`relative ${
+          isActive ? "w-[92%] " : "w-[80%] "
+        }bg-[#192938] h-full rounded-sm shadow-custom p-4`}
       >
         <div className="w-full flex  justify-between">
           <HambergerMenu
