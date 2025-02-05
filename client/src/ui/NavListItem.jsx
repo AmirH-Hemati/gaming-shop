@@ -1,9 +1,18 @@
-function NavListItem({ item, isActive }) {
+import { NavLink } from "react-router-dom";
+
+function NavListItem({ item, isActiveMenu }) {
   return (
-    <li className="flex items-center gap-2 hover:shadow-custom p-3 cursor-pointer rounded-sm overflow-hidden">
-      {item?.icon}
-      <p className={`${isActive ? "hidden" : ""}`}>{item?.name}</p>
-    </li>
+    <NavLink
+      className={({ isActive }) =>
+        `hover:shadow-custom ${isActive ? "shadow-custom" : ""}`
+      }
+      to={item.route}
+    >
+      <li className="flex items-center gap-2 p-3 cursor-pointer rounded-sm overflow-hidden">
+        {item?.icon}
+        <p className={`${isActiveMenu ? "hidden" : ""}`}>{item?.name}</p>
+      </li>
+    </NavLink>
   );
 }
 
