@@ -1,5 +1,4 @@
-import Products from "./Products";
-
+import Products from "../features/products/Products";
 
 function Home() {
   return (

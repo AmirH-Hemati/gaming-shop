@@ -1,4 +1,4 @@
-import AllProducts from "../features/products/AllProducts";
+import AllProducts from "./AllProducts";
 
 function Products() {
   return (
