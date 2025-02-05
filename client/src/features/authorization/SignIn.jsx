@@ -1,15 +1,23 @@
-import { Button } from "@mui/material";
-import TextField from "@mui/material/TextField";
+import { Button, TextField } from "@mui/material";
 
-function Login({ onToggleLogin }) {
-  function handelLoginForm(e) {
-    e.preventDefault();
-  }
+function SignIn({ onToggleLogin }) {
   return (
-    <form
-      className="flex flex-col justify-evenly shadow-custom p-8 h-80 rounded-sm w-96 "
-      onSubmit={handelLoginForm}
-    >
+    <form className="flex flex-col justify-evenly shadow-custom p-8 h-80 rounded-sm w-96">
+      <TextField
+        id="outlined-basic"
+        variant="outlined"
+        type="text"
+        label="User Name"
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": { borderColor: "#0998a8" },
+            "&:hover fieldset": { borderColor: "#0998a8" },
+            "&.Mui-focused fieldset": { borderColor: "#0998a8" },
+          },
+          input: { color: "white" },
+          label: { color: "white" },
+        }}
+      />
       <TextField
         id="outlined-basic"
         variant="outlined"
@@ -44,16 +52,16 @@ function Login({ onToggleLogin }) {
         variant="contained"
         sx={{ backgroundColor: "#0998a8", padding: "12px" }}
       >
-        Login
+        Sign In
       </Button>
       <p className="text-sm select-none ">
-        You do not have an account. ?{" "}
+        Do You Have Account.?{" "}
         <span className="text-[#0998a8] cursor-pointer" onClick={onToggleLogin}>
-          Create Account
+          Login Your Account
         </span>
       </p>
     </form>
   );
 }
 
-export default Login;
+export default SignIn;
