@@ -9,7 +9,7 @@ function Login({ onToggleLogin }) {
   const [password, setPassword] = useState("");
   function handelLoginForm(e) {
     e.preventDefault();
-    login();
+    login({ email, password });
   }
   return (
     <form
