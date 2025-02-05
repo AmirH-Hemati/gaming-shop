@@ -10,6 +10,7 @@ import ShopCart from "./pages/ShopCart";
 import { ShopContextProvider } from "./context/ShoppingContext";
 import { FavorietsContextProvider } from "./context/FavorietsContext";
 import { AuthContextProvider } from "./context/authContext";
+import ProtectedRoute from "./ui/ProtectedRoute";
 
 const queryClient = new QueryClient();
 function App() {
@@ -23,8 +24,10 @@ function App() {
                 <Route index element={<Home />} />
                 <Route path="/auth" element={<AuthPage />} />
                 <Route path="/categories" element={<Categories />} />
-                <Route path="/liberary" element={<Liberary />} />
-                <Route path="/shopCart" element={<ShopCart />} />
+                <Route element={<ProtectedRoute />}>
+                  <Route path="/liberary" element={<Liberary />} />
+                  <Route path="/shopCart" element={<ShopCart />} />
+                </Route>
                 <Route path="/createProduct" element={<CreateProduct />} />
               </Route>
             </Routes>
