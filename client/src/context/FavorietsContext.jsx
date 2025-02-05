@@ -16,9 +16,10 @@ function FavorietsContextProvider({ children }) {
   function productExists(product) {
     return addToFavorites.find((item) => item._id == product._id);
   }
-  console.log(addToFavorites);
   return (
-    <favorietsContext.Provider value={{ handelAddToFavorites, productExists }}>
+    <favorietsContext.Provider
+      value={{ handelAddToFavorites, productExists, addToFavorites }}
+    >
       {children}
     </favorietsContext.Provider>
   );
