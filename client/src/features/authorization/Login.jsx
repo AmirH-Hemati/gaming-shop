@@ -1,9 +1,15 @@
 import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
+import { useLogin } from "./useLogin";
+import { useState } from "react";
 
 function Login({ onToggleLogin }) {
+  const { login, isLoading } = useLogin();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   function handelLoginForm(e) {
     e.preventDefault();
+    login();
   }
   return (
     <form
@@ -14,6 +20,8 @@ function Login({ onToggleLogin }) {
         id="outlined-basic"
         variant="outlined"
         type="text"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         label="Email"
         sx={{
           "& .MuiOutlinedInput-root": {
@@ -30,6 +38,8 @@ function Login({ onToggleLogin }) {
         variant="outlined"
         type="password"
         label="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         sx={{
           "& .MuiOutlinedInput-root": {
             "& fieldset": { borderColor: "#0998a8" },
