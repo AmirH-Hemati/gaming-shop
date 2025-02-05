@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
 const shopContext = createContext();
-function ShopContextProvider() {
+function ShopContextProvider({ children }) {
   const [addToCart, setAddToCart] = useState([]);
   function handelIncreaseProduct(id) {
     setAddToCart((addToCart) => {
@@ -30,7 +30,9 @@ function ShopContextProvider() {
   return (
     <shopContext.Provider
       value={{ addToCart, handelIncreaseProduct, handelDecreaseProduct }}
-    ></shopContext.Provider>
+    >
+      {children}
+    </shopContext.Provider>
   );
 }
 function useAddToCart() {

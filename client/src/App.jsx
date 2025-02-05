@@ -7,21 +7,24 @@ import CreateProduct from "./pages/CreateProduct";
 import Categories from "./pages/Categories";
 import Liberary from "./pages/Liberary";
 import ShopCart from "./pages/ShopCart";
+import { ShopContextProvider } from "./context/ShopContext";
 
 const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/auth" element={<AuthPage />} />
-          <Route path="/categories" element={<Categories />} />
-          <Route path="/liberary" element={<Liberary />} />
-          <Route path="/shopCart" element={<ShopCart />} />
-          <Route path="/createProduct" element={<CreateProduct />} />
-        </Route>
-      </Routes>
+      <ShopContextProvider>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="/auth" element={<AuthPage />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/liberary" element={<Liberary />} />
+            <Route path="/shopCart" element={<ShopCart />} />
+            <Route path="/createProduct" element={<CreateProduct />} />
+          </Route>
+        </Routes>
+      </ShopContextProvider>
     </QueryClientProvider>
   );
 }
