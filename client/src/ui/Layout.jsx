@@ -17,23 +17,27 @@ function Layout() {
           isActiveMenu ? "w-[92%] " : "w-[80%] "
         }bg-[#192938] h-full rounded-sm shadow-custom p-4`}
       >
-        <div className="w-full flex  justify-between ">
+        <div
+          className={`w-full flex  justify-between duration-500  ${
+            isActiveMenu ? "translate-x-4 px-4 md:px-0 md:translate-x-0" : "translate-x-0"
+          } `}
+        >
           <HambergerMenu
             size="32"
             color="white"
             onClick={() => setIsActiveMenu(!isActiveMenu)}
           />
 
-          <div className="flex gap-4">
+          <div className="flex gap-2 md:gap-4">
             <div className="relative">
-              <Heart size="36" color="white" className="cursor-pointer" />
+              <Heart size="26" color="white" className="cursor-pointer" />
               <p className="text-sm flex items-center justify-center w-5 h-5 absolute -bottom-1 -right-1 bg-[#0998a8] p-1 rounded-full ">
                 {totalFavorites()}
               </p>
             </div>
             <div className="relative">
               <ShoppingCart
-                size="36"
+                size="26"
                 color="white"
                 className="cursor-pointer"
               />
