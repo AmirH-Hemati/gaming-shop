@@ -2,7 +2,6 @@ import bcy from "bcrypt";
 import User from "../models/auth.js";
 import jwt from "jsonwebtoken";
 export async function register(req, res) {
-  console.log("test");
   const { userName, email, password } = req.body;
   let user = await User.findOne({ email });
   if (user) {
