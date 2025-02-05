@@ -12,7 +12,7 @@ function FavorietsContextProvider({ children }) {
       }
     });
   }
-  console.log(addToFavorites);
+  func
   return (
     <favorietsContext.Provider value={{ handelAddToFavorites }}>
       {children}
