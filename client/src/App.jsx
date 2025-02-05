@@ -8,22 +8,25 @@ import Categories from "./pages/Categories";
 import Liberary from "./pages/Liberary";
 import ShopCart from "./pages/ShopCart";
 import { ShopContextProvider } from "./context/ShoppingContext";
+import { FavorietsContextProvider } from "./context/FavorietsContext";
 
 const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ShopContextProvider>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="/auth" element={<AuthPage />} />
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/liberary" element={<Liberary />} />
-            <Route path="/shopCart" element={<ShopCart />} />
-            <Route path="/createProduct" element={<CreateProduct />} />
-          </Route>
-        </Routes>
+        <FavorietsContextProvider>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="/auth" element={<AuthPage />} />
+              <Route path="/categories" element={<Categories />} />
+              <Route path="/liberary" element={<Liberary />} />
+              <Route path="/shopCart" element={<ShopCart />} />
+              <Route path="/createProduct" element={<CreateProduct />} />
+            </Route>
+          </Routes>
+        </FavorietsContextProvider>
       </ShopContextProvider>
     </QueryClientProvider>
   );
