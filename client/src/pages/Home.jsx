@@ -1,5 +1,12 @@
+import Products from "../ui/Products";
+
 function Home() {
-  return <div>home</div>;
+  return (
+    <div>
+      <p>home</p>
+      <Products />
+    </div>
+  );
 }
 
 export default Home;

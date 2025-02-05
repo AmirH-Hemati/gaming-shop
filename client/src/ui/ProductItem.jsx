@@ -5,7 +5,7 @@ function ProductItem({ product }) {
     <li className=" relative flex flex-col gap-2  bg-bg-main p-4 rounded-xl shadow-custom cursor-pointer">
       <div className="relative w-full">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYJPPKxGMgzMNURTx8m2YgHyA_WMoIjcq2FQ&s"
+          src={product?.image}
           className="w-full object-cover rounded-xl"
           alt=""
         />
