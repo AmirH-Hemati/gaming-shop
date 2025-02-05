@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({ baseURL: "http://localhost:1212/api" });
+const axiosInstance = axios.create({
+  baseURL: "http://localhost:1212/api",
+  headers: { "Content-Type": "application/json" },
+});
 
 axiosInstance.interceptors.request.use(
   (config) => {
