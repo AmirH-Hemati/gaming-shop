@@ -21,6 +21,7 @@ function Layout() {
             color="white"
             onClick={() => setIsActive(!isActive)}
           />
+
           <div className="flex gap-2">
             <Heart size="32" color="white" />
             <ShoppingCart size="32" color="white" />
@@ -29,7 +30,6 @@ function Layout() {
         </div>
 
         <Outlet />
-        <Products />
       </main>
     </div>
   );
