@@ -31,7 +31,6 @@ function ShopContextProvider({ children }) {
   function totalQty() {
     return addToCart.reduce((cur, sum) => cur + sum.qty, 0);
   }
-  console.log(addToCart);
   return (
     <shopContext.Provider
       value={{
