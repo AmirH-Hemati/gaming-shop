@@ -1,13 +1,28 @@
 import { Button, TextField } from "@mui/material";
+import { useState } from "react";
+import { useRegister } from "./useRegister";
 
 function SignIn({ onToggleLogin }) {
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { register } = useRegister();
+  function handelRegister(e) {
+    e.preventDefault();
+    register({ userName, email, password });
+  }
   return (
-    <form className="flex flex-col justify-evenly shadow-custom p-8 h-80 rounded-sm w-96">
+    <form
+      onSubmit={handelRegister}
+      className="flex flex-col justify-evenly shadow-custom p-8 h-80 rounded-sm w-96"
+    >
       <TextField
         id="outlined-basic"
         variant="outlined"
         type="text"
         label="User Name"
+        value={userName}
+        onChange={(e) => setUserName(e.target.value)}
         sx={{
           "& .MuiOutlinedInput-root": {
             "& fieldset": { borderColor: "#0998a8" },
@@ -23,6 +38,8 @@ function SignIn({ onToggleLogin }) {
         variant="outlined"
         type="text"
         label="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         sx={{
           "& .MuiOutlinedInput-root": {
             "& fieldset": { borderColor: "#0998a8" },
@@ -38,6 +55,8 @@ function SignIn({ onToggleLogin }) {
         variant="outlined"
         type="password"
         label="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         sx={{
           "& .MuiOutlinedInput-root": {
             "& fieldset": { borderColor: "#0998a8" },
