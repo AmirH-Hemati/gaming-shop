@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { login as loginAPI } from "../../services/apiAuth";
+import { toast } from "react-toastify";
 
 export function useLogin() {
   const queryClient = useQueryClient();
@@ -9,9 +10,10 @@ export function useLogin() {
       queryClient.invalidateQueries({
         queryKey: ["user"],
       });
+      toast.success("Welcome !...");
     },
     onError: (err) => {
-      console.log(err);
+      toast.error(err.response.data.message);
     },
   });
   return { login, isLoading };

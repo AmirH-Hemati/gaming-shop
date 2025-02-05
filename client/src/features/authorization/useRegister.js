@@ -1,7 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { register as registerAPI } from "../../services/apiAuth";
+import { toast } from "react-toastify";
 
-export  function useRegister() {
+export function useRegister() {
   const queryClient = useQueryClient();
   const { mutate: register, isLoading } = useMutation({
     mutationFn: ({ userName, email, password }) =>
@@ -10,10 +11,10 @@ export  function useRegister() {
       queryClient.invalidateQueries({
         queryKey: ["user"],
       });
-      console.log("ok");
+      toast.success("succsessfully created account");
     },
     onError: (err) => {
-      console.log(err);
+      toast.error(err.response.data.message);
     },
   });
   return { register, isLoading };
