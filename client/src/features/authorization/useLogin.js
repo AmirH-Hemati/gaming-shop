@@ -10,6 +10,9 @@ export function useLogin() {
         queryKey: ["user"],
       });
     },
+    onError: (err) => {
+      console.log(err.message);
+    },
   });
   return { login, isLoading };
 }
