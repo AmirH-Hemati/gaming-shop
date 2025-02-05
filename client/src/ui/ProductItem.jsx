@@ -1,6 +1,6 @@
 import { AddSquare, Heart, Star1 } from "iconsax-react";
 
-function ProductItem() {
+function ProductItem({ product }) {
   return (
     <li className=" relative flex flex-col gap-2  bg-bg-main p-4 rounded-xl shadow-custom cursor-pointer">
       <div className="relative w-full">
@@ -18,8 +18,8 @@ function ProductItem() {
         <Star1 size="26" color="#0998a8" variant="Bold" />
         <Star1 size="26" color="#0998a8" variant="Bold" />
       </div>
-      <p className="font-semibold text-lg">mmouse gaming razer</p>
-      <p className="text-sm text-[#0998a8]">16.99$</p>
+      <p className="font-semibold text-lg">{product?.title}</p>
+      <p className="text-sm text-[#0998a8]">{product?.price}$</p>
       <div className="absolute  bottom-0 right-0 rounded-br-2xl rounded-tl-2xl bg-[#0998a8] p-1">
         <AddSquare size="28" color="white" />
       </div>
