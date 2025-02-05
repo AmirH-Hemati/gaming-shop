@@ -13,13 +13,15 @@ function Layout() {
     <div className="w-full bg-[#192938] h-screen overflow-hidden flex p-4 gap-4 text-white">
       <Header isActiveMenu={isActiveMenu} />
       <main
-        className={`overflow-y-auto w-full relative ${
-          isActiveMenu ? "w-[92%] " : "w-[80%] "
+        className={` w-full relative overflow-auto ${
+          isActiveMenu ? "md:w-[92%] " : "md:w-[80%] "
         }bg-[#192938] h-full rounded-sm shadow-custom p-4`}
       >
         <div
           className={`w-full flex  justify-between duration-500  ${
-            isActiveMenu ? "translate-x-4 px-4 md:px-0 md:translate-x-0" : "translate-x-0"
+            isActiveMenu
+              ? "translate-x-4 px-4 md:px-0 md:translate-x-0"
+              : "translate-x-0"
           } `}
         >
           <HambergerMenu
