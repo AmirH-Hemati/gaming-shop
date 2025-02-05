@@ -13,7 +13,7 @@ function Layout() {
     <div className="w-full bg-[#192938] h-screen overflow-hidden flex p-4 gap-4 text-white">
       <Header isActiveMenu={isActiveMenu} />
       <main
-        className={`overflow-y-auto relative ${
+        className={`overflow-y-auto w-full relative ${
           isActiveMenu ? "w-[92%] " : "w-[80%] "
         }bg-[#192938] h-full rounded-sm shadow-custom p-4`}
       >
