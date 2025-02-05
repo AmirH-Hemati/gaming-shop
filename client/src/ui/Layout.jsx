@@ -2,18 +2,20 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import { HambergerMenu, Heart, ShoppingCart } from "iconsax-react";
 import { useState } from "react";
+import ProductItem from "./ProductItem";
+import Products from "./Products";
 
 function Layout() {
   const [isActive, setIsActive] = useState(false);
   return (
-    <div className="w-full bg-[#192938] h-screen flex p-4 gap-4 text-white">
+    <div className="w-full bg-[#192938] h-screen overflow-hidden flex p-4 gap-4 text-white">
       <Header isActive={isActive} />
       <main
-        className={`relative ${
+        className={`overflow-y-auto relative ${
           isActive ? "w-[92%] " : "w-[80%] "
         }bg-[#192938] h-full rounded-sm shadow-custom p-4`}
       >
-        <div className="w-full flex  justify-between">
+        <div className="w-full flex  justify-between ">
           <HambergerMenu
             size="32"
             color="white"
@@ -25,7 +27,9 @@ function Layout() {
             <p>usename</p>
           </div>
         </div>
+
         <Outlet />
+        <Products />
       </main>
     </div>
   );
