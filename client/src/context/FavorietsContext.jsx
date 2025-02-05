@@ -1,8 +1,9 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const favorietsContext = createContext();
 function FavorietsContextProvider({ children }) {
-  const [addToFavorites, setAddToFavorites] = useState([]);
+  const [addToFavorites, setAddToFavorites] = useLocalStorage("favorites", []);
   function handelAddToFavorites(product) {
     setAddToFavorites((addToFavorites) => {
       if (addToFavorites.find((item) => item._id == product._id)) {

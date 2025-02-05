@@ -1,8 +1,9 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const shopContext = createContext();
 function ShopContextProvider({ children }) {
-  const [addToCart, setAddToCart] = useState([]);
+  const [addToCart, setAddToCart] = useLocalStorage("shoppingCart", []);
   function handelIncreaseProduct(id) {
     setAddToCart((addToCart) => {
       const product = addToCart.find((product) => product.id == id);
@@ -33,7 +34,12 @@ function ShopContextProvider({ children }) {
   console.log(addToCart);
   return (
     <shopContext.Provider
-      value={{ addToCart, handelIncreaseProduct, handelDecreaseProduct ,totalQty }}
+      value={{
+        addToCart,
+        handelIncreaseProduct,
+        handelDecreaseProduct,
+        totalQty,
+      }}
     >
       {children}
     </shopContext.Provider>
