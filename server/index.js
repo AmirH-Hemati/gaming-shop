@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose, { mongo } from "mongoose";
 import authRouter from "./routes/auth.js";
+import productRouter from "./routes/product.js";
 import cors from "cors";
 const app = express();
 mongoose
@@ -14,6 +15,7 @@ mongoose
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRouter);
+app.use("/api/products");
 app.listen(1212, () => {
   console.log("listen on port 1212");
 });
