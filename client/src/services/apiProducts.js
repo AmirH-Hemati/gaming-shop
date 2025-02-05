@@ -1,9 +1,6 @@
-import axios from "axios";
+import axiosInstance from "./axiosInstance";
 
 export async function createProduct(formData) {
-  const { data } = await axios.post(
-    "http://localhost:1212/api/products/createProduct",
-    formData
-  );
+  const { data } = await axiosInstance.post("/products/createProduct", formData);
   return data;
 }
