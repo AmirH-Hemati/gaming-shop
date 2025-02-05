@@ -8,7 +8,7 @@ export async function auth(req, res, next) {
   }
   try {
     const decode = jwt.verify(token, "asddwqdwq456dwqdwq");
-    const user = await User.findOne({ _id: decode.id }).selected("-password");
+    const user = await User.findOne({ _id: decode.id }).select("-password");
     if (!user) {
       return res.status(401).json({ message: "acsess deniged", data: null });
     }
