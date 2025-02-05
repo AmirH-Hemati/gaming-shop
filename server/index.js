@@ -12,7 +12,11 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://192.168.1.4:5173", "http://localhost:5173"],
+  })
+);
 app.use(express.json());
 app.use(express.static("images"));
 app.use("/api/auth", authRouter);

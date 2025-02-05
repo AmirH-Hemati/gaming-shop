@@ -4,5 +4,9 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  server: {
+    host: "0.0.0.0", // برای گوش دادن به همه آدرس‌های شبکه
+    port: 5173, // یا هر پورت دیگری که می‌خواهید
+  },
+  plugins: [react(), tailwindcss()]
 });
