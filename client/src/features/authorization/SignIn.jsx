@@ -69,6 +69,7 @@ function SignIn({ onToggleLogin }) {
       />
       <Button
         variant="contained"
+        type="submit"
         sx={{ backgroundColor: "#0998a8", padding: "12px" }}
       >
         Sign In

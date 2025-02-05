@@ -2,16 +2,18 @@ import bcy from "bcrypt";
 import User from "../models/auth.js";
 import jwt from "jsonwebtoken";
 export async function register(req, res) {
+  console.log("test");
   const { userName, email, password } = req.body;
   let user = await User.findOne({ email });
   if (user) {
-    return res.status(40).json({ message: "User Already Exist", data: null });
+    return res.status(400).json({ message: "User Already Exist", data: null });
   }
   const salt = await bcy.genSalt(12);
   const hashedPassword = await bcy.hash(password, salt);
   user = await User.create({ userName, email, password: hashedPassword });
-  return res.message({ message: "ok", data: user });
+  res.json({ message: "ok", data: user });
 }
+
 export async function login(req, res) {
   const { email, password } = req.body;
   let user = await User.findOne({ email });

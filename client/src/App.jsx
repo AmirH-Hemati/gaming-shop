@@ -3,8 +3,10 @@ import Layout from "./ui/Layout";
 import Home from "./pages/Home";
 import AuthPage from "./pages/AuthPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 const queryClient = new QueryClient();
 function App() {
+ 
   return (
     <QueryClientProvider client={queryClient}>
       <Routes>

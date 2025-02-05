@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { register as registerAPI } from "../../services/apiAuth";
 
-export async function useRegister() {
+export  function useRegister() {
   const queryClient = useQueryClient();
   const { mutate: register, isLoading } = useMutation({
     mutationFn: ({ userName, email, password }) =>
@@ -10,9 +10,10 @@ export async function useRegister() {
       queryClient.invalidateQueries({
         queryKey: ["user"],
       });
+      console.log("ok");
     },
     onError: (err) => {
-      console.log(err.message);
+      console.log(err);
     },
   });
   return { register, isLoading };

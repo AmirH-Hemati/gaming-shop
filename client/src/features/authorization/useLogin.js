@@ -11,7 +11,7 @@ export function useLogin() {
       });
     },
     onError: (err) => {
-      console.log(err.message);
+      console.log(err);
     },
   });
   return { login, isLoading };

@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose, { mongo } from "mongoose";
 import authRouter from "./routes/auth.js";
+import cors from "cors";
 const app = express();
 mongoose
   .connect("mongodb://localhost:27017/gaming-shop")
@@ -10,6 +11,7 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRouter);
 app.listen(1212, () => {
