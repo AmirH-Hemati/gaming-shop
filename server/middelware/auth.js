@@ -1,5 +1,4 @@
-import data from "../../client/src/data/navListData";
-import User from "../models/auth.js";
+import User from "../models/authModel.js";
 import jwt from "jsonwebtoken";
 export async function auth(req, res, next) {
   const token = req.header["authorization"];

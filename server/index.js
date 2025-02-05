@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.static("images"));
 app.use("/api/auth", authRouter);
 app.use("/api/products", productRouter);
-app.use("/api/user", userRouter);
+app.use("/api/user" , userRouter);
 app.listen(1212, () => {
   console.log("listen on port 1212");
 });
