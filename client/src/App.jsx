@@ -7,7 +7,7 @@ import CreateProduct from "./pages/CreateProduct";
 import Categories from "./pages/Categories";
 import Liberary from "./pages/Liberary";
 import ShopCart from "./pages/ShopCart";
-import { ShopContextProvider } from "./context/ShopContext";
+import { ShopContextProvider } from "./context/ShoppingContext";
 
 const queryClient = new QueryClient();
 function App() {

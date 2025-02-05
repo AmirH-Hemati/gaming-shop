@@ -27,9 +27,13 @@ function ShopContextProvider({ children }) {
       }
     });
   }
+  function totalQty() {
+    return addToCart.reduce((cur, sum) => cur + sum.qty, 0);
+  }
+  console.log(addToCart);
   return (
     <shopContext.Provider
-      value={{ addToCart, handelIncreaseProduct, handelDecreaseProduct }}
+      value={{ addToCart, handelIncreaseProduct, handelDecreaseProduct ,totalQty }}
     >
       {children}
     </shopContext.Provider>
