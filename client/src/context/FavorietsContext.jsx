@@ -12,9 +12,12 @@ function FavorietsContextProvider({ children }) {
       }
     });
   }
-  func
+  function productExists(product) {
+    return addToFavorites.find((item) => item._id == product._id);
+  }
+  console.log(addToFavorites);
   return (
-    <favorietsContext.Provider value={{ handelAddToFavorites }}>
+    <favorietsContext.Provider value={{ handelAddToFavorites, productExists }}>
       {children}
     </favorietsContext.Provider>
   );
