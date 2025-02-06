@@ -2,6 +2,7 @@ import { CloseSquare } from "iconsax-react";
 import { useClickOutSide } from "../hooks/useClickOutSide";
 import userMenuData from "../data/userMenuData";
 import { NavLink } from "react-router-dom";
+import NavListItem from "./NavListItem";
 function UserMenu({ first, close }) {
   const ref = useClickOutSide(close);
   return (
@@ -17,26 +18,26 @@ function UserMenu({ first, close }) {
       </div>
       <ul className="flex flex-col">
         {userMenuData.map((item) => (
-          <UserMenuItem key={item.id} item={item} />
+          <NavListItem key={item.id} item={item} />
         ))}
       </ul>
     </div>
   );
 }
 
-function UserMenuItem({ item }) {
-  return (
-    <NavLink
-      className={({ isActive }) =>
-        `w-full py-2  hover:shadow-custom ${isActive ? "shadow-custom" : ""}`
-      }
-      to={item.route}
-    >
-      <li className="flex items-center gap-2 p-3 cursor-pointer rounded-sm overflow-hidden">
-        {item?.icon}
-        <p>{item?.name}</p>
-      </li>
-    </NavLink>
-  );
-}
-export default UserMenu;
+// function UserMenuItem({ item }) {
+//   return (
+//     <NavLink
+//       className={({ isActive }) =>
+//         `w-full py-2  hover:shadow-custom ${isActive ? "shadow-custom" : ""}`
+//       }
+//       to={item.route}
+//     >
+//       <li className="flex items-center gap-2 p-3 cursor-pointer rounded-sm overflow-hidden">
+//         {item?.icon}
+//         <p>{item?.name}</p>
+//       </li>
+//     </NavLink>
+//   );
+// }
+// export default UserMenu;
