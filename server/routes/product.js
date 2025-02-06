@@ -1,7 +1,12 @@
 import express from "express";
 import multer from "multer";
 import path from "path";
-import { createProduct, products } from "../controllers/productControllers.js";
+import {
+  createProduct,
+  deleteProduct,
+  product,
+  products,
+} from "../controllers/productControllers.js";
 import { auth } from "../middelware/auth.js";
 import { admin } from "../middelware/admin.js";
 const router = express.Router();
