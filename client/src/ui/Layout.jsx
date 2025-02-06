@@ -6,21 +6,16 @@ import UserMenu from "./UserMenu";
 import data from "../data/navListData";
 
 function Layout() {
-
   const [isActiveMenu, setIsActiveMenu] = useState(false);
   const [first, setfirst] = useState(false);
   function close() {
     setfirst(false);
   }
   return (
-    <div className="w-full bg-[#192938] h-screen overflow-hidden flex p-4 gap-4 text-white">
-      <Header
-        isActiveMenu={isActiveMenu}
-        data={data}
-        color={`bg-[#192938]`}
-      />
+    <div className="flex w-full h-screen bg-[#192938]  overflow-hidden  p-4 gap-4 text-white">
+      <Header isActiveMenu={isActiveMenu} data={data} color={`bg-[#192938]`} />
       <main
-        className={` w-full overflow-auto ${
+        className={`h-full w-full overflow-auto ${
           isActiveMenu ? "md:w-[92%] " : "md:w-[80%] "
         }bg-[#192938] h-full rounded-sm shadow-custom p-4`}
       >

@@ -44,7 +44,7 @@ function TopMain({ isActiveMenu, setIsActiveMenu, setfirst }) {
           {user?.data ? (
             <div
               onClick={() => setfirst((first) => !first)}
-              className="flex gap-2 items-center shadow-custom px-4 py-1"
+              className="flex gap-2 items-center shadow-custom px-4 py-1 cursor-pointer"
             >
               <p>{user?.data?.userName}</p>
               <img src={user?.data?.avatar} className="w-7 h-7 rounded-full" />

@@ -19,7 +19,7 @@ function ShopCart() {
   const totalPrice = products?.data?.reduce((cur, sum) => cur + sum.price, 0);
   const totalItems = products?.data?.length;
   return (
-    <div className="w-full h-full  md:p-6 ">
+    <div className="w-full md:p-6 ">
       <ul className=" w-full max-h-[70%] flex flex-col  md:p-4 gap-7 items-center  rounded-md overflow-y-auto ">
         {products?.data?.map((product) => (
           <li
@@ -77,7 +77,7 @@ function ShopCart() {
       <div className="flex justify-between items-center w-full text-white text-xl p-6">
         <p>Total Items : {totalItems}</p>
         <p>Total Price : {totalPrice}</p>
-        <button className="p-2 bg-bg-main shadow-custom rounded-sm cursor-pointer">
+        <button className="p-2 bg-bg-main shadow-custom rounded-sm cursor-pointer text-base">
           Payment
         </button>
       </div>
