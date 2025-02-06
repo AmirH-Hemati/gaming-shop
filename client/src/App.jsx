@@ -13,6 +13,9 @@ import { AuthContextProvider } from "./context/authContext";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import Setting from "./pages/Setting";
 import ChangePassword from "./pages/ChangePassword";
+import ProtectedAdminRoute from "./ui/ProtectedAdminRoute";
+import LayoutAdmin from "./ui/LayoutAdmin";
+import Dashboard from "./pages/Dashboard";
 
 const queryClient = new QueryClient();
 function App() {
@@ -33,6 +36,11 @@ function App() {
                   <Route path="/changePassword" element={<ChangePassword />} />
                 </Route>
                 <Route path="/createProduct" element={<CreateProduct />} />
+              </Route>
+              <Route element={<ProtectedAdminRoute />}>
+                <Route element={<LayoutAdmin />}>
+                  <Route index element={<Dashboard />} />
+                </Route>
               </Route>
             </Routes>
           </FavorietsContextProvider>
