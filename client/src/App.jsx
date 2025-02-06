@@ -11,6 +11,8 @@ import { ShopContextProvider } from "./context/ShoppingContext";
 import { FavorietsContextProvider } from "./context/FavorietsContext";
 import { AuthContextProvider } from "./context/authContext";
 import ProtectedRoute from "./ui/ProtectedRoute";
+import Setting from "./pages/Setting";
+import ChangePassword from "./pages/ChangePassword";
 
 const queryClient = new QueryClient();
 function App() {
@@ -27,6 +29,8 @@ function App() {
                 <Route element={<ProtectedRoute />}>
                   <Route path="/liberary" element={<Liberary />} />
                   <Route path="/shopCart" element={<ShopCart />} />
+                  <Route path="/setting" element={<Setting />} />
+                  <Route path="/changePassword" element={<ChangePassword />} />
                 </Route>
                 <Route path="/createProduct" element={<CreateProduct />} />
               </Route>
