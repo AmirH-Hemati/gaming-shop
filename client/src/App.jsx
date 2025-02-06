@@ -40,6 +40,9 @@ function App() {
               <Route element={<ProtectedAdminRoute />}>
                 <Route element={<LayoutAdmin />}>
                   <Route path="/admin" element={<Dashboard />} />
+                  <Route path="/addProduct" element={<Dashboard />} />
+                  <Route path="/editProducts" element={<Dashboard />} />
+                  <Route path="/users" element={<Dashboard />} />
                 </Route>
               </Route>
             </Routes>

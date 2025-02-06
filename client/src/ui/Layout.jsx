@@ -15,7 +15,11 @@ function Layout() {
   }
   return (
     <div className="w-full bg-[#192938] h-screen overflow-hidden flex p-4 gap-4 text-white">
-      <Header isActiveMenu={isActiveMenu} data={data} />
+      <Header
+        isActiveMenu={isActiveMenu}
+        data={navLinkData}
+        color={`bg-[#192938]`}
+      />
       <main
         className={` w-full overflow-auto ${
           isActiveMenu ? "md:w-[92%] " : "md:w-[80%] "
