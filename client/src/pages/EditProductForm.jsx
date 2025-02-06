@@ -1,42 +1,66 @@
 import { useState } from "react";
 import FormLabel from "../ui/FormLabel";
 import Input from "../ui/Input";
+import { useEditProduct } from "../features/admin/useEditProduct";
+import { Button } from "@mui/material";
 
-function EditProductForm({ p, onClose }) {
-  // const { editProduct } = useEditProduct();
-  const [name, setName] = useState(p?.name);
+function EditProductForm({ product, onClose }) {
+  const { editProduct } = useEditProduct();
+  const [title, setTitle] = useState(product?.title);
+  const [price, setPrice] = useState(product?.price);
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState(p?.price);
   const [file, setFile] = useState("");
-  // function handelEditProduct(e) {
-  //   e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append("name", name);
-  //   formData.append("price", price);
-  //   formData.append("file", file);
+  function handelEditProduct(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("price", price);
+    formData.append("file", file);
 
-  //   editProduct({ id: p?._id, formData });
-  // }
-  // return (
-  <form className="flex flex-col p-2  gap-6 ">
-    <FormLabel label="Name Product">
-      <Input type="text" name="name" id="name" />
-    </FormLabel>
-    <FormLabel label="Name Product">
-      <Input type="text" name="price" id="price" />
-    </FormLabel>
-    <FormLabel label="Description">
-      <textarea
-        name="description"
-        id="description"
-        className="outline-none w-full md:w-1/2 text-black border-2 border-black/30 rounded-sm"
-      ></textarea>
-    </FormLabel>
-    <input type="file" name="file" className="p-2" />
-    <div className="flex gap-4">
-      <button>submit</button>
-    </div>
-  </form>;
+    editProduct({ id: product?._id, formData });
+  }
+  return (
+    <form onSubmit={handelEditProduct} className="flex flex-col p-2  gap-6 ">
+      <FormLabel label="Name Product">
+        <Input
+          type="text"
+          name="title"
+          id="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </FormLabel>
+      <FormLabel label="Name Product">
+        <Input
+          type="text"
+          name="price"
+          id="price"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        />
+      </FormLabel>
+      <FormLabel label="Description">
+        <textarea
+          rows={4}
+          name="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          id="description"
+          className="outline-none w-full md:w-1/2 text-black border-2 border-black/30 rounded-sm"
+        ></textarea>
+      </FormLabel>
+      <input type="file" name="file" className="p-2" />
+
+      <Button
+        variant="contained"
+        type="submit"
+        sx={{ backgroundColor: "#192938", padding: "12px" }}
+        className="w-full md:w-1/3 self-end"
+      >
+        Edit Product
+      </Button>
+    </form>
+  );
 }
 
 export default EditProductForm;

@@ -6,6 +6,7 @@ import {
   deleteProduct,
   product,
   products,
+  updateProduct,
 } from "../controllers/productControllers.js";
 import { auth } from "../middelware/auth.js";
 import { admin } from "../middelware/admin.js";
@@ -30,6 +31,6 @@ router.post(
   upload.single("file"),
   createProduct
 );
-
+router.post("/edit/:id", auth, admin, upload.single("file"), updateProduct);
 router.delete("/:id", deleteProduct);
 export default router;
