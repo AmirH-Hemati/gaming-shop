@@ -2,6 +2,8 @@ import express from "express";
 import multer from "multer";
 import path from "path";
 import { createProduct, products } from "../controllers/productControllers.js";
+import { auth } from "../middelware/auth.js";
+import { admin } from "../middelware/admin.js";
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -15,6 +17,14 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 router.get("/", products);
-router.post("/createProduct", upload.single("file"), createProduct);
+router.get("/:id", product);
+router.post(
+  "/createProduct",
+  auth,
+  admin,
+  upload.single("file"),
+  createProduct
+);
 
+router.delete("/:id", deleteProduct);
 export default router;

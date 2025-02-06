@@ -1,8 +1,10 @@
-function Input({ type }) {
+function Input({ type, name, id }) {
   return (
     <input
       type={type}
-      className="w-full rounded-sm p-3 border-2 border-[#0998a8] outline-none"
+      name={name}
+      id={id}
+      className="w-full md:w-1/2 rounded-sm p-3 border-2 border-[#0998a8] outline-none"
     />
   );
 }
