@@ -12,4 +12,5 @@ export function useClickOutSide(handler) {
     document.addEventListener("click", handelClick, true);
     return () => document.removeEventListener("click", handelClick, true);
   }, [handler]);
+  return ref;
 }
