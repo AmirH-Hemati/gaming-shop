@@ -1,14 +1,17 @@
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import Header from "./Header";
 import { HambergerMenu, Heart, ShoppingCart } from "iconsax-react";
 import { useState } from "react";
 import { useAddToCart } from "../context/ShoppingContext";
 import { useAddToFavorites } from "../context/FavorietsContext";
+import { useCurrentUser } from "../features/authorization/useCurrentUse";
 
 function Layout() {
   const { totalQty } = useAddToCart();
   const { totalFavorites } = useAddToFavorites();
   const [isActiveMenu, setIsActiveMenu] = useState(false);
+  const { user } = useCurrentUser();
+  console.log(user);
   return (
     <div className="w-full bg-[#192938] h-screen overflow-hidden flex p-4 gap-4 text-white">
       <Header isActiveMenu={isActiveMenu} />
@@ -30,10 +33,10 @@ function Layout() {
             onClick={() => setIsActiveMenu(!isActiveMenu)}
           />
 
-          <div className="flex gap-2 md:gap-4">
+          <div className="flex gap-2 md:gap-4 items-center">
             <div className="relative">
               <Heart size="26" color="white" className="cursor-pointer" />
-              <p className="text-sm flex items-center justify-center w-5 h-5 absolute -bottom-1 -right-1 bg-[#0998a8] p-1 rounded-full ">
+              <p className="text-sm flex items-center justify-center w-4 h-4 absolute -bottom-1 -right-1 bg-[#0998a8] p-1 rounded-full ">
                 {totalFavorites()}
               </p>
             </div>
@@ -43,11 +46,25 @@ function Layout() {
                 color="white"
                 className="cursor-pointer"
               />
-              <p className="text-sm flex items-center justify-center w-5 h-5 absolute -bottom-1 -right-1 bg-[#0998a8] p-1 rounded-full ">
+              <p className="text-sm flex items-center justify-center w-4 h-4 absolute -bottom-1 -right-1 bg-[#0998a8] p-1 rounded-full ">
                 {totalQty()}
               </p>
             </div>
-            <p>usename</p>
+            <div>
+              {user?.data ? (
+                <div className="flex gap-2 items-center shadow-custom px-4 py-1">
+                  <p>{user?.data?.userName}</p>
+                  <img src={user?.data?.avatar} className="w-7 h-7 rounded-full" />
+                </div>
+              ) : (
+                <NavLink
+                  to={`/auth`}
+                  className={`py-0.5 px-3 bg-[#0998a8] rounded-sm`}
+                >
+                  login
+                </NavLink>
+              )}
+            </div>
           </div>
         </div>
 
