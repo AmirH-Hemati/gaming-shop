@@ -3,7 +3,6 @@ import Layout from "./ui/Layout";
 import Home from "./pages/Home";
 import AuthPage from "./pages/AuthPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import CreateProduct from "./pages/CreateProduct";
 import Categories from "./pages/Categories";
 import Liberary from "./pages/Liberary";
 import ShopCart from "./pages/ShopCart";
@@ -16,6 +15,9 @@ import ChangePassword from "./pages/ChangePassword";
 import ProtectedAdminRoute from "./ui/ProtectedAdminRoute";
 import LayoutAdmin from "./ui/LayoutAdmin";
 import Dashboard from "./pages/Dashboard";
+import AddProduct from "./pages/AddProduct";
+import EditProducts from "./pages/EditProducts";
+import Modal from "./ui/Modal";
 
 const queryClient = new QueryClient();
 function App() {
@@ -35,13 +37,12 @@ function App() {
                   <Route path="/setting" element={<Setting />} />
                   <Route path="/changePassword" element={<ChangePassword />} />
                 </Route>
-                <Route path="/createProduct" element={<CreateProduct />} />
               </Route>
               <Route element={<ProtectedAdminRoute />}>
                 <Route element={<LayoutAdmin />}>
                   <Route path="/admin" element={<Dashboard />} />
-                  <Route path="/addProduct" element={<CreateProduct />} />
-                  <Route path="/editProducts" element={<Dashboard />} />
+                  <Route path="/addProduct" element={<AddProduct />} />
+                  <Route path="/editProducts" element={<EditProducts />} />
                   <Route path="/users" element={<Dashboard />} />
                 </Route>
               </Route>
