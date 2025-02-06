@@ -5,7 +5,7 @@ import AddToFavorite from "../../ui/AddToFavorite";
 function ProductItem({ product }) {
   const { handelIncreaseProduct } = useAddToCart();
   return (
-    <li className=" relative flex flex-col gap-2  bg-bg-main p-4 rounded-xl shadow-custom cursor-pointer">
+    <li className="z-10 relative flex flex-col gap-2  bg-bg-main p-4 rounded-xl shadow-custom cursor-pointer">
       <div className="relative w-full">
         <img
           src={product?.image}

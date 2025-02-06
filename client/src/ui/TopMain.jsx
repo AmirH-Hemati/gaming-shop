@@ -3,14 +3,15 @@ import { NavLink } from "react-router-dom";
 import { useCurrentUser } from "../features/authorization/useCurrentUse";
 import { useAddToCart } from "../context/ShoppingContext";
 import { useAddToFavorites } from "../context/FavorietsContext";
+import { useState } from "react";
 
-function TopMain({ isActiveMenu, setIsActiveMenu }) {
+function TopMain({ isActiveMenu, setIsActiveMenu, setfirst }) {
   const { user } = useCurrentUser();
   const { totalQty } = useAddToCart();
   const { totalFavorites } = useAddToFavorites();
   return (
     <div
-      className={`w-full flex  justify-between duration-500  ${
+      className={`relative w-full flex  justify-between duration-500  ${
         isActiveMenu
           ? "translate-x-4 px-4 md:px-0 md:translate-x-0"
           : "translate-x-0"
@@ -37,7 +38,10 @@ function TopMain({ isActiveMenu, setIsActiveMenu }) {
         </div>
         <div>
           {user?.data ? (
-            <div className="flex gap-2 items-center shadow-custom px-4 py-1">
+            <div
+              onClick={() => setfirst((first) => !first)}
+              className="flex gap-2 items-center shadow-custom px-4 py-1"
+            >
               <p>{user?.data?.userName}</p>
               <img src={user?.data?.avatar} className="w-7 h-7 rounded-full" />
             </div>
