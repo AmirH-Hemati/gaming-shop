@@ -37,7 +37,8 @@ app.listen(1212, () => {
 //     email: "admin",
 //     userName: "admin",
 //     password: hasedhPassword,
+//     role: "admin",
 //   });
 //   console.log("succsusfully created account");
 // }
-// createAdminAccount()
+// createAdminAccount();
