@@ -2,15 +2,20 @@ import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { useLogin } from "./useLogin";
 import { useState } from "react";
+import Loading from "../../ui/Loading";
 
 function Login({ onToggleLogin }) {
-  const { login, isLoading } = useLogin();
+  const { login, isPending } = useLogin();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  if (isPending) {
+    return <Loading />;
+  }
   function handelLoginForm(e) {
     e.preventDefault();
     login({ email, password });
   }
+
   return (
     <form
       className="flex flex-col justify-evenly shadow-custom p-8 h-80 rounded-sm w-96 "

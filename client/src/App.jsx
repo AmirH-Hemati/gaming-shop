@@ -39,7 +39,7 @@ function App() {
               </Route>
               <Route element={<ProtectedAdminRoute />}>
                 <Route element={<LayoutAdmin />}>
-                  <Route index element={<Dashboard />} />
+                  <Route path="/admin" element={<Dashboard />} />
                 </Route>
               </Route>
             </Routes>

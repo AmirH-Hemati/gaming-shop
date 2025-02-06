@@ -3,12 +3,15 @@ import { NavLink } from "react-router-dom";
 import { useCurrentUser } from "../features/authorization/useCurrentUse";
 import { useAddToCart } from "../context/ShoppingContext";
 import { useAddToFavorites } from "../context/FavorietsContext";
-import { useState } from "react";
+import Loading from "./Loading";
 
 function TopMain({ isActiveMenu, setIsActiveMenu, setfirst }) {
-  const { user } = useCurrentUser();
+  const { user, isPending } = useCurrentUser();
   const { totalQty } = useAddToCart();
   const { totalFavorites } = useAddToFavorites();
+  if (isPending) {
+    return <Loading />;
+  }
   return (
     <div
       className={`relative w-full flex  justify-between duration-500  ${

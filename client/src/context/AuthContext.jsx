@@ -1,9 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { useCurrentUser } from "../features/authorization/useCurrentUse";
+import Loading from "../ui/Loading";
+
 const authContext = createContext();
 function AuthContextProvider({ children }) {
+  const { user, isPending } = useCurrentUser();
   const [token, setToken] = useState(localStorage.getItem("token") || "");
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState(user?.data?.role, "");
+
   useEffect(() => {
     if (token) {
       const decode = jwtDecode(token);
@@ -12,7 +17,9 @@ function AuthContextProvider({ children }) {
       setRole("");
     }
   }, [token]);
-
+  if (isPending) {
+    return <Loading />;
+  }
   function loginStoredToken(token) {
     localStorage.setItem("token", token);
     setToken(token);

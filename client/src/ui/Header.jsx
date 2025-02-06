@@ -1,7 +1,5 @@
 
-
 import NavListItem from "./NavListItem";
-import data from "../data/navListData";
 function Header({ isActiveMenu, data }) {
   return (
     <aside

@@ -2,7 +2,10 @@ import { CloseSquare } from "iconsax-react";
 import { useClickOutSide } from "../hooks/useClickOutSide";
 import userMenuData from "../data/userMenuData";
 import NavListItem from "./NavListItem";
+import { useAuth } from "../context/authContext";
+import { NavLink } from "react-router-dom";
 function UserMenu({ first, close }) {
+  const { token, role } = useAuth();
   const ref = useClickOutSide(close);
   return (
     <div
@@ -19,6 +22,19 @@ function UserMenu({ first, close }) {
         {userMenuData.map((item) => (
           <NavListItem key={item.id} item={item} />
         ))}
+
+        {token && role == "admin" && (
+          <NavLink
+            to={`/admin`}
+            className={({ isActive }) =>
+              `hover:shadow-custom ${isActive ? "shadow-custom" : ""}`
+            }
+          >
+            <li className="flex items-center gap-2 p-3 cursor-pointer rounded-sm overflow-hidden">
+              <p>Panel Admin</p>
+            </li>
+          </NavLink>
+        )}
       </ul>
     </div>
   );

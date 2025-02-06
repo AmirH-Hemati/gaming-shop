@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 export function useRegister() {
   const queryClient = useQueryClient();
-  const { mutate: register, isLoading } = useMutation({
+  const mutate = useMutation({
     mutationFn: ({ userName, email, password }) =>
       registerAPI({ userName, email, password }),
     onSuccess: () => {
@@ -17,5 +17,6 @@ export function useRegister() {
       toast.error(err.response.data.message);
     },
   });
-  return { register, isLoading };
+  console.log(mutate);
+  return mutate;
 }

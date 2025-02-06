@@ -8,19 +8,20 @@ export function useLogin() {
   const { loginStoredToken } = useAuth();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const { mutate: login, isLoading } = useMutation({
+  const { mutate: login, isPending } = useMutation({
     mutationFn: ({ email, password }) => loginAPI({ email, password }),
     onSuccess: (user) => {
+      loginStoredToken(user.data);
       queryClient.invalidateQueries({
         queryKey: ["user"],
       });
       toast.success("Welcome !...");
       navigate("/");
-      loginStoredToken(user.data);
     },
     onError: (err) => {
       toast.error(err.response.data.message);
     },
   });
-  return { login, isLoading };
+  console.log(login);
+  return { login, isPending };
 }
