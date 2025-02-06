@@ -17,6 +17,7 @@ function CreateProduct() {
       onSubmit={handelCreateProduct}
       className="w-full  h-full flex flex-col"
     >
+      
       <input type="text" placeholder="title product" name="title" />
       <input type="number" placeholder="price" name="price" />
       <input type="file" name="file" />

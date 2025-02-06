@@ -9,8 +9,8 @@ const data = [
   },
   {
     id: 2,
-    name: "Add Products",
-    route: "/addProduct",
+    name: "Add Product",
+    route: "/AddProduct",
     icon: <AddSquare size="32" color="#FF8A65" />,
   },
   {
