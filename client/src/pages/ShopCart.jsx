@@ -37,7 +37,7 @@ function ShopCart() {
                 <p className="  font-semibold md:text-lg text-base">
                   {product?.title}
                 </p>
-                <p className="text-sm md:text-base">{product?.price}</p>
+                <p className="text-sm md:text-base">{product?.price}$</p>
               </div>
 
               <div className="flex  items-center gap-2 md:gap-3">
@@ -76,7 +76,7 @@ function ShopCart() {
 
       <div className="flex justify-between items-center w-full text-white text-xl p-6">
         <p>Total Items : {totalItems}</p>
-        <p>Total Price : {totalPrice}</p>
+        <p>Total Price : {totalPrice}$</p>
         <button className="p-2 bg-bg-main shadow-custom rounded-sm cursor-pointer text-base">
           Payment
         </button>
