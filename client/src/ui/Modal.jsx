@@ -27,7 +27,7 @@ function Window({ children, name }) {
   const ref = useClickOutSide(close);
   if (isOpen !== name) return null;
   return (
-    <div className="flex items-center justify-center fixed top-0 left-0 w-full h-screen bg-black/50">
+    <div className="flex items-center justify-center fixed top-0 left-0 w-full z-[1000] h-screen bg-black/50">
       <div
         className="w-full md:w-[90%] py-2 px-1   bg-white flex flex-col md:p-6 rounded-sm  shadow-custom"
         ref={ref}
@@ -36,6 +36,7 @@ function Window({ children, name }) {
           size="32"
           color="#FF8A65"
           className="cursor-pointer self-end"
+          onClick={close}
         />
         <div>{cloneElement(children, { onClose: close })}</div>
       </div>

@@ -1,6 +1,7 @@
 import { Edit, Trash } from "iconsax-react";
 import { useGetProducts } from "../features/products/useGetProducts";
 import Modal from "../ui/Modal";
+import EditProductForm from "./EditProductForm";
 
 function EditProducts() {
   const { products } = useGetProducts();
