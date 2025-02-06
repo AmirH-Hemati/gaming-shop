@@ -31,7 +31,7 @@ app.listen(1212, () => {
 
 // async function createAdminAccount() {
 //   const password = "123";
-//   const salt = await bcy.genSalt(12);
+// const salt = await bcy.genSalt(12);
 //   const hasedhPassword = await bcy.hash(password, salt);
 //   const reslut = await User.create({
 //     email: "admin",

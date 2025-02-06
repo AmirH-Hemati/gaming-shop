@@ -18,6 +18,7 @@ import Dashboard from "./pages/Dashboard";
 import AddProduct from "./pages/AddProduct";
 import EditProducts from "./pages/EditProducts";
 import Modal from "./ui/Modal";
+import Users from "./pages/Users";
 
 const queryClient = new QueryClient();
 function App() {
@@ -43,7 +44,7 @@ function App() {
                   <Route path="/admin" element={<Dashboard />} />
                   <Route path="/addProduct" element={<AddProduct />} />
                   <Route path="/editProducts" element={<EditProducts />} />
-                  <Route path="/users" element={<Dashboard />} />
+                  <Route path="/users" element={<Users />} />
                 </Route>
               </Route>
             </Routes>
