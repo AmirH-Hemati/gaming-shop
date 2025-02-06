@@ -1,7 +1,6 @@
 import { CloseSquare } from "iconsax-react";
 import { useClickOutSide } from "../hooks/useClickOutSide";
 import userMenuData from "../data/userMenuData";
-import { NavLink } from "react-router-dom";
 import NavListItem from "./NavListItem";
 function UserMenu({ first, close }) {
   const ref = useClickOutSide(close);
@@ -24,6 +23,7 @@ function UserMenu({ first, close }) {
     </div>
   );
 }
+export default UserMenu;
 
 // function UserMenuItem({ item }) {
 //   return (
@@ -40,4 +40,3 @@ function UserMenu({ first, close }) {
 //     </NavLink>
 //   );
 // }
-// export default UserMenu;

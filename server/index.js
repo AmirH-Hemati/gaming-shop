@@ -4,6 +4,8 @@ import authRouter from "./routes/auth.js";
 import userRouter from "./routes/userRoute.js";
 import productRouter from "./routes/product.js";
 import cors from "cors";
+import bcy, { genSalt } from "bcrypt";
+import User from "./models/authModel.js";
 const app = express();
 mongoose
   .connect("mongodb://localhost:27017/gaming-shop")
@@ -22,7 +24,20 @@ app.use(express.json());
 app.use(express.static("images"));
 app.use("/api/auth", authRouter);
 app.use("/api/products", productRouter);
-app.use("/api/user" , userRouter);
+app.use("/api/user", userRouter);
 app.listen(1212, () => {
   console.log("listen on port 1212");
 });
+
+// async function createAdminAccount() {
+//   const password = "123";
+//   const salt = await bcy.genSalt(12);
+//   const hasedhPassword = await bcy.hash(password, salt);
+//   const reslut = await User.create({
+//     email: "admin",
+//     userName: "admin",
+//     password: hasedhPassword,
+//   });
+//   console.log("succsusfully created account");
+// }
+// createAdminAccount()

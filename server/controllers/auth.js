@@ -27,6 +27,9 @@ export async function login(req, res) {
       .status(400)
       .json({ message: "email or password inValid", data: null });
   }
-  const token = jwt.sign({ id: user._id }, "asddwqdwq456dwqdwq");
+  const token = jwt.sign(
+    { id: user._id, role: user.role },
+    "asddwqdwq456dwqdwq"
+  );
   res.json({ message: "ok", data: token });
 }
