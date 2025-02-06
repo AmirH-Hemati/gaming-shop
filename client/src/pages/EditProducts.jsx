@@ -1,4 +1,6 @@
+import { Edit, Trash } from "iconsax-react";
 import { useGetProducts } from "../features/products/useGetProducts";
+import Modal from "../ui/Modal";
 
 function EditProducts() {
   const { products } = useGetProducts();
@@ -19,7 +21,17 @@ function EditProducts() {
             <img src={p.image} alt="" className="w-20  object-cover" />
             <p className="truncate flex items-center">{p.title}</p>
             <p className="flex items-center">{p.price}</p>
-            <div className="flex items-center gap-2 md:gap-7"></div>
+            <div className="flex items-center gap-2 md:gap-7">
+              <Modal>
+                <Modal.Open openies="openEditModal">
+                  <Edit size="28" color="#00512c" className="cursor-pointer" />
+                </Modal.Open>
+                <Modal.Window name={`openEditModal`}>
+                  <EditProductForm p={p} />
+                </Modal.Window>
+              </Modal>
+              <Trash m size="28" color="#00512c" className="cursor-pointer" />
+            </div>
           </li>
         ))}
       </ul>
