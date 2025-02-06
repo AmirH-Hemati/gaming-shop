@@ -10,7 +10,7 @@ function UserMenu({ first, close }) {
   return (
     <div
       ref={ref}
-      className={`w-[20%] h-full fixed ${
+      className={`w-[80%] md:w-[20%] h-full fixed ${
         first ? "left-0" : "-left-full"
       }  top-0 duration-500  shadow-custom bg-bg-main z-50 p-4 `}
     >

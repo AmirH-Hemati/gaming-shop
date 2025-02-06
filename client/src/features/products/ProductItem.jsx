@@ -9,7 +9,7 @@ function ProductItem({ product }) {
       <div className="relative w-full">
         <img
           src={product?.image}
-          className="w-full object-cover rounded-xl"
+          className="w-full object-cover aspect-video rounded-xl"
           alt=""
         />
         <div className="flex items-center justify-center absolute top-0 right-0 bg-bg-main rounded-bl-xl p-2">

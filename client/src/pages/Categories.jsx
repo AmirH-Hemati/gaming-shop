@@ -1,5 +1,11 @@
+import FilterButtons from "../ui/FilterButtons";
+
 function Categories() {
-  return <div>catrgories</div>;
+  return (
+    <div>
+      <FilterButtons />
+    </div>
+  );
 }
 
 export default Categories;
