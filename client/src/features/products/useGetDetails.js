@@ -1,12 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
-import { useAddToCart } from "../../context/ShoppingContext";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { getDetailsProducts } from "../../services/apiProducts";
 
-export async function useGetDetails() {
-  const { addToCart } = useAddToCart();
-  const {data} = useQuery({
-    queryKey: ["products"],
-    queryFn: () => getDetailsProducts(addToCart),
+export  function useGetDetails() {
+  const queryClient = useQueryClient();
+  const { mutate, data: products } = useMutation({
+    mutationFn: (addToCart) => getDetailsProducts(addToCart),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["product"] });
+    },
+    onError: (err) => {
+      console.log(err);
+    },
   });
-  return {data}
+  return { mutate, products };
 }

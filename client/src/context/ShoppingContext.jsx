@@ -19,7 +19,7 @@ function ShopContextProvider({ children }) {
   function handelDecreaseProduct(id) {
     setAddToCart((addToCart) => {
       const product = addToCart.find((product) => product.id == id);
-      if (product.qty == 0) {
+      if (product.qty == 1) {
         return addToCart.filter((product) => product.id !== id);
       } else {
         return addToCart.map((product) =>
@@ -28,9 +28,13 @@ function ShopContextProvider({ children }) {
       }
     });
   }
+  function removeProduct(id) {
+    setAddToCart((addToCart) => addToCart.filter((item) => item.id !== id));
+  }
   function totalQty() {
     return addToCart.reduce((cur, sum) => cur + sum.qty, 0);
   }
+
   return (
     <shopContext.Provider
       value={{
@@ -38,6 +42,7 @@ function ShopContextProvider({ children }) {
         handelIncreaseProduct,
         handelDecreaseProduct,
         totalQty,
+        removeProduct,
       }}
     >
       {children}

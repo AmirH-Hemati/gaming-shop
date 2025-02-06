@@ -27,9 +27,10 @@ export async function removeProduct(id) {
   const { data } = await axiosInstance.delete(`/products/${id}`);
   return data;
 }
-export async function getDetailsProducts({ products }) {
-  const { data } = await axiosInstance.delete(`/products/details`, {
-    products,
+export async function getDetailsProducts(items) {
+  const { data } = await axiosInstance.post(`/products/details`, {
+    items,
   });
+  console.log(data);
   return data;
 }

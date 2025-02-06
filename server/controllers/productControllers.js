@@ -48,5 +48,6 @@ export async function detailsProducts(req, res) {
     const item = items.find((i) => i.id === product._id.toString());
     return { ...product.toObject(), qty: item.qty };
   });
+  console.log(enrichedProducts);
   res.json({ message: "ok", data: enrichedProducts });
 }

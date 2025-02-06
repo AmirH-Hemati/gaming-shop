@@ -1,17 +1,14 @@
 import { HambergerMenu, Heart, ShoppingCart } from "iconsax-react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useCurrentUser } from "../features/authorization/useCurrentUse";
 import { useAddToCart } from "../context/ShoppingContext";
 import { useAddToFavorites } from "../context/FavorietsContext";
-import Loading from "./Loading";
 
 function TopMain({ isActiveMenu, setIsActiveMenu, setfirst }) {
-  const { user, isPending } = useCurrentUser();
+  const { user } = useCurrentUser();
   const { totalQty } = useAddToCart();
   const { totalFavorites } = useAddToFavorites();
-  if (isPending) {
-    return <Loading />;
-  }
+
   return (
     <div
       className={`relative w-full flex  justify-between duration-500  ${
@@ -29,15 +26,19 @@ function TopMain({ isActiveMenu, setIsActiveMenu, setfirst }) {
       <div className="flex gap-2 md:gap-4 items-center">
         <div className="relative">
           <Heart size="26" color="white" className="cursor-pointer" />
-          <p className="text-sm flex items-center justify-center w-4 h-4 absolute -bottom-1 -right-1 bg-[#0998a8] p-1 rounded-full ">
-            {totalFavorites()}
-          </p>
+          <Link to={`/liberary`}>
+            <p className="text-sm flex items-center justify-center w-4 h-4 absolute -bottom-1 -right-1 bg-[#0998a8] p-1 rounded-full ">
+              {totalFavorites()}
+            </p>
+          </Link>
         </div>
         <div className="relative">
           <ShoppingCart size="26" color="white" className="cursor-pointer" />
-          <p className="text-sm flex items-center justify-center w-4 h-4 absolute -bottom-1 -right-1 bg-[#0998a8] p-1 rounded-full ">
-            {totalQty()}
-          </p>
+          <Link to={`/shopCart`}>
+            <p className="text-sm flex items-center justify-center w-4 h-4 absolute -bottom-1 -right-1 bg-[#0998a8] p-1 rounded-full ">
+              {totalQty()}
+            </p>
+          </Link>
         </div>
         <div>
           {user?.data ? (

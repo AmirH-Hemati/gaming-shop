@@ -2,8 +2,6 @@
 @theme {
   --shadow-custom: -5px -5px 15px hsla(0, 0%, 100%, 0.1),
     5px 5px 15px rgba(0, 0, 0, 0.35);
-  --shadow--custom-admin: -5px -5px 15px #192938,
-    5px 5px 15px rgba(0, 0, 0, 0.35);
   --color-bg-main: #192938;
 }
 * {
