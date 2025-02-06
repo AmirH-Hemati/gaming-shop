@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import FilterButton from "./FilterButton";
 
 function Filtter() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -9,7 +10,11 @@ function Filtter() {
     setSearchParams(searchParams);
   }, [filter, searchParams, setSearchParams]);
 
-  return <div></div>;
+  return (
+    <div className="flex">
+      <FilterButton text="all" setFilter={setFilter} />
+    </div>
+  );
 }
 
 export default Filtter;
