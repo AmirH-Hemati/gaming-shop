@@ -1,7 +1,12 @@
-function FormLabel({ children, label }) {
+function FormLabel({ label, children }) {
   return (
-    <div className="flex flex-col md:flex-row gap-2 text-sm">
-      <label className="w-1/2" htmlFor={children.props.id}>{label}</label>
+    <div className="w-full flex flex-col md:flex-row  md:items-center justify-between border-b-2 border-black/10 py-3 md:py-6 font-semibold">
+      <label
+        htmlFor={children?.props?.id}
+        className="flex items-center text-sm md:text-base"
+      >
+        {label}
+      </label>
       {children}
     </div>
   );
