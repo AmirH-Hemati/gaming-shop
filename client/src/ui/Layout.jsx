@@ -3,10 +3,15 @@ import Header from "./Header";
 import { useState } from "react";
 import TopMain from "./TopMain";
 import { CloseSquare } from "iconsax-react";
+import { useClickOutSide } from "../hooks/useClickOutSide";
 
 function Layout() {
   const [isActiveMenu, setIsActiveMenu] = useState(false);
   const [first, setfirst] = useState(false);
+  function close() {
+    setfirst(false);
+  }
+  const ref = useClickOutSide(close);
   return (
     <div className="w-full bg-[#192938] h-screen overflow-hidden flex p-4 gap-4 text-white">
       <Header isActiveMenu={isActiveMenu} />
@@ -21,6 +26,7 @@ function Layout() {
           setfirst={setfirst}
         />
         <div
+          ref={ref}
           className={`w-[20%] h-full fixed ${
             first ? "left-0" : "-left-full"
           }  top-0 duration-500  shadow-custom bg-bg-main z-50 p-4 `}
