@@ -4,6 +4,7 @@ import path from "path";
 import {
   createProduct,
   deleteProduct,
+  detailsProducts,
   product,
   products,
   updateProduct,
@@ -33,4 +34,5 @@ router.post(
 );
 router.post("/edit/:id", auth, admin, upload.single("file"), updateProduct);
 router.delete("/:id", deleteProduct);
+router.post("/details", auth, detailsProducts);
 export default router;

@@ -25,5 +25,11 @@ export async function editProduct({ id, formData }) {
 }
 export async function removeProduct(id) {
   const { data } = await axiosInstance.delete(`/products/${id}`);
-  return data
+  return data;
+}
+export async function getDetailsProducts({ products }) {
+  const { data } = await axiosInstance.delete(`/products/details`, {
+    products,
+  });
+  return data;
 }

@@ -40,3 +40,13 @@ export async function deleteProduct(req, res) {
   const reslut = await Products.deleteOne({ _id: id });
   res.json({ message: "ok", data: reslut });
 }
+export async function detailsProducts(req, res) {
+  const { items } = req.body;
+  const productIds = items?.map((item) => item.id);
+  const products = await Products.find({ _id: { $in: productIds } });
+  const enrichedProducts = products.map((product) => {
+    const item = items.find((i) => i.id === product._id.toString());
+    return { ...product.toObject(), qty: item.qty };
+  });
+  res.json({ message: "ok", data: enrichedProducts });
+}
