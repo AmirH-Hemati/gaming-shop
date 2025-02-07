@@ -10,7 +10,7 @@ function Liberary() {
   }
   return (
     <div>
-      <Heading text={`Favorites`} />
+      <Heading text={`علاقه مندی ها `} />
       <ul className="grid grid-cols-1 md:grid-cols-3  gap-6">
         {addToFavorites.map((product) => (
           <ProductItem key={product._id} product={product} />

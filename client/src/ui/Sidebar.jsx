@@ -9,7 +9,7 @@ function Sidebar({ isActiveMenu, data, color }) {
     >
       <p className="text-2xl font-bold flex items-center ">
         <Game size="56" color="#fff" />
-        <span className={`${isActiveMenu ? "hidden":""}`}>Game Shop</span>
+        <span className={`${isActiveMenu ? "hidden" : ""}`}>گیــــــــــم شاپ</span>
       </p>
       <ul className="flex flex-col gap-4  ">
         {data?.map((item) => (

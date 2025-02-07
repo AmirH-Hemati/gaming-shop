@@ -18,7 +18,7 @@ function Search() {
     <input
       type="text"
       value={searchValue}
-      placeholder="Search ..."
+      placeholder="جستجو کنید ..."
       onChange={handelSeachChange}
       className="rounded-sm shadow-custom px-4 py-2 outline-none text-white"
     />

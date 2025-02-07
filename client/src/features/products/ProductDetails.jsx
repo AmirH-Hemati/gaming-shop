@@ -5,7 +5,7 @@ function ProductDetails() {
   const { product } = useGetProduct();
   const array = [1, 2, 3, 4];
   return (
-    <div className="w-full h-full shadow-custom  flex flex-col items-center justify-center ">
+    <div className=" w-full h-full shadow-custom  flex flex-col items-center justify-center ">
       <div className="w-full md:w-1/2 rounded-sm flex flex-col md:flex-row-reverse gap-2">
         <img
           src={product?.data?.image}
@@ -33,10 +33,7 @@ function ProductDetails() {
         </div>
         <div className="self-end">star</div>
         <p className="text-gray-400  md:text-sm text-xs">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid,
-          pariatur quod. Reiciendis ratione id veritatis iste non sed,
-          consequatur harum nam, modi consectetur assumenda perspiciatis quos
-          libero facilis dicta. Ut?
+          {product?.data?.description}
         </p>
         <p className="text-xl font-semibold text-green-400">
           {product?.data?.price} price

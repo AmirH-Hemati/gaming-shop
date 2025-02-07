@@ -21,11 +21,11 @@ function ShopCart() {
   const totalPrice = products?.data?.reduce((cur, sum) => cur + sum.price, 0);
   const totalItems = products?.data?.length;
   if (products?.data?.length < 1) {
-    return <ProductNotExist>Your library is empty</ProductNotExist>;
+    return <ProductNotExist>سبد خرید شما خالی است </ProductNotExist>;
   }
   return (
     <div className="w-full md:p-6 py-6">
-      <Heading text={`Shopping Cart`} />
+      <Heading text={`سبد خرید`} />
       <ul className=" w-full max-h-[70%] flex flex-col py-2  md:p-4 gap-7 items-center  rounded-md overflow-y-auto ">
         {products?.data?.map((product) => (
           <li
