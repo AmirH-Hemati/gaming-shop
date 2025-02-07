@@ -16,8 +16,7 @@ export async function getProducts() {
   return data;
 }
 export async function getProductsByFilter(search) {
-  console.log(search);
-  const { data } = await axiosInstance.get(`/products/test?search=${search}`);
+  const { data } = await axiosInstance.get(`/products?search=${search}`);
   return data;
 }
 export async function getProduct(id) {
