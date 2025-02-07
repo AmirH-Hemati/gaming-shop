@@ -13,8 +13,10 @@ function AddProduct() {
     e.preventDefault();
     const title = e.target.title.value;
     const price = e.target.price.value;
+    const description = e.target.description.value;
     const file = e.target.file.files[0];
-    if (!title || !price || !file) return toast.error("input empty");
+    if (!title || !price || !file || !description)
+      return toast.error("input empty");
     const formData = new FormData(e.target);
     createProduct(formData);
   }
