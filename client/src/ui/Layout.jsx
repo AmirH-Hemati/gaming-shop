@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
-import Header from "./Header";
+
 import { useState } from "react";
 import TopMain from "./TopMain";
 import UserMenu from "./UserMenu";
 import data from "../data/navListData";
+import Sidebar from "./SideBar";
 
 function Layout() {
   const [isActiveMenu, setIsActiveMenu] = useState(false);
@@ -13,7 +14,7 @@ function Layout() {
   }
   return (
     <div className="flex w-full h-screen bg-[#192938]  overflow-hidden  p-4 gap-4 text-white">
-      <Header isActiveMenu={isActiveMenu} data={data} color={`bg-[#192938]`} />
+      <Sidebar isActiveMenu={isActiveMenu} data={data} color={`bg-[#192938]`} />
       <main
         className={`h-full w-full overflow-auto ${
           isActiveMenu ? "md:w-[92%] " : "md:w-[80%] "

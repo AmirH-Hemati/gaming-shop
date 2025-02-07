@@ -1,5 +1,5 @@
 import NavListItem from "./NavListItem";
-function Header({ isActiveMenu, data, color }) {
+function Sidebar({ isActiveMenu, data, color }) {
   return (
     <aside
       className={`${color} flex   flex-col z-50 fixed left-0 top-0 md:relative ${
@@ -16,4 +16,4 @@ function Header({ isActiveMenu, data, color }) {
   );
 }
 
-export default Header;
+export default Sidebar;
