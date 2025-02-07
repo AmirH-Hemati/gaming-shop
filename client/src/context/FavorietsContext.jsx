@@ -14,7 +14,7 @@ function FavorietsContextProvider({ children }) {
     });
   }
   function productExists(product) {
-    return addToFavorites.find((item) => item._id == product._id);
+    return addToFavorites.find((item) => item._id == product?._id);
   }
   function totalFavorites() {
     return addToFavorites.length;

@@ -26,7 +26,9 @@ function ProductDetails() {
       </div>
       <div className="flex flex-col w-full md:w-1/2 md:p-6">
         <div className="flex justify-between items-center w-full">
-          <h1 className="md:text-3xl text-lg font-bold">{product?.data?.title}</h1>
+          <h1 className="md:text-3xl text-lg font-bold">
+            {product?.data?.title}
+          </h1>
           <AddToFavorite />
         </div>
         <div className="self-end">star</div>
