@@ -24,12 +24,12 @@ function ProductItem({ product }) {
       </div>
       <p className="font-semibold text-lg">{product?.title}</p>
       <p className="text-sm text-[#0998a8]">{product?.price}$</p>
-      <Link to={`/products/${product._id}`}>
+      <Link to={`/products/${product?._id}`}>
         <div className="absolute  bottom-0 right-0 rounded-br-2xl rounded-tl-2xl bg-[#0998a8] p-1">
           <AddSquare
             size="28"
             color="white"
-            onClick={() => handelIncreaseProduct(product._id)}
+            onClick={() => handelIncreaseProduct(product?._id)}
           />
         </div>
       </Link>

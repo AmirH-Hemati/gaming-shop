@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import AddToFavorite from "../../ui/AddToFavorite";
 import { useGetProduct } from "./useGetProduct";
 
@@ -5,8 +6,8 @@ function ProductDetails() {
   const { product } = useGetProduct();
   const array = [1, 2, 3, 4];
   return (
-    <div className=" w-full h-full shadow-custom  flex flex-col items-center justify-center ">
-      <div className="w-full md:w-1/2 rounded-sm flex flex-col md:flex-row-reverse gap-2">
+    <div className=" w-full h-full shadow-custom  flex flex-col items-center pt-3">
+      <div className="w-full md:w-[65%] rounded-sm flex flex-col md:flex-row-reverse gap-2">
         <img
           src={product?.data?.image}
           alt=""
@@ -24,24 +25,26 @@ function ProductDetails() {
           ))}
         </div>
       </div>
-      <div className="flex flex-col w-full md:w-1/2 md:p-6">
+      <div className="flex flex-col w-full md:w-[65%]  py-4 gap-4">
         <div className="flex justify-between items-center w-full">
           <h1 className="md:text-3xl text-lg font-bold">
             {product?.data?.title}
           </h1>
-          <AddToFavorite />
+          <AddToFavorite product={product} />
         </div>
-        <div className="self-end">star</div>
         <p className="text-gray-400  md:text-sm text-xs">
           {product?.data?.description}
         </p>
-        <p className="text-xl font-semibold text-green-400">
-          {product?.data?.price} price
+        <p className="text-xl font-semibold text-[#0998a8]">
+          {product?.data?.price} تومان
         </p>
-
-        <button className="mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-800 text-white rounded-lg shadow-md transition">
-          🛒 افزودن به سبد خرید
-        </button>
+        <Button
+          variant="contained"
+          type="submit"
+          sx={{ backgroundColor: "#0998a8", padding: "12px" }}
+        >
+          افزودن به سبد خرید
+        </Button>
       </div>
     </div>
   );

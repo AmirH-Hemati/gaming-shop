@@ -6,8 +6,8 @@ function FavorietsContextProvider({ children }) {
   const [addToFavorites, setAddToFavorites] = useLocalStorage("favorites", []);
   function handelAddToFavorites(product) {
     setAddToFavorites((addToFavorites) => {
-      if (addToFavorites.find((item) => item._id == product._id)) {
-        return addToFavorites.filter((item) => item._id !== product._id);
+      if (addToFavorites.find((item) => item._id == product?._id)) {
+        return addToFavorites.filter((item) => item._id !== product?._id);
       } else {
         return [...addToFavorites, product];
       }

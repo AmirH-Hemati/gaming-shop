@@ -5,15 +5,15 @@ import ProductNotExist from "../ui/ProductNotExist";
 
 function Liberary() {
   const { addToFavorites } = useAddToFavorites();
-  if (addToFavorites.length < 1) {
+  if (addToFavorites?.length < 1) {
     return <ProductNotExist>Your library is empty</ProductNotExist>;
   }
   return (
     <div>
       <Heading text={`علاقه مندی ها `} />
       <ul className="grid grid-cols-1 md:grid-cols-3  gap-6">
-        {addToFavorites.map((product) => (
-          <ProductItem key={product._id} product={product} />
+        {addToFavorites?.map((product) => (
+          <ProductItem key={product?._id} product={product} />
         ))}
       </ul>
     </div>
