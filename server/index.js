@@ -4,7 +4,7 @@ import authRouter from "./routes/auth.js";
 import userRouter from "./routes/userRoute.js";
 import productRouter from "./routes/product.js";
 import cors from "cors";
-import bcy, { genSalt } from "bcrypt";
+import bcy from "bcrypt";
 import User from "./models/authModel.js";
 const app = express();
 mongoose
