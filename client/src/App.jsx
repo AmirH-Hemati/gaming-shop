@@ -17,8 +17,8 @@ import LayoutAdmin from "./ui/LayoutAdmin";
 import Dashboard from "./pages/Dashboard";
 import AddProduct from "./pages/AddProduct";
 import EditProducts from "./pages/EditProducts";
-import Modal from "./ui/Modal";
 import Users from "./pages/Users";
+import ProductDetails from "./features/products/ProductDetails";
 
 const queryClient = new QueryClient();
 function App() {
@@ -32,6 +32,7 @@ function App() {
                 <Route index element={<Home />} />
                 <Route path="/auth" element={<AuthPage />} />
                 <Route path="/categories" element={<Categories />} />
+                <Route path="/products/:id" element={<ProductDetails />} />
                 <Route element={<ProtectedRoute />}>
                   <Route path="/liberary" element={<Liberary />} />
                   <Route path="/shopCart" element={<ShopCart />} />
