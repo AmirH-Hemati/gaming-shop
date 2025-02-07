@@ -40,7 +40,7 @@ function UserMenu({ first, close }) {
           >
             <li className="flex items-center gap-2 p-3 cursor-pointer rounded-sm overflow-hidden">
               <UserEdit size="32" color="#fff" variant="Bold" />
-              <p>Panel Admin</p>
+              <p>پنل ادمین</p>
             </li>
           </NavLink>
         )}
@@ -50,26 +50,10 @@ function UserMenu({ first, close }) {
           className=" mt-auto mb-6 flex items-center gap-2 p-3 cursor-pointer rounded-sm  hover:shadow-custom"
         >
           <LogoutCurve size="24" color="#fff" />
-          <span>Log Out</span>
+          <span>خروج از حساب</span>
         </li>
       </ul>
     </div>
   );
 }
 export default UserMenu;
-
-// function UserMenuItem({ item }) {
-//   return (
-//     <NavLink
-//       className={({ isActive }) =>
-//         `w-full py-2  hover:shadow-custom ${isActive ? "shadow-custom" : ""}`
-//       }
-//       to={item.route}
-//     >
-//       <li className="flex items-center gap-2 p-3 cursor-pointer rounded-sm overflow-hidden">
-//         {item?.icon}
-//         <p>{item?.name}</p>
-//       </li>
-//     </NavLink>
-//   );
-// }
