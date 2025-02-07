@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 import { useCurrentUser } from "../features/authorization/useCurrentUse";
 function UserMenu({ first, close }) {
   const { user } = useCurrentUser();
-  const { token, role } = useAuth();
+  const { token, role, logout } = useAuth();
   const ref = useClickOutSide(close);
   return (
     <div
@@ -26,7 +26,7 @@ function UserMenu({ first, close }) {
           className="cursor-pointer"
         />
       </div>
-      <ul className="flex flex-col flex-1 mt-6 ">
+      <ul className="flex flex-col flex-1 mt-8 gap-6 ">
         {userMenuData.map((item) => (
           <NavListItem key={item.id} item={item} />
         ))}
@@ -44,7 +44,10 @@ function UserMenu({ first, close }) {
           </NavLink>
         )}
 
-        <li className=" mt-auto mb-6 flex items-center gap-2 p-3 cursor-pointer rounded-sm  hover:shadow-custom">
+        <li
+          onClick={logout}
+          className=" mt-auto mb-6 flex items-center gap-2 p-3 cursor-pointer rounded-sm  hover:shadow-custom"
+        >
           <LogoutCurve size="24" color="#fff" />
           <span>Log Out</span>
         </li>
