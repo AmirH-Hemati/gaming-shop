@@ -22,7 +22,14 @@ function Slider() {
         delay: 2500,
         disableOnInteraction: false,
       }}
-      slidesPerView={1}
+      breakpoints={{
+        320: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+      }}
       coverflowEffect={{
         rotate: 35,
         stretch: 200,
@@ -31,7 +38,7 @@ function Slider() {
         slideShadows: true,
       }}
       modules={[Navigation, Autoplay, Pagination, EffectCoverflow]}
-      className="w-full h-40 md:h-72 shadow-custom rounded-sm"
+      className="w-full  h-40 md:h-72 shadow-custom rounded-sm"
     >
       {sliderData.map((slide, index) => (
         <SwiperSlide key={index} className="md:p-2 rounded-sm">
