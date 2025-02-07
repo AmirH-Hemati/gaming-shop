@@ -16,7 +16,7 @@ const userMenuData = [
   {
     id: 3,
     name: "Favorites",
-    route: "/favorites",
+    route: "/liberary",
     icon: <Save2 size="32" color="#fff" variant="Bold" />,
   },
 ];

@@ -15,7 +15,7 @@ function SignIn({ onToggleLogin }) {
   return (
     <form
       onSubmit={handelRegister}
-      className="flex flex-col justify-evenly shadow-custom p-8 h-80 rounded-sm w-96"
+      className="flex flex-col justify-evenly gap-4 shadow-custom p-8 h-80 rounded-sm w-96"
     >
       <TextField
         id="outlined-basic"
