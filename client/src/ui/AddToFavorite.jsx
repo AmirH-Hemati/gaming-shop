@@ -5,7 +5,7 @@ function AddToFavorite({ product }) {
   const { handelAddToFavorites, productExists } = useAddToFavorites();
   return (
     <Heart
-      size="28"
+      size="26"
       color="white"
       variant={productExists(product) ? "Bold" : null}
       onClick={() => handelAddToFavorites(product)}

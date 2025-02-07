@@ -3,27 +3,43 @@ import { useGetProduct } from "./useGetProduct";
 
 function ProductDetails() {
   const { product } = useGetProduct();
-  console.log(product);
+  const array = [1, 2, 3, 4];
   return (
-    <div className="w-full h-full bg-red-500 flex itece">
-      <div className="w-1/2 rounded-sm">
+    <div className="w-full h-full shadow-custom  flex flex-col items-center justify-center ">
+      <div className="w-full md:w-1/2 rounded-sm flex flex-col md:flex-row-reverse gap-2">
         <img
           src={product?.data?.image}
           alt=""
-          className="w-full object-cover rounded-sm"
+          className="w-full md:w-[80%] object-cover rounded-sm "
         />
+        <div className="w-full md:w-[20%] flex flex-row   md:flex-col gap-2">
+          {array.map((i) => (
+            <div key={i}>
+              <img
+                src={product?.data?.image}
+                className="w-36 object-cover border-3 border-[#0998A8] "
+                alt=""
+              />
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="w-1/2 p-6">
+      <div className="flex flex-col w-full md:w-1/2 md:p-6">
         <div className="flex justify-between items-center w-full">
-          <h1 className="text-3xl font-bold mb-3">{product?.data?.title}</h1>
+          <h1 className="md:text-3xl text-lg font-bold">{product?.data?.title}</h1>
           <AddToFavorite />
         </div>
-        <p className="text-gray-400 mb-3">{product?.data?.description}</p>
+        <div className="self-end">star</div>
+        <p className="text-gray-400  md:text-sm text-xs">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid,
+          pariatur quod. Reiciendis ratione id veritatis iste non sed,
+          consequatur harum nam, modi consectetur assumenda perspiciatis quos
+          libero facilis dicta. Ut?
+        </p>
         <p className="text-xl font-semibold text-green-400">
-          {product?.data?.price} تومان
+          {product?.data?.price} price
         </p>
 
-        {/* دکمه خرید */}
         <button className="mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-800 text-white rounded-lg shadow-md transition">
           🛒 افزودن به سبد خرید
         </button>
