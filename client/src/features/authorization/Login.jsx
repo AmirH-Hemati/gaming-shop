@@ -36,6 +36,7 @@ function Login({ onToggleLogin }) {
         }}
       />
       <TextField
+        
         id="outlined-basic"
         variant="outlined"
         type="password"
@@ -57,7 +58,7 @@ function Login({ onToggleLogin }) {
         type="submit"
         sx={{ backgroundColor: "#0998a8", padding: "12px" }}
       >
-        Login
+        ورود
       </Button>
       <p className="text-sm select-none ">
         You do not have an account. ?{" "}

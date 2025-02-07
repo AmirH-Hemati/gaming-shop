@@ -27,10 +27,10 @@ function AddProduct() {
       onSubmit={handelCreateProduct}
       className="w-full h-full flex flex-col justify-between"
     >
-      <FormLabel label={`title`}>
+      <FormLabel label={`نام محصول`}>
         <Input name={`title`} id={`title`} type={`text`} style={`text-black`} />
       </FormLabel>
-      <FormLabel label={`price`}>
+      <FormLabel label={`قیمت`}>
         <Input
           name={`price`}
           id={`price`}
@@ -38,7 +38,7 @@ function AddProduct() {
           style={`text-black`}
         />
       </FormLabel>
-      <FormLabel label="Description">
+      <FormLabel label="توضیحات">
         <textarea
           rows={4}
           name="description"
@@ -53,7 +53,7 @@ function AddProduct() {
         {preview ? (
           <img src={preview} alt="" className="w-full object-cover h-32" />
         ) : (
-          <div>image</div>
+          <div>عکس</div>
         )}
         <input
           type="file"
@@ -69,7 +69,7 @@ function AddProduct() {
         sx={{ backgroundColor: "#192938", padding: "12px" }}
         className="w-full md:w-1/3 self-end"
       >
-        Create Product
+        ایجاد محصول جدید{" "}
       </Button>
     </form>
   );
