@@ -1,16 +1,16 @@
 import { useState } from "react";
 // import { useChangePasswor } from "../featurs/authorizaion/useChangePassword";
-import Input from "../ui/Input";
 import { Button, TextField } from "@mui/material";
+import { useChangePassword } from "../features/authorization/useChangePassword";
 
 function ChangePassword() {
-  // const { changePassword } = useChangePasswor();
+  const { changePassword } = useChangePassword();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   function handelChangePassword(e) {
     e.preventDefault();
-    // changePassword({ email, password, newPassword });
+    changePassword({ email, password, newPassword });
   }
   return (
     <div className="w-full h-full flex items-center justify-center">
@@ -22,7 +22,7 @@ function ChangePassword() {
           id="outlined-basic"
           variant="outlined"
           type="text"
-          label="User Name"
+          label="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           sx={{
@@ -39,7 +39,7 @@ function ChangePassword() {
           id="outlined-basic"
           variant="outlined"
           type="text"
-          label="Email"
+          label="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           sx={{
@@ -56,7 +56,7 @@ function ChangePassword() {
           id="outlined-basic"
           variant="outlined"
           type="password"
-          label="Password"
+          label="New Passord"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
           sx={{
