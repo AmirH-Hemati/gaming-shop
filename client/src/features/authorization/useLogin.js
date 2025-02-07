@@ -22,6 +22,5 @@ export function useLogin() {
       toast.error(err.response.data.message);
     },
   });
-  console.log(login);
   return { login, isPending };
 }

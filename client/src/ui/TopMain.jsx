@@ -3,11 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import { useCurrentUser } from "../features/authorization/useCurrentUse";
 import { useAddToCart } from "../context/ShoppingContext";
 import { useAddToFavorites } from "../context/FavorietsContext";
+import { useAuth } from "../context/authContext";
 
 function TopMain({ isActiveMenu, setIsActiveMenu, setfirst }) {
   const { user } = useCurrentUser();
   const { totalQty } = useAddToCart();
   const { totalFavorites } = useAddToFavorites();
+  const { token } = useAuth();
 
   return (
     <div
@@ -41,7 +43,7 @@ function TopMain({ isActiveMenu, setIsActiveMenu, setfirst }) {
           </Link>
         </div>
         <div>
-          {user?.data ? (
+          {user?.data && token ? (
             <div
               onClick={() => setfirst((first) => !first)}
               className="flex gap-2 items-center shadow-custom px-4 py-1 cursor-pointer"
