@@ -1,5 +1,5 @@
 import Products from "../models/productsModels.js";
-export async function products(req, res) {
+export async function getProducts(req, res) {
   console.log("test in api for products");
   const products = await Products.find({});
   res.json({ message: "ok", data: products });

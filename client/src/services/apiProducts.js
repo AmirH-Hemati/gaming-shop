@@ -16,7 +16,7 @@ export async function getProducts() {
   console.log("test in axios for send request in api ");
   return data;
 }
-export async function getProduct({ id }) {
+export async function getProduct(id) {
   const { data } = await axiosInstance.get(`/products/${id}`);
   return data;
 }

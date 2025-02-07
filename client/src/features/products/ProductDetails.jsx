@@ -1,8 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useGetProduct } from "./useGetProduct";
 
 function ProductDetails() {
-  const { id } = useParams();
-  return <div></div>;
+  const { product } = useGetProduct();
+  console.log(product);
+  return <div>
+    
+  </div>;
 }
 
 export default ProductDetails;

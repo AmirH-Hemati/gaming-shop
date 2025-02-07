@@ -6,8 +6,7 @@ import {
   deleteProduct,
   detailsProducts,
   getProduct,
-  product,
-  products,
+  getProducts,
   updateProduct,
 } from "../controllers/productControllers.js";
 import { auth } from "../middelware/auth.js";
@@ -24,7 +23,7 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage: storage });
-router.get("/", products);
+router.get("/", getProducts);
 router.get("/:id", getProduct);
 router.post(
   "/createProduct",
