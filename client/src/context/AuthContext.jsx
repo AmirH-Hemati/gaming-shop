@@ -17,9 +17,9 @@ function AuthContextProvider({ children }) {
       setRole("");
     }
   }, [token]);
-  if (isPending) {
-    return <Loading />;
-  }
+  // if (isPending) {
+  //   return <Loading />;
+  // }
   function loginStoredToken(token) {
     localStorage.setItem("token", token);
     setToken(token);

@@ -1,4 +1,3 @@
-import axios from "axios";
 import axiosInstance from "./axiosInstance";
 
 export async function createProduct(formData) {
@@ -14,6 +13,7 @@ export async function createProduct(formData) {
 
 export async function getProducts() {
   const { data } = await axiosInstance.get("/products/");
+  console.log("test in axios for send request in api ");
   return data;
 }
 
