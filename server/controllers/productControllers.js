@@ -11,9 +11,14 @@ export async function getProducts(req, res) {
 }
 
 export async function createProduct(req, res) {
-  const { title, price } = req.body;
+  const { title, price, description } = req.body;
   const imagePath = `http://localhost:1212/${req.file.filename}`;
-  const product = await Products.create({ title, price, image: imagePath });
+  const product = await Products.create({
+    title,
+    price,
+    description,
+    image: imagePath,
+  });
   res.json({ message: "ok", data: product });
 }
 export async function getProduct(req, res) {
