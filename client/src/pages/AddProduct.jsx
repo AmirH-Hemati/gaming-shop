@@ -15,8 +15,9 @@ function AddProduct() {
     const price = e.target.price.value;
     const description = e.target.description.value;
     const file = e.target.file.files[0];
-    if (!title || !price || !file || !description)
+    if (!title || !price || !file || !description) {
       return toast.error("input empty");
+    }
     const formData = new FormData(e.target);
     createProduct(formData);
   }
@@ -27,10 +28,15 @@ function AddProduct() {
       className="w-full h-full flex flex-col justify-between"
     >
       <FormLabel label={`title`}>
-        <Input name={`title`} id={`title`} type={`text`} />
+        <Input name={`title`} id={`title`} type={`text`} style={`text-black`} />
       </FormLabel>
       <FormLabel label={`price`}>
-        <Input name={`price`} id={`price`} type={`number`} />
+        <Input
+          name={`price`}
+          id={`price`}
+          type={`number`}
+          style={`text-black`}
+        />
       </FormLabel>
       <FormLabel label="Description">
         <textarea
