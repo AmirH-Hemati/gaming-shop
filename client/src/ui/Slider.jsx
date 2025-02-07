@@ -38,7 +38,7 @@ function Slider() {
         slideShadows: true,
       }}
       modules={[Navigation, Autoplay, Pagination, EffectCoverflow]}
-      className="w-full  h-40 md:h-72 shadow-custom rounded-sm"
+      className="w-full  h-40 md:h-60 shadow-custom rounded-sm"
     >
       {sliderData.map((slide, index) => (
         <SwiperSlide key={index} className="md:p-2 rounded-sm">
