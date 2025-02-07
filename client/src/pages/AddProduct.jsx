@@ -14,11 +14,20 @@ function AddProduct() {
     const title = e.target.title.value;
     const price = e.target.price.value;
     const description = e.target.description.value;
-    const file = e.target.file.files[0];
-    if (!title || !price || !file || !description) {
+    const image = e.target.image.files[0];
+    const images = e.target.images.files;
+    if (!title || !price || !image || !description) {
       return toast.error("input empty");
     }
-    const formData = new FormData(e.target);
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("price", price);
+    formData.append("description", description);
+    formData.append("image", image);
+    for (let i = 0; i < images.length; i++) {
+      formData.append("images", images[i]);
+    }
+
     createProduct(formData);
   }
 
@@ -47,7 +56,7 @@ function AddProduct() {
         ></textarea>
       </FormLabel>
       <label
-        htmlFor="file"
+        htmlFor="image"
         className=" cursor-pointer w-full rounded-sm h-32 flex justify-center items-center text-xl border-2 border-dotted border-black"
       >
         {preview ? (
@@ -57,12 +66,13 @@ function AddProduct() {
         )}
         <input
           type="file"
-          id="file"
-          name="file"
+          id="image"
+          name="image"
           className="hidden"
           onChange={(e) => setPriview(URL.createObjectURL(e.target.files[0]))}
         />
       </label>
+      <input type="file" id="images" name="images" multiple />
       <Button
         variant="contained"
         type="submit"

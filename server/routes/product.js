@@ -29,7 +29,10 @@ router.post(
   "/createProduct",
   auth,
   admin,
-  upload.single("file"),
+  upload.fields([
+    { name: "image", maxCount: 1 }, // برای تصویر اصلی
+    { name: "images", maxCount: 5 }, // حداکثر 5 تصویر اضافی
+  ]),
   createProduct
 );
 router.post("/edit/:id", auth, admin, upload.single("file"), updateProduct);

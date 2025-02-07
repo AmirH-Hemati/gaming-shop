@@ -12,12 +12,17 @@ export async function getProducts(req, res) {
 
 export async function createProduct(req, res) {
   const { title, price, description } = req.body;
-  const imagePath = `http://localhost:1212/${req.file.filename}`;
+  const imagePath = `http://localhost:1212/${req.files["image"].filename}`;
+  const images = req.files["images"].map(
+    (image) => `http://localhost:1212/${image.filename}`
+  );
+
   const product = await Products.create({
     title,
     price,
     description,
     image: imagePath,
+    images,
   });
   res.json({ message: "ok", data: product });
 }
