@@ -19,6 +19,6 @@ const upload = multer({ storage: storage });
 router.get("/me", auth, me);
 
 router.get("/users", auth, admin, allUsers);
-router.post("/edit", auth, upload.single("file"), editUser);
+router.put("/edit", auth, upload.single("file"), editUser);
 
 export default router;

@@ -4,10 +4,11 @@ import Input from "../ui/Input";
 import { useEffect, useState } from "react";
 import { useCurrentUser } from "../features/authorization/useCurrentUse";
 import { Button } from "@mui/material";
+import { useEditUser } from "../features/authorization/useEditUser";
 
 function Setting() {
   const { user } = useCurrentUser();
-  // const { editProfile } = useEditProfile();
+  const { editUser } = useEditUser();
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [image, setImage] = useState("");
@@ -26,7 +27,7 @@ function Setting() {
     formData.append("userName", userName);
     formData.append("email", email);
     formData.append("file", file);
-    // editProfile(formData);
+    editUser(formData);
   }
   return (
     <div className="w-full shadow-custom h-full flex flex-col items-center p-4 text-sm">

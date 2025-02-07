@@ -6,6 +6,8 @@ export async function getUsers() {
 }
 
 export async function editUser(formData) {
-  const { data } = await axiosInstance.put("/user/edit", formData);
+  const { data } = await axiosInstance.put("/user/edit", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
   return data;
 }
