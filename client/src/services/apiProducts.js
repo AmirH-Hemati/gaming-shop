@@ -17,7 +17,7 @@ export async function getProducts() {
   return data;
 }
 export async function getProduct({ id }) {
-  const { data } = await axiosInstance.get(`/products/product/${id}`);
+  const { data } = await axiosInstance.get(`/products/${id}`);
   return data;
 }
 export async function editProduct({ id, formData }) {
