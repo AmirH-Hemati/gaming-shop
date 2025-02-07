@@ -28,6 +28,9 @@ function ShopContextProvider({ children }) {
       }
     });
   }
+  function getProductQty(id) {
+    return addToCart.find((product) => product?.id == id)?.qty || 0;
+  }
   function removeProduct(id) {
     setAddToCart((addToCart) => addToCart.filter((item) => item.id !== id));
   }
@@ -41,6 +44,7 @@ function ShopContextProvider({ children }) {
         addToCart,
         handelIncreaseProduct,
         handelDecreaseProduct,
+        getProductQty,
         totalQty,
         removeProduct,
       }}
