@@ -9,6 +9,7 @@ function AddToFavorite({ product }) {
       color="white"
       variant={productExists(product) ? "Bold" : null}
       onClick={() => handelAddToFavorites(product)}
+      className="cursor-pointer"
     />
   );
 }
