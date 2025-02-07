@@ -5,6 +5,7 @@ import {
   createProduct,
   deleteProduct,
   detailsProducts,
+  getProduct,
   product,
   products,
   updateProduct,
@@ -24,7 +25,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 router.get("/", products);
-router.get("/:id", product);
+router.get("product/:id", getProduct);
 router.post(
   "/createProduct",
   auth,

@@ -10,7 +10,7 @@ export async function createProduct(req, res) {
   const product = await Products.create({ title, price, image: imagePath });
   res.json({ message: "ok", data: product });
 }
-export async function product(req, res) {
+export async function getProduct(req, res) {
   const { id } = req.params;
   const reslut = await Products.findOne({ _id: id });
   res.json({ message: "ok", data: reslut });

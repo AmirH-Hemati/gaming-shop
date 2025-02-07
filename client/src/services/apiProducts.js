@@ -16,7 +16,10 @@ export async function getProducts() {
   console.log("test in axios for send request in api ");
   return data;
 }
-
+export async function getProduct({ id }) {
+  const { data } = await axiosInstance.get(`/products/product/${id}`);
+  return data;
+}
 export async function editProduct({ id, formData }) {
   const { data } = await axiosInstance.post(`/products/edit/${id}`, {
     formData,
