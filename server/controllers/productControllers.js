@@ -1,7 +1,11 @@
 import Products from "../models/productsModels.js";
 export async function getProducts(req, res) {
-  console.log("test in api for products");
-  const products = await Products.find({});
+  const { search } = req.query;
+  const filter = {};
+  if (search) {
+    filter.title = { $regex: search, $options: "i" };
+  }
+  const products = await Products.find(filter);
   res.json({ message: "ok", data: products });
 }
 export async function createProduct(req, res) {

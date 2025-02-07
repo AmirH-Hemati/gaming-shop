@@ -12,8 +12,12 @@ export async function createProduct(formData) {
 }
 
 export async function getProducts() {
-  const { data } = await axiosInstance.get("/products/");
-  console.log("test in axios for send request in api ");
+  const { data } = await axiosInstance.get("/products");
+  return data;
+}
+export async function getProductsByFilter({ search }) {
+  const { data } = await axiosInstance.get(`/products?search=${search}`);
+  console.log("filter", data);
   return data;
 }
 export async function getProduct(id) {
