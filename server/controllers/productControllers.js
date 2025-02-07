@@ -1,8 +1,13 @@
 import Products from "../models/productsModels.js";
 export async function getProducts(req, res) {
+  const products = await Products.find({});
+  res.json({ message: "ok", data: products });
+}
+export async function test(req, res) {
   const { search } = req.query;
+  console.log(search);
   const filter = {};
-  if (search) {
+  if (search && search !== null) {
     filter.title = { $regex: search, $options: "i" };
   }
   const products = await Products.find(filter);

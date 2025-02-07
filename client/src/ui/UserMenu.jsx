@@ -1,4 +1,4 @@
-import { CloseSquare, LogoutCurve } from "iconsax-react";
+import { CloseSquare, LogoutCurve, UserEdit } from "iconsax-react";
 import { useClickOutSide } from "../hooks/useClickOutSide";
 import userMenuData from "../data/userMenuData";
 import NavListItem from "./NavListItem";
@@ -39,6 +39,7 @@ function UserMenu({ first, close }) {
             }
           >
             <li className="flex items-center gap-2 p-3 cursor-pointer rounded-sm overflow-hidden">
+              <UserEdit size="32" color="#fff" variant="Bold" />
               <p>Panel Admin</p>
             </li>
           </NavLink>

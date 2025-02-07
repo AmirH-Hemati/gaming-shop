@@ -6,7 +6,7 @@ function Input({ type, name, style, id, value, onChange }) {
       value={value}
       onChange={onChange}
       id={id}
-      className={` ${style} outline-none w-full md:w-1/2 bg-white text-black border-2 border-black/30 rounded-sm p-2 `}
+      className={` ${style} outline-none text-white w-full md:w-1/2  border-2 border-[#0998A8]/50 rounded-sm p-3 `}
     />
   );
 }

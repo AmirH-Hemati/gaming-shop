@@ -1,8 +1,10 @@
 import { ArrowRight } from "iconsax-react";
 import Heading from "../../ui/Heading";
 import AllProducts from "./AllProducts";
+import { useGetProducts } from "./useGetProducts";
 
 function Products() {
+  const { products } = useGetProducts();
   return (
     <>
       <div className="flex justify-between items-center w-full font-semibold my-2">
@@ -12,7 +14,7 @@ function Products() {
           <ArrowRight size="24" color="#fff" />
         </p>
       </div>
-      <AllProducts />
+      <AllProducts products={products} />
     </>
   );
 }
