@@ -33,3 +33,27 @@ export async function login(req, res) {
   );
   res.json({ message: "ok", data: token });
 }
+
+export async function cahngePassword(req, res) {
+  const { email, password, newPassword } = req.body;
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res
+      .status(400)
+      .json({ message: "email or password Invalid", data: null });
+  }
+  const inMatch = await bcy.compare(password, user.password);
+  if (!inMatch) {
+    return res
+      .status(400)
+      .json({ message: "email or password Invalid", data: null });
+  }
+  const salt = await bcy.genSalt(12);
+  const hashedNewPassword = await bcy.hash(newPassword, salt);
+  const reslut = await User.findOneAndUpdate(
+    { email },
+    { password: hashedNewPassword },
+    { new: true }
+  );
+  res.json({ message: "ok", data: reslut });
+}
