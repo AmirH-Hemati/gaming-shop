@@ -11,7 +11,7 @@ function TopMain({ isActiveMenu, setIsActiveMenu, setfirst }) {
 
   return (
     <div
-      className={`relative w-full flex  justify-between duration-500  ${
+      className={`relative shadow-custom p-4 w-full flex  justify-between duration-500  ${
         isActiveMenu
           ? "translate-x-4 px-4 md:px-0 md:translate-x-0"
           : "translate-x-0"
