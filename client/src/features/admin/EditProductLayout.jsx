@@ -1,4 +1,4 @@
-import { Modal } from "@mui/material";
+import Modal from "../../ui/Modal";
 import EditProductForm from "./EditProductForm";
 import { Edit, Trash } from "iconsax-react";
 import { formatNumber } from "../../utils/formatNumber";
