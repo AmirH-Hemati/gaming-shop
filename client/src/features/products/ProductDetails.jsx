@@ -3,24 +3,35 @@ import AddToFavorite from "../../ui/AddToFavorite";
 import { useGetProduct } from "./useGetProduct";
 import { useAddToCart } from "../../context/ShoppingContext";
 import ButtonAddToCarts from "../../ui/ButtonAddToCarts";
+import { useState } from "react";
 
 function ProductDetails() {
+  const [activeImage, setActiveImage] = useState("");
   const { product } = useGetProduct();
   const { handelIncreaseProduct, getProductQty } = useAddToCart();
+  let allImage;
+  if (product?.data?.images && product?.data?.image)
+    allImage = [product.data.image, ...product.data.images];
   return (
-    <div className=" w-full h-full shadow-custom  flex flex-col items-center pt-3">
-      <div className="w-full h-2/3 md:w-[65%] rounded-sm flex flex-col md:flex-row-reverse gap-2">
+    <div className="box-border w-full h-full shadow-custom  flex flex-col items-center pt-3">
+      <div className="w-full h-1/2 md:w-[65%] rounded-sm flex flex-col md:flex-row-reverse gap-2">
         <img
-          src={product?.data?.image}
+          src={activeImage || product?.data?.image}
           alt=""
-          className="w-full h-full md:w-[80%] object-cover rounded-sm "
+          className="w-full h-full md:w-[80%] object-cover rounded-sm"
         />
-        <div className=" w-full h-full  md:w-[20%] flex flex-row   md:flex-col gap-2">
-          {product?.data?.images?.map((image, index) => (
-            <div key={index}>
+        <div className=" w-full h-full  p-2  md:w-[20%] flex flex-row   md:flex-col gap-1 ">
+          {allImage?.map((image, index) => (
+            <div
+              key={index}
+              style={{ height: `${100 / allImage.length}%` }}
+              onClick={() => setActiveImage(image)}
+            >
               <img
                 src={image}
-                className="w-36   object-cover border-3 border-[#0998A8] "
+                className={`w-36  h-full  object-cover border-3 ${
+                  activeImage == image ? "border-red-600" : "border-[#0998A8]"
+                } `}
                 alt=""
               />
             </div>

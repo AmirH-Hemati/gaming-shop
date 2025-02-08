@@ -7,7 +7,7 @@ function Products() {
   const { products } = useGetProducts();
   return (
     <>
-      <div className="flex justify-between items-center w-full font-semibold my-2">
+      <div className="box-border flex justify-between items-center w-full font-semibold my-2">
         <Heading text={`Product`} />
         <p className="flex items-center text-nowrap gap-2 text-white hover:text-[#0998A8] cursor-pointer">
           <span>show more</span>

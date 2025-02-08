@@ -3,7 +3,7 @@ import Slider from "../ui/Slider";
 
 function Home() {
   return (
-    <div className="py-3">
+    <div className="py-3 box-border">
       <Slider />
       <Products />
     </div>

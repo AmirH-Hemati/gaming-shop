@@ -18,12 +18,12 @@ function EditProducts() {
       <ul className="bg-white w-full flex flex-col overflow-y-auto h-full md:h-full    ">
         {products?.data?.map((product) => (
           <li
-            key={product._id}
+            key={product?._id}
             className="grid grid-cols-[1fr_2fr_1fr_1fr] gap-3 w-full bg-white  px-4 py-6 md:gap-6 border-2 border-black/10"
           >
-            <img src={product.image} alt="" className="w-20  object-cover" />
-            <p className="truncate flex items-center">{product.title}</p>
-            <p className="flex items-center">{product.price}</p>
+            <img src={product?.image} alt="" className="w-20  object-cover" />
+            <p className="truncate flex items-center">{product?.title}</p>
+            <p className="flex items-center">{product?.price}</p>
             <div className="flex items-center gap-2 md:gap-7">
               <Modal>
                 <Modal.Open openies="openEditModal">
@@ -38,7 +38,7 @@ function EditProducts() {
                 size="28"
                 color="#00512c"
                 className="cursor-pointer"
-                onClick={() => removeProduct(product._id)}
+                onClick={() => removeProduct(product?._id)}
               />
             </div>
           </li>

@@ -5,6 +5,6 @@
   --color-bg-main: #192938;
 }
 * {
-  box-sizing: border-box;
+  @apply: border-box;
   direction: rtl;
 }
