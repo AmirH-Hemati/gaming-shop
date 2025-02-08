@@ -21,7 +21,7 @@ function Login({ onToggleLogin }) {
       <TextField
         id="outlined-basic"
         variant="outlined"
-        type="text"
+        type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         label="Email"

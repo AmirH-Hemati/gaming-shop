@@ -37,7 +37,7 @@ function SignIn({ onToggleLogin }) {
       <TextField
         id="outlined-basic"
         variant="outlined"
-        type="text"
+        type="email"
         label="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -73,7 +73,7 @@ function SignIn({ onToggleLogin }) {
         type="submit"
         sx={{ backgroundColor: "#0998a8", padding: "12px" }}
       >
-        ثبت نام 
+        ثبت نام
       </Button>
       <p className="text-sm select-none ">
         اکانت دارید ؟.{" "}

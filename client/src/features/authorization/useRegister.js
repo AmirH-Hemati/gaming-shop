@@ -11,7 +11,7 @@ export function useRegister() {
       queryClient.invalidateQueries({
         queryKey: ["user"],
       });
-      toast.success("succsessfully created account");
+      toast.success("اکانت با موفقیت ساخته شد .");
     },
     onError: (err) => {
       toast.error(err.response.data.message);

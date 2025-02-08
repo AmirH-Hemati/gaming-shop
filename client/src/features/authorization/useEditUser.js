@@ -8,10 +8,9 @@ export function useEditUser() {
     mutationFn: (formData) => editUserAPI(formData),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user"] });
-      toast.success("successfully updated user ");
+      toast.success("اطلاعات با موفقیت  بروزرسانی شد .");
     },
     onError: (err) => {
-      console.log(err);
       toast.error(err.response.data.message);
     },
   });

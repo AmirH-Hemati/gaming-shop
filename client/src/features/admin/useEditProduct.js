@@ -10,7 +10,7 @@ export function useEditProduct() {
       queryClient.invalidateQueries({
         queryKey: ["product"],
       });
-      toast.success("succsussfully updated product");
+      toast.success("محصول با موفقیت بروزرسانی شد .");
     },
     onError: (err) => {
       console.log(err);

@@ -21,7 +21,7 @@ function ChangePassword() {
         <TextField
           id="outlined-basic"
           variant="outlined"
-          type="text"
+          type="email"
           label="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}

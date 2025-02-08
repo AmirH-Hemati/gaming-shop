@@ -15,7 +15,7 @@ export function useLogin() {
       queryClient.invalidateQueries({
         queryKey: ["user"],
       });
-      toast.success("Welcome !...");
+      toast.success("خوش آمدیــــــد...!");
       navigate("/");
     },
     onError: (err) => {

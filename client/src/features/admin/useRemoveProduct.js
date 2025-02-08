@@ -10,7 +10,7 @@ export function useRemoveProduct() {
       queryClient.invalidateQueries({
         queryKey: ["product"],
       });
-      toast.success("successfully removed product");
+      toast.success("محصول با موفقیت حذف شد.");
     },
     onError: (err) => {
       console.log(err);
