@@ -13,11 +13,18 @@ function UserMenu({ first, close }) {
     <div
       ref={ref}
       className={`w-[80%] md:w-[20%] h-full flex flex-col fixed ${
-        first ? "left-0" : "-left-full"
+        first ? "right-0" : "-right-full"
       }  top-0 duration-500  shadow-custom bg-bg-main z-50 p-4 `}
     >
       <div className="w-full flex items-center  justify-between">
-        <p className="font-semibold">{user?.data?.userName}</p>
+        <div className="flex items-center gap-2">
+          <img
+            src={user?.data?.avatar}
+            className="w-8 h-8 rounded-full"
+            alt=""
+          />
+          <p className="text-lg font-semibold">{user?.data?.userName}</p>
+        </div>
         <CloseSquare
           size="32"
           color="#fff"
