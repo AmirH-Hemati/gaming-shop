@@ -1,4 +1,5 @@
 import { HambergerMenu, PresentionChart } from "iconsax-react";
+import { Link } from "react-router-dom";
 
 function TopMainAdmin({ isActiveMenu, onToggle }) {
   return (
@@ -11,10 +12,13 @@ function TopMainAdmin({ isActiveMenu, onToggle }) {
     >
       <HambergerMenu size="32" color="#192938" onClick={onToggle} />
 
-      <div className="flex gap-2  items-center box-border font-semibold hover:shadow-custom p-1 cursor-pointer">
+      <Link
+        to={"/"}
+        className="flex gap-2  items-center box-border font-semibold hover:shadow-custom p-1 cursor-pointer"
+      >
         <PresentionChart size="32" color="#192938" />
         <p> صفحه اصلی </p>
-      </div>
+      </Link>
     </div>
   );
 }
