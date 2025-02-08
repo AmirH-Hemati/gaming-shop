@@ -2,13 +2,14 @@ import { MessageText } from "iconsax-react";
 import FormLabel from "../ui/FormLabel";
 import Input from "../ui/Input";
 import { useEffect, useState } from "react";
-import { useCurrentUser } from "../features/authorization/useCurrentUse";
+import { useCurrentUser } from "../features/authorization/useCurrentUser";
 import { Button } from "@mui/material";
 import { useEditUser } from "../features/authorization/useEditUser";
+import Loading from "../ui/Loading";
 
 function Setting() {
   const { user } = useCurrentUser();
-  const { editUser } = useEditUser();
+  const { editUser, isPending } = useEditUser();
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [image, setImage] = useState("");
@@ -20,6 +21,9 @@ function Setting() {
     }
   }, [user?.data]);
 
+  if (isPending) {
+    return <Loading />;
+  }
   function handelChangeProfile(e) {
     e.preventDefault();
     if (email === "" || userName === "") return;

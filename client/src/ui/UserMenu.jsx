@@ -4,7 +4,7 @@ import userMenuData from "../data/userMenuData";
 import NavListItem from "./NavListItem";
 import { useAuth } from "../context/authContext";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser } from "../features/authorization/useCurrentUse";
+import { useCurrentUser } from "../features/authorization/useCurrentUser";
 function UserMenu({ first, close }) {
   const { user } = useCurrentUser();
   const { token, role, logout } = useAuth();

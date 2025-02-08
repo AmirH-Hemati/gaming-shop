@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 export function useChangePassword() {
   const queryClient = useQueryClient();
-  const { mutate: changePassword } = useMutation({
+  const { mutate: changePassword, isPending } = useMutation({
     mutationFn: ({ email, password, newPassword }) =>
       changePasswordAPI({ email, password, newPassword }),
     onSuccess: () => {
@@ -15,5 +15,5 @@ export function useChangePassword() {
       console.log(err);
     },
   });
-  return { changePassword };
+  return { changePassword, isPending };
 }

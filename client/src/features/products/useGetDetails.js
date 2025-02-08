@@ -1,9 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { getDetailsProducts } from "../../services/apiProducts";
 
-export  function useGetDetails() {
+export function useGetDetails() {
   const queryClient = useQueryClient();
-  const { mutate, data: products } = useMutation({
+  const {
+    mutate,
+    data: products,
+    isPending,
+  } = useMutation({
     mutationFn: (addToCart) => getDetailsProducts(addToCart),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["product"] });
@@ -12,5 +16,5 @@ export  function useGetDetails() {
       console.log(err);
     },
   });
-  return { mutate, products };
+  return { mutate, products, isPending };
 }

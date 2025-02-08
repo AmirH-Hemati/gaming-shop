@@ -1,6 +1,6 @@
 import { HambergerMenu, Heart, ShoppingCart } from "iconsax-react";
 import { Link, NavLink } from "react-router-dom";
-import { useCurrentUser } from "../features/authorization/useCurrentUse";
+import { useCurrentUser } from "../features/authorization/useCurrentUser";
 import { useAddToCart } from "../context/ShoppingContext";
 import { useAddToFavorites } from "../context/FavorietsContext";
 import { useAuth } from "../context/authContext";

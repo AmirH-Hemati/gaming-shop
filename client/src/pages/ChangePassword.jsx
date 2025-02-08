@@ -2,12 +2,16 @@ import { useState } from "react";
 // import { useChangePasswor } from "../featurs/authorizaion/useChangePassword";
 import { Button, TextField } from "@mui/material";
 import { useChangePassword } from "../features/authorization/useChangePassword";
+import Loading from "../ui/Loading";
 
 function ChangePassword() {
-  const { changePassword } = useChangePassword();
+  const { changePassword, isPending } = useChangePassword();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  if (isPending) {
+    return <Loading />;
+  }
   function handelChangePassword(e) {
     e.preventDefault();
     changePassword({ email, password, newPassword });

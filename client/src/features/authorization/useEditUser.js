@@ -4,7 +4,7 @@ import { editUser as editUserAPI } from "../../services/apiUser";
 
 export function useEditUser() {
   const queryClient = useQueryClient();
-  const { mutate: editUser } = useMutation({
+  const { mutate: editUser, isPending } = useMutation({
     mutationFn: (formData) => editUserAPI(formData),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user"] });
@@ -14,5 +14,5 @@ export function useEditUser() {
       toast.error(err.response.data.message);
     },
   });
-  return { editUser };
+  return { editUser, isPending };
 }

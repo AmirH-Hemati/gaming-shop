@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 export function useCreateProduct() {
   const queryClient = useQueryClient();
-  const { mutate: createProduct, isLoading } = useMutation({
+  const { mutate: createProduct, isPending } = useMutation({
     mutationFn: (formData) => createProductAPI(formData),
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -16,5 +16,5 @@ export function useCreateProduct() {
       console.log(err);
     },
   });
-  return { createProduct, isLoading };
+  return { createProduct, isPending };
 }

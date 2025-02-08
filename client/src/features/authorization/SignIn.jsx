@@ -1,16 +1,19 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { useRegister } from "./useRegister";
+import Loading from "../../ui/Loading";
 
 function SignIn({ onToggleLogin }) {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const mutate = useRegister();
-
+  const { register, isPending } = useRegister();
+  if (isPending) {
+    return <Loading />;
+  }
   function handelRegister(e) {
     e.preventDefault();
-    mutate.mutate({ userName, email, password });
+    register({ userName, email, password });
   }
   return (
     <form

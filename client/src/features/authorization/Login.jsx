@@ -2,12 +2,15 @@ import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { useLogin } from "./useLogin";
 import { useState } from "react";
+import Loading from "../../ui/Loading";
 
 function Login({ onToggleLogin }) {
   const { login, isPending } = useLogin();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  if (isPending) {
+    return <Loading />;
+  }
   function handelLoginForm(e) {
     e.preventDefault();
     login({ email, password });
@@ -21,7 +24,7 @@ function Login({ onToggleLogin }) {
       <TextField
         id="outlined-basic"
         variant="outlined"
-        type="email"
+        type="text"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         label="Email"

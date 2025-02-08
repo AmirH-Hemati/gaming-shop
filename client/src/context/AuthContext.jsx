@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
-import { useCurrentUser } from "../features/authorization/useCurrentUse";
+import { useCurrentUser } from "../features/authorization/useCurrentUser";
 import Loading from "../ui/Loading";
 
 const authContext = createContext();
