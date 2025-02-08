@@ -30,8 +30,8 @@ router.post(
   auth,
   admin,
   upload.fields([
-    { name: "image", maxCount: 1 }, // برای تصویر اصلی
-    { name: "images", maxCount: 5 }, // حداکثر 5 تصویر اضافی
+    { name: "image", maxCount: 1 },   
+    { name: "images", maxCount: 5 },   
   ]),
   createProduct
 );
