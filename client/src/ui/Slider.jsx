@@ -22,14 +22,6 @@ function Slider() {
         delay: 2500,
         disableOnInteraction: false,
       }}
-      breakpoints={{
-        320: {
-          slidesPerView: 1,
-        },
-        768: {
-          slidesPerView: 2,
-        },
-      }}
       coverflowEffect={{
         rotate: 35,
         stretch: 200,
@@ -41,19 +33,13 @@ function Slider() {
       className="w-full  h-40 md:h-60 shadow-custom rounded-sm"
     >
       {sliderData.map((slide, index) => (
-        <SwiperSlide key={index} className="md:p-2 rounded-sm">
-          <div
-            className="relative w-full h-full rounded-sm   bg-cover bg-no-repeat bg-center flex items-center justify-center"
-            style={{ backgroundImage: `url(${slide.image})` }}
-          >
-            <div className="absolute inset-0 bg-black/50"></div>
-            <div className="relative z-10 text-white text-center p-6">
-              <h2 className="text-sm   font-bold mb-2 text-white/80">
-                {slide.title}
-              </h2>
-              <p className="text-sm text-white/50">{slide.description}</p>
-            </div>
-          </div>
+        <SwiperSlide key={index} className=" rounded-sm">
+          <div className="absolute inset-0 bg-black/20"></div>
+          <img
+            src={slide.image}
+            alt=""
+            className="w-full h-full object-cover"
+          />
         </SwiperSlide>
       ))}
     </Swiper>

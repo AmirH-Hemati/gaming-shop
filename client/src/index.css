@@ -8,3 +8,7 @@
   @apply: border-box;
   direction: rtl;
 }
+/* 
+.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+ font-size: 30px;
+} */
