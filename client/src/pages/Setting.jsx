@@ -46,7 +46,7 @@ function Setting() {
           </div>
           <div className="flex items-center">
             <MessageText size="20" color="#fff" variant="Bold" />
-            <p>Email : {user?.data?.email}</p>
+            <p>ایمیل : {user?.data?.email}</p>
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@ function Setting() {
         className="w-full flex flex-col gap-6"
         onSubmit={handelChangeProfile}
       >
-        <FormLabel label={`User Name`}>
+        <FormLabel label={`نام کاربــــری`}>
           <Input
             type={`text`}
             value={userName}
@@ -62,7 +62,7 @@ function Setting() {
             onChange={(e) => setUserName(e.target.value)}
           />
         </FormLabel>
-        <FormLabel label={`Email`}>
+        <FormLabel label={`ایمیـــــــل`}>
           <Input
             type={`text`}
             value={email}
@@ -71,7 +71,7 @@ function Setting() {
           />
         </FormLabel>
         <div className="flex w-full justify-between  font-semibold ">
-          <p>Your Profile Picture *</p>
+          <p>عکس پروفایـــل شما *</p>
           <label htmlFor="file">
             <div className=" w-22 h-22 rounded-sm p-1 md:w-40 md:h-40 cursor-pointer  bg-white border border-dotted border-black">
               <img
@@ -98,7 +98,7 @@ function Setting() {
           sx={{ backgroundColor: "#0998a8" }}
           className="w-full md:w-1/3 self-end"
         >
-          Create Product
+          ذخیره کردن
         </Button>
       </form>
     </div>
