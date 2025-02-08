@@ -1,9 +1,9 @@
 import { useState } from "react";
-import FormLabel from "../ui/FormLabel";
-import Input from "../ui/Input";
-import { useEditProduct } from "../features/admin/useEditProduct";
+import FormLabel from "../../ui/FormLabel";
+import Input from "../../ui/Input";
+import { useEditProduct } from "./useEditProduct";
 import { Button } from "@mui/material";
-import Loading from "../ui/Loading";
+import Loading from "../../ui/Loading";
 
 function EditProductForm({ product, onClose }) {
   const { editProduct, isPending } = useEditProduct();

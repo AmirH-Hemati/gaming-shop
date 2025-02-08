@@ -4,7 +4,7 @@ import { removeProduct as removeProductAPI } from "../../services/apiProducts";
 
 export function useRemoveProduct() {
   const queryClient = useQueryClient();
-  const { mutate: removeProduct, isPending } = useMutation({
+  const { mutate: removeProduct, isPending: isRemoveing } = useMutation({
     mutationFn: (id) => removeProductAPI(id),
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -13,8 +13,8 @@ export function useRemoveProduct() {
       toast.success("محصول با موفقیت حذف شد.");
     },
     onError: (err) => {
-      console.log(err);
+      toast.error(err.response.data.message);
     },
   });
-  return { removeProduct, isPending };
+  return { removeProduct, isRemoveing };
 }
