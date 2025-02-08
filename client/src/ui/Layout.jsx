@@ -14,7 +14,12 @@ function Layout() {
   }
   return (
     <div className="flex w-full h-screen bg-[#192938]  overflow-hidden  p-4 gap-4 text-white">
-      <Sidebar isActiveMenu={isActiveMenu} data={data} color={`bg-[#192938]`} />
+      <Sidebar
+        isActiveMenu={isActiveMenu}
+        data={data}
+        color={`bg-[#192938]`}
+        coloIcon={`#fff`}
+      />
       <main
         className={`h-full w-full flex flex-col gap-2 overflow-auto ${
           isActiveMenu ? "md:w-[92%] " : "md:w-[80%] "
