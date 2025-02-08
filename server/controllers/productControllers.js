@@ -1,9 +1,11 @@
 import Products from "../models/productsModels.js";
 export async function getProducts(req, res) {
-  const { search } = req.query;
-  console.log(search);
+  const { categories, search } = req.query;
   const filter = {};
-  if (search && search !== null) {
+  if (categories) {
+    filter.categories = categories;
+  }
+  if (search) {
     filter.title = { $regex: search, $options: "i" };
   }
   const products = await Products.find(filter);
