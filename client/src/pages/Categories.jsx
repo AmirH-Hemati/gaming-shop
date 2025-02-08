@@ -6,8 +6,8 @@ import Search from "../ui/Search";
 function Categories() {
   const { products } = useGetProductsByFilter();
   return (
-    <div className="w-full h-full mt-4">
-      <div className="flex w-full justify-between">
+    <div className="w-full h-full">
+      <div className="flex w-full justify-between my-4">
         <FilterButtons />
         <Search />
       </div>
