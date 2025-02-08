@@ -1,10 +1,8 @@
 import { AddSquare, Star1 } from "iconsax-react";
-import { useAddToCart } from "../../context/ShoppingContext";
 import AddToFavorite from "../../ui/AddToFavorite";
 import { Link } from "react-router-dom";
 
 function ProductItem({ product }) {
-  const { handelIncreaseProduct } = useAddToCart();
   return (
     <li className="z-10 relative flex flex-col gap-2  bg-bg-main p-4 rounded-xl shadow-custom cursor-pointer">
       <div className="relative w-full">
@@ -26,11 +24,7 @@ function ProductItem({ product }) {
       <p className="text-sm text-[#0998a8]">{product?.price}$</p>
       <Link to={`/products/${product?._id}`}>
         <div className="absolute  bottom-0 right-0 rounded-br-2xl rounded-tl-2xl bg-[#0998a8] p-1">
-          <AddSquare
-            size="28"
-            color="white"
-            onClick={() => handelIncreaseProduct(product?._id)}
-          />
+          <AddSquare size="28" color="white" />
         </div>
       </Link>
     </li>
