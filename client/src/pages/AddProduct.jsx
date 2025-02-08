@@ -41,7 +41,7 @@ function AddProduct() {
   return (
     <form
       onSubmit={handelCreateProduct}
-      className="w-full h-full flex flex-col gap-3"
+      className="flex-1 w-full  flex flex-col gap-3"
     >
       <FormLabel label={`نام محصول`}>
         <Input name={`title`} id={`title`} type={`text`} style={`text-black`} />
