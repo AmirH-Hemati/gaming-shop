@@ -6,9 +6,9 @@ export function useGetProductsByFilter() {
   const [searchParams] = useSearchParams();
   const categories = searchParams.get("categories") || "";
   const search = searchParams.get("search") || "";
-  const { data: products, isLoading } = useQuery({
+  const { data: products, isPending } = useQuery({
     queryKey: ["product", categories, search],
     queryFn: () => getProductsByFilter({ categories, search }),
   });
-  return { products, isLoading };
+  return { products, isPending };
 }

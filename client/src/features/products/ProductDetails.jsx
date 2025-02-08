@@ -5,15 +5,18 @@ import { useAddToCart } from "../../context/ShoppingContext";
 import ButtonAddToCarts from "../../ui/ButtonAddToCarts";
 import { useEffect, useState } from "react";
 import { formatNumber } from "../../utils/formatNumber";
+import Loading from "../../ui/Loading";
 
 function ProductDetails() {
   const [activeImage, setActiveImage] = useState("");
-  const { product } = useGetProduct();
+  const { product, isPending } = useGetProduct();
   const { handelIncreaseProduct, getProductQty } = useAddToCart();
   useEffect(() => {
     setActiveImage(product?.data?.image);
   }, [product?.data?.image]);
-
+  if (isPending) {
+    return <Loading />;
+  }
   let allImage;
   if (product?.data?.images && product?.data?.image)
     allImage = [product.data.image, ...product.data.images];

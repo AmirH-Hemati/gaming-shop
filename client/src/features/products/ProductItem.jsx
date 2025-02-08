@@ -1,4 +1,4 @@
-import { AddSquare, Star1 } from "iconsax-react";
+import { AddSquare } from "iconsax-react";
 import AddToFavorite from "../../ui/AddToFavorite";
 import { Link } from "react-router-dom";
 import { formatNumber } from "../../utils/formatNumber";

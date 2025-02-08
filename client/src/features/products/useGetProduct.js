@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 
 export function useGetProduct() {
   const { id } = useParams();
-  const { data: product, isLoading } = useQuery({
+  const { data: product, isPending } = useQuery({
     queryKey: ["product", id],
     queryFn: () => getProduct(id),
   });
-  return { product, isLoading };
+  return { product, isPending };
 }

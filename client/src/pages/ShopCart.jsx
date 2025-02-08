@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Heading from "../ui/Heading";
 import ProductNotExist from "../ui/ProductNotExist";
 import { formatNumber } from "../utils/formatNumber";
+import Loading from "../ui/Loading";
 
 function ShopCart() {
   const {
@@ -13,12 +14,14 @@ function ShopCart() {
     addToCart,
     removeProduct,
   } = useAddToCart();
-  const { mutate, products } = useGetDetails();
+  const { mutate, products, isPending } = useGetDetails();
 
   useEffect(() => {
     mutate(addToCart);
   }, [addToCart, mutate]);
-
+  if (isPending) {
+    return <Loading />;
+  }
   const totalPrice = products?.data?.reduce(
     (cur, sum) => cur + sum.price * sum.qty,
     0
