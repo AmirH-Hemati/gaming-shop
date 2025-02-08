@@ -1,6 +1,7 @@
 import AllProducts from "../features/products/AllProducts";
 import { useGetProductsByFilter } from "../features/products/useGetProductsByFilter";
 import FilterButtons from "../ui/FilterButtons";
+import ProductNotExist from "../ui/ProductNotExist";
 import Search from "../ui/Search";
 
 function Categories() {
