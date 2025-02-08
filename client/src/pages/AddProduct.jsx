@@ -19,7 +19,7 @@ function AddProduct() {
     const image = e.target.image.files[0];
     const images = e.target.images.files;
     if (!title || !price || !image || !description) {
-      return toast.error("input empty");
+      return toast.error("اینپوت ها خالی هستند.");
     }
     const formData = new FormData();
     formData.append("title", title);

@@ -21,7 +21,7 @@ function EditProductForm({ product, onClose }) {
   }
   return (
     <form onSubmit={handelEditProduct} className="flex flex-col p-2  gap-6 ">
-      <FormLabel label="Name Product">
+      <FormLabel label="نام محصول">
         <Input
           type="text"
           name="title"
@@ -30,7 +30,7 @@ function EditProductForm({ product, onClose }) {
           onChange={(e) => setTitle(e.target.value)}
         />
       </FormLabel>
-      <FormLabel label="Name Product">
+      <FormLabel label="قیمت">
         <Input
           type="text"
           name="price"
@@ -39,7 +39,7 @@ function EditProductForm({ product, onClose }) {
           onChange={(e) => setPrice(e.target.value)}
         />
       </FormLabel>
-      <FormLabel label="Description">
+      <FormLabel label="توضیحات">
         <textarea
           rows={4}
           name="description"
@@ -57,7 +57,7 @@ function EditProductForm({ product, onClose }) {
         sx={{ backgroundColor: "#192938", padding: "12px" }}
         className="w-full md:w-1/3 self-end"
       >
-        Edit Product
+        ذخیره کردن
       </Button>
     </form>
   );
