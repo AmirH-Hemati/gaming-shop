@@ -76,10 +76,10 @@ function AddProduct() {
       </label>
       <input type="file" id="images" name="images" multiple />
       <select name="categories">
-        <option value="همه">همه</option>
-        <option value="موس">موس</option>
-        <option value="کیبورد">کیبورد</option>
-        <option value="مانیتور">مانیتور</option>
+        <option value="all">همه</option>
+        <option value="mouse">موس</option>
+        <option value="keyboard">کیبورد</option>
+        <option value="monitor">مانیتور</option>
       </select>
       <Button
         variant="contained"

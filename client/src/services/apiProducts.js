@@ -15,8 +15,10 @@ export async function getProducts() {
   const { data } = await axiosInstance.get("/products");
   return data;
 }
-export async function getProductsByFilter(search) {
-  const { data } = await axiosInstance.get(`/products?search=${search}`);
+export async function getProductsByFilter({ categories, search }) {
+  const { data } = await axiosInstance.get(
+    `/products?categories=${categories}&search=${search}`
+  );
   return data;
 }
 export async function getProduct(id) {

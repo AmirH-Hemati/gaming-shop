@@ -4,11 +4,11 @@ import { useSearchParams } from "react-router-dom";
 
 export function useGetProductsByFilter() {
   const [searchParams] = useSearchParams();
+  const categories = searchParams.get("categories") || "";
   const search = searchParams.get("search") || "";
-
   const { data: products, isLoading } = useQuery({
-    queryKey: ["product", search],
-    queryFn: () => getProductsByFilter(search),
+    queryKey: ["product", categories, search],
+    queryFn: () => getProductsByFilter({ categories, search }),
   });
   return { products, isLoading };
 }
