@@ -6,8 +6,8 @@ function AddToFavorite({ product }) {
   return (
     <Heart
       size="32"
-      color="white"
-      variant={productExists(product) ? "Bold" : null}
+      color={`${productExists(product) ? "white" : "#0998A8"}`}
+      variant="Bold"
       onClick={() => handelAddToFavorites(product)}
       className="cursor-pointer"
     />

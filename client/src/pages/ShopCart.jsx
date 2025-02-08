@@ -28,9 +28,9 @@ function ShopCart() {
     return <ProductNotExist>سبد خرید شما خالی است </ProductNotExist>;
   }
   return (
-    <div className="w-full md:p-6 py-6">
+    <div className="w-full md:p-6  overflow-hidden ">
       <Heading text={`سبد خرید`} />
-      <ul className=" w-full max-h-[70%] flex flex-col py-2  md:p-4 gap-7 items-center  rounded-md overflow-y-auto ">
+      <ul className=" w-full max-h-[80%] flex flex-col py-2  md:p-4 gap-7 items-center  rounded-md overflow-y-auto ">
         {products?.data?.map((product) => (
           <li
             key={product?._id}
@@ -87,7 +87,7 @@ function ShopCart() {
         ))}
       </ul>
 
-      <div className="flex justify-between items-center w-full text-white md:text-xl md:p-6">
+      <div className="flex  justify-between items-center w-full text-white md:text-xl md:p-6">
         <p>تعداد محصولات : {totalItems}</p>
         <p>
           مجموع پرداختی : {formatNumber(totalPrice)}{" "}

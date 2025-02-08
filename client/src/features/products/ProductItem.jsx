@@ -1,6 +1,7 @@
 import { AddSquare, Star1 } from "iconsax-react";
 import AddToFavorite from "../../ui/AddToFavorite";
 import { Link } from "react-router-dom";
+import { formatNumber } from "../../utils/formatNumber";
 
 function ProductItem({ product }) {
   return (
@@ -21,10 +22,13 @@ function ProductItem({ product }) {
         <Star1 size="26" color="#0998a8" variant="Bold" />
       </div>
       <p className="font-semibold text-lg">{product?.title}</p>
-      <p className="text-sm text-[#0998a8]">{product?.price}$</p>
+      <p className="text-sm text-[#0998a8]">
+        {formatNumber(product?.price)}{" "}
+        <span className="text-xs text-gray-400">تومان</span>
+      </p>
       <Link to={`/products/${product?._id}`}>
         <div className="absolute  bottom-0 right-0 rounded-br-2xl rounded-tl-2xl bg-[#0998a8] p-1">
-          <AddSquare size="28" color="white" />
+          <AddSquare size="24" color="white" />
         </div>
       </Link>
     </li>

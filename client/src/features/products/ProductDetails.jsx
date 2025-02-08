@@ -18,8 +18,8 @@ function ProductDetails() {
   if (product?.data?.images && product?.data?.image)
     allImage = [product.data.image, ...product.data.images];
   return (
-    <div className="box-border w-full h-full shadow-custom  flex flex-col items-center pt-3">
-      <div className="w-full h-1/2 md:w-[65%] rounded-sm flex flex-col md:flex-row-reverse gap-2">
+    <div className="box-border w-full h-full shadow-custom  flex flex-col items-center pt-3 overflow-hidden">
+      <div className="w-full h-1/2 md:w-[65%]  rounded-sm flex flex-col md:flex-row-reverse gap-2">
         <img
           src={activeImage}
           alt=""
@@ -43,9 +43,9 @@ function ProductDetails() {
           ))}
         </div>
       </div>
-      <div className="flex h-1/2 flex-col w-full md:w-[65%]  py-4 gap-4">
+      <div className="flex h-1/2 flex-col w-full md:w-[65%] my-6  justify-between">
         <div className="flex justify-between items-center w-full">
-          <h1 className="md:text-3xl text-lg font-bold">
+          <h1 className="md:text-2xl text-lg font-bold">
             {product?.data?.title}
           </h1>
           <AddToFavorite product={product?.data} />

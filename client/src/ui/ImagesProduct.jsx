@@ -1,4 +1,4 @@
-import { FormLabel } from "@mui/material";
+import FormLabel from "./FormLabel";
 
 function ImagesProduct({ previowImages, handelOtherImage }) {
   return (
