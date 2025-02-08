@@ -36,7 +36,6 @@ function Login({ onToggleLogin }) {
         }}
       />
       <TextField
-        
         id="outlined-basic"
         variant="outlined"
         type="password"
@@ -49,8 +48,9 @@ function Login({ onToggleLogin }) {
             "&:hover fieldset": { borderColor: "#0998a8" },
             "&.Mui-focused fieldset": { borderColor: "#0998a8" },
           },
+
           input: { color: "white" },
-          label: { color: "white" }, // متن لیبل
+          label: { color: "white" },
         }}
       />
       <Button
@@ -61,9 +61,9 @@ function Login({ onToggleLogin }) {
         ورود
       </Button>
       <p className="text-sm select-none ">
-        You do not have an account. ?{" "}
+        اکانت ندارید.؟{" "}
         <span className="text-[#0998a8] cursor-pointer" onClick={onToggleLogin}>
-          Create Account
+          ساختن اکانت
         </span>
       </p>
     </form>

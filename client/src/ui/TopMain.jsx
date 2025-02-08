@@ -47,7 +47,7 @@ function TopMain({ isActiveMenu, setIsActiveMenu, setfirst }) {
               to={`/auth`}
               className={`py-0.5 px-3 bg-[#0998a8] rounded-sm`}
             >
-              login
+              ورود
             </NavLink>
           )}
         </div>

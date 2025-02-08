@@ -73,12 +73,12 @@ function SignIn({ onToggleLogin }) {
         type="submit"
         sx={{ backgroundColor: "#0998a8", padding: "12px" }}
       >
-        Sign In
+        ثبت نام 
       </Button>
       <p className="text-sm select-none ">
-        Do You Have Account.?{" "}
+        اکانت دارید ؟.{" "}
         <span className="text-[#0998a8] cursor-pointer" onClick={onToggleLogin}>
-          Login Your Account
+          ورود به اکانت{" "}
         </span>
       </p>
     </form>

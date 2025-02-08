@@ -74,7 +74,7 @@ function ChangePassword() {
           type="submit"
           sx={{ backgroundColor: "#0998a8", padding: "12px" }}
         >
-          Change Password
+          عوض کردن پسورد{" "}
         </Button>
       </form>
     </div>
