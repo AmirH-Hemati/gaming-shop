@@ -11,7 +11,7 @@ function FilterButtons() {
   }, [filter, searchParams, setSearchParams]);
 
   return (
-    <div className="flex gap-6">
+    <div className="flex md:gap-6  overflow-x-auto">
       <FilterButton text="all" setFilter={setFilter} filter={filter} />
       <FilterButton text="mouse" setFilter={setFilter} filter={filter} />
       <FilterButton text="keyboard" setFilter={setFilter} filter={filter} />
