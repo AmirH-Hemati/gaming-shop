@@ -4,7 +4,7 @@ import FilterButton from "./FilterButton";
 
 function FilterButtons() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState("همه");
   useEffect(() => {
     searchParams.set("filter", filter);
     setSearchParams(searchParams);
@@ -12,10 +12,10 @@ function FilterButtons() {
 
   return (
     <div className="flex gap-6">
-      <FilterButton text="all" setFilter={setFilter} filter={filter} />
-      <FilterButton text="mouse" setFilter={setFilter} filter={filter} />
-      <FilterButton text="keyboard" setFilter={setFilter} filter={filter} />
-      <FilterButton text="monitor" setFilter={setFilter} filter={filter} />
+      <FilterButton text="همه" setFilter={setFilter} filter={filter} />
+      <FilterButton text="موس" setFilter={setFilter} filter={filter} />
+      <FilterButton text="کیبورد" setFilter={setFilter} filter={filter} />
+      <FilterButton text="مانیتور" setFilter={setFilter} filter={filter} />
     </div>
   );
 }

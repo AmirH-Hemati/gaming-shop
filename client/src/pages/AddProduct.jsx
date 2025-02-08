@@ -14,6 +14,7 @@ function AddProduct() {
     const title = e.target.title.value;
     const price = e.target.price.value;
     const description = e.target.description.value;
+    const categories = e.target.categories.value;
     const image = e.target.image.files[0];
     const images = e.target.images.files;
     if (!title || !price || !image || !description) {
@@ -23,6 +24,7 @@ function AddProduct() {
     formData.append("title", title);
     formData.append("price", price);
     formData.append("description", description);
+    formData.append("categories", categories);
     formData.append("image", image);
     for (let i = 0; i < images.length; i++) {
       formData.append("images", images[i]);
@@ -73,6 +75,12 @@ function AddProduct() {
         />
       </label>
       <input type="file" id="images" name="images" multiple />
+      <select name="categories">
+        <option value="همه">همه</option>
+        <option value="موس">موس</option>
+        <option value="کیبورد">کیبورد</option>
+        <option value="مانیتور">مانیتور</option>
+      </select>
       <Button
         variant="contained"
         type="submit"
