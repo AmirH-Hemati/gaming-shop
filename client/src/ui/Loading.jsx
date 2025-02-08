@@ -1,7 +1,11 @@
 function Loading() {
   return (
-    <div className="fixed w-full h-screen bg-red-500 flex justify-center items-center">
-      loading page
+    <div className="fixed w-full h-screen bg-[#192938] flex justify-center items-center">
+      <div className="lds-facebook">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   );
 }

@@ -16,11 +16,6 @@ function ProductItem({ product }) {
           <AddToFavorite product={product} />
         </div>
       </div>
-      <div className="flex self-end">
-        <Star1 size="26" color="#0998a8" variant="Bold" />
-        <Star1 size="26" color="#0998a8" variant="Bold" />
-        <Star1 size="26" color="#0998a8" variant="Bold" />
-      </div>
       <p className="font-semibold text-lg">{product?.title}</p>
       <p className="text-sm text-[#0998a8]">
         {formatNumber(product?.price)}{" "}
