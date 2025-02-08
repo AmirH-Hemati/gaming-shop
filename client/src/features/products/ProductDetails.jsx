@@ -7,7 +7,6 @@ import ButtonAddToCarts from "../../ui/ButtonAddToCarts";
 function ProductDetails() {
   const { product } = useGetProduct();
   const { handelIncreaseProduct, getProductQty } = useAddToCart();
-  const array = [1, 2, 3, 4];
   return (
     <div className=" w-full h-full shadow-custom  flex flex-col items-center pt-3">
       <div className="w-full h-2/3 md:w-[65%] rounded-sm flex flex-col md:flex-row-reverse gap-2">
@@ -17,10 +16,10 @@ function ProductDetails() {
           className="w-full h-full md:w-[80%] object-cover rounded-sm "
         />
         <div className=" w-full h-full  md:w-[20%] flex flex-row   md:flex-col gap-2">
-          {array.map((i) => (
-            <div key={i}>
+          {product?.data?.images?.map((image, index) => (
+            <div key={index}>
               <img
-                src={product?.data?.image}
+                src={image}
                 className="w-36   object-cover border-3 border-[#0998A8] "
                 alt=""
               />
