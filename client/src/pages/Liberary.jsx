@@ -6,7 +6,7 @@ import ProductNotExist from "../ui/ProductNotExist";
 function Liberary() {
   const { addToFavorites } = useAddToFavorites();
   if (addToFavorites?.length < 1) {
-    return <ProductNotExist>Your library is empty</ProductNotExist>;
+    return <ProductNotExist>علاقه مندی ها شما خالی است.</ProductNotExist>;
   }
   return (
     <div>
