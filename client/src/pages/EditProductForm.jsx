@@ -8,7 +8,7 @@ function EditProductForm({ product, onClose }) {
   const { editProduct } = useEditProduct();
   const [title, setTitle] = useState(product?.title);
   const [price, setPrice] = useState(product?.price);
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState(product?.description);
   const [file, setFile] = useState("");
   function handelEditProduct(e) {
     e.preventDefault();

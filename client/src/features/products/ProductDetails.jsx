@@ -3,13 +3,17 @@ import AddToFavorite from "../../ui/AddToFavorite";
 import { useGetProduct } from "./useGetProduct";
 import { useAddToCart } from "../../context/ShoppingContext";
 import ButtonAddToCarts from "../../ui/ButtonAddToCarts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { formatNumber } from "../../utils/formatNumber";
 
 function ProductDetails() {
   const [activeImage, setActiveImage] = useState("");
   const { product } = useGetProduct();
   const { handelIncreaseProduct, getProductQty } = useAddToCart();
+  useEffect(() => {
+    setActiveImage(product?.data?.image);
+  }, [product?.data?.image]);
+
   let allImage;
   if (product?.data?.images && product?.data?.image)
     allImage = [product.data.image, ...product.data.images];
@@ -17,7 +21,7 @@ function ProductDetails() {
     <div className="box-border w-full h-full shadow-custom  flex flex-col items-center pt-3">
       <div className="w-full h-1/2 md:w-[65%] rounded-sm flex flex-col md:flex-row-reverse gap-2">
         <img
-          src={activeImage || product?.data?.image}
+          src={activeImage}
           alt=""
           className="w-full h-full md:w-[80%] object-cover rounded-sm"
         />
@@ -30,8 +34,8 @@ function ProductDetails() {
             >
               <img
                 src={image}
-                className={`w-36  h-full  object-cover border-3 ${
-                  activeImage == image ? "border-red-600" : "border-[#0998A8]"
+                className={`w-36  h-full  object-cover border-6 ${
+                  activeImage == image ? "border-[#192938]" : "border-[#0998A8]"
                 } `}
                 alt=""
               />
