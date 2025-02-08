@@ -1,21 +1,29 @@
-import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import FilterButton from "./FilterButton";
-
+const filterValues = [
+  { text: "همه", value: "all" },
+  { text: "موس", value: "mouse" },
+  { text: "کیبورد", value: "keyboard" },
+  { text: "مانیتور", value: "monitor" },
+];
 function FilterButtons() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [filter, setFilter] = useState("all");
-  useEffect(() => {
-    searchParams.set("categories", filter);
-    setSearchParams(searchParams);
-  }, [filter, searchParams, setSearchParams]);
+  const currentFilter = searchParams.get("categories") || "all";
 
+  function handleFilterChange(value) {
+    searchParams.set("categories", value);
+    setSearchParams(searchParams);
+  }
   return (
     <div className="flex md:gap-6  overflow-x-auto">
-      <FilterButton text="all" setFilter={setFilter} filter={filter} />
-      <FilterButton text="mouse" setFilter={setFilter} filter={filter} />
-      <FilterButton text="keyboard" setFilter={setFilter} filter={filter} />
-      <FilterButton text="monitor" setFilter={setFilter} filter={filter} />
+      {filterValues.map((item) => (
+        <FilterButton
+          key={item.value}
+          text={item.text}
+          active={currentFilter == item.value}
+          onClick={() => handleFilterChange(item.value)}
+        />
+      ))}
     </div>
   );
 }
