@@ -6,9 +6,9 @@ function Users() {
   return (
     <div className=" flex flex-col h-full w-full overflow-hidden  text-sm md:text-base">
       <div className="font-semibold mt-2 md:mt-8 grid grid-cols-[1fr_1fr_3fr] w-full bg-[#F9FAFB]  gap-6 rounded-t-md p-4 border-2 border-black/10">
-        <p>image</p>
-        <p className="">name</p>
-        <p className="">email</p>
+        <p>عکس کاربر</p>
+        <p className="">نام کاربری</p>
+        <p className="">ایمیل</p>
       </div>
 
       <ul className="flex flex-col w-full h-[60%] md:h-full overflow-y-auto">

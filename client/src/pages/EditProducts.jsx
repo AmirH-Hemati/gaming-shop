@@ -10,10 +10,10 @@ function EditProducts() {
   return (
     <div className=" flex flex-col h-full w-full overflow-hidden  text-sm md:text-base">
       <div className="w-full font-semibold md:mt-8 grid grid-cols-[1fr_2fr_1fr_1fr] gap-3  bg-[#F9FAFB]  md:gap-6 rounded-t-md p-4 border-2 border-black/10">
-        <p>image</p>
-        <p>name</p>
-        <p>price</p>
-        <p>edit</p>
+        <p>عکس</p>
+        <p>نام محصول</p>
+        <p>قیمت</p>
+        <p>تنظیمات</p>
       </div>
       <ul className="bg-white w-full flex flex-col overflow-y-auto h-full md:h-full    ">
         {products?.data?.map((product) => (
