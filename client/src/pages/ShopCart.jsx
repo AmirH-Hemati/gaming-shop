@@ -4,6 +4,7 @@ import { useAddToCart } from "../context/ShoppingContext";
 import { useEffect } from "react";
 import Heading from "../ui/Heading";
 import ProductNotExist from "../ui/ProductNotExist";
+import { formatNumber } from "../utils/formatNumber";
 
 function ShopCart() {
   const {
@@ -18,7 +19,10 @@ function ShopCart() {
     mutate(addToCart);
   }, [addToCart, mutate]);
 
-  const totalPrice = products?.data?.reduce((cur, sum) => cur + sum.price, 0);
+  const totalPrice = products?.data?.reduce(
+    (cur, sum) => cur + sum.price * sum.qty,
+    0
+  );
   const totalItems = products?.data?.length;
   if (products?.data?.length < 1) {
     return <ProductNotExist>سبد خرید شما خالی است </ProductNotExist>;
@@ -43,7 +47,10 @@ function ShopCart() {
                 <p className="  font-semibold md:text-lg text-base">
                   {product?.title}
                 </p>
-                <p className="text-sm md:text-base">{product?.price}$</p>
+                <p className="text-sm md:text-base">
+                  {formatNumber(product?.price)}
+                  <span className="text-xs text-gray-400">تومان</span>
+                </p>
               </div>
 
               <div className="flex  items-center gap-2 md:gap-3">
@@ -81,10 +88,13 @@ function ShopCart() {
       </ul>
 
       <div className="flex justify-between items-center w-full text-white md:text-xl md:p-6">
-        <p>Total Items : {totalItems}</p>
-        <p>Total Price : {totalPrice}$</p>
-        <button className="p-2 bg-bg-main shadow-custom rounded-sm cursor-pointer text-base">
-          Payment
+        <p>تعداد محصولات : {totalItems}</p>
+        <p>
+          مجموع پرداختی : {formatNumber(totalPrice)}{" "}
+          <span className="text-xs text-gray-400">تومان</span>
+        </p>
+        <button className="px-6 py-3 bg-bg-main shadow-custom rounded-sm cursor-pointer text-base">
+          پرداخت
         </button>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { useGetProduct } from "./useGetProduct";
 import { useAddToCart } from "../../context/ShoppingContext";
 import ButtonAddToCarts from "../../ui/ButtonAddToCarts";
 import { useState } from "react";
+import { formatNumber } from "../../utils/formatNumber";
 
 function ProductDetails() {
   const [activeImage, setActiveImage] = useState("");
@@ -49,7 +50,7 @@ function ProductDetails() {
           {product?.data?.description}
         </p>
         <p className="text-xl font-semibold text-[#0998a8]">
-          {product?.data?.price} تومان
+          {formatNumber(product?.data?.price)} تومان
         </p>
         {getProductQty(product?.data._id) > 0 ? (
           <div className="w-full md:w-1/2 self-end">
