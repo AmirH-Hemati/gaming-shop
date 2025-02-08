@@ -7,12 +7,15 @@ import { Button } from "@mui/material";
 import ImageProduct from "../ui/ImageProduct";
 import ImagesProduct from "../ui/ImagesProduct";
 import TextArea from "../ui/TextArea";
+import Loading from "../ui/Loading";
 
 function AddProduct() {
-  const { createProduct } = useCreateProduct();
+  const { createProduct, isPending } = useCreateProduct();
   const [preview, setPriview] = useState("");
   const [previowImages, setPreviowImages] = useState([]);
-
+  if (isPending) {
+    return <Loading />;
+  }
   function handelCreateProduct(e) {
     e.preventDefault();
     const title = e.target.title.value;
@@ -36,7 +39,7 @@ function AddProduct() {
 
     createProduct(formData);
   }
-  
+
   function handelOtherImage(e) {
     const files = Array.from(e.target.files);
     const imageUrls = files.map((image) => URL.createObjectURL(image));

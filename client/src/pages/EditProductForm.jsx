@@ -3,13 +3,17 @@ import FormLabel from "../ui/FormLabel";
 import Input from "../ui/Input";
 import { useEditProduct } from "../features/admin/useEditProduct";
 import { Button } from "@mui/material";
+import Loading from "../ui/Loading";
 
 function EditProductForm({ product, onClose }) {
-  const { editProduct } = useEditProduct();
+  const { editProduct, isPending } = useEditProduct();
   const [title, setTitle] = useState(product?.title);
   const [price, setPrice] = useState(product?.price);
   const [description, setDescription] = useState(product?.description);
   const [file, setFile] = useState("");
+  if (isPending) {
+    return <Loading />;
+  }
   function handelEditProduct(e) {
     e.preventDefault();
     const formData = new FormData();

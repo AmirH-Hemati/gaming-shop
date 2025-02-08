@@ -1,7 +1,11 @@
 import { useGetAllUsers } from "../features/admin/useGetAllUsers";
+import Loading from "../ui/Loading";
 
 function Users() {
-  const { users } = useGetAllUsers();
+  const { users, isPending } = useGetAllUsers();
+  if (isPending) {
+    return <Loading />;
+  }
   return (
     <div className="flex-1 flex flex-col  w-full overflow-hidden  text-sm md:text-base">
       <div className="font-semibold mt-2 md:mt-8 grid grid-cols-[1fr_1fr_3fr] w-full bg-[#edeff0]  gap-6 rounded-t-md p-4 border-2 border-black/10">

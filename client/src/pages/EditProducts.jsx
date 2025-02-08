@@ -3,10 +3,14 @@ import { useGetProducts } from "../features/products/useGetProducts";
 import Modal from "../ui/Modal";
 import EditProductForm from "./EditProductForm";
 import { useRemoveProduct } from "../features/admin/useRemoveProduct";
-import {formatNumber} from "../utils/formatNumber"
+import { formatNumber } from "../utils/formatNumber";
+import Loading from "../ui/Loading";
 function EditProducts() {
-  const { products } = useGetProducts();
+  const { products, isPending } = useGetProducts();
   const { removeProduct } = useRemoveProduct();
+  if (isPending) {
+    return <Loading />;
+  }
   return (
     <div className="flex-1 flex flex-col  w-full overflow-hidden  text-sm md:text-base text-[#192938] font-semibold">
       <div className="w-full font-semibold md:mt-8 grid grid-cols-[1fr_2fr_1fr_1fr] gap-3  bg-[#edeff0]  md:gap-6 rounded-t-md p-4 border-2 border-black/10">
