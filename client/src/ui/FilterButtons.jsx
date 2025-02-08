@@ -1,11 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import FilterButton from "./FilterButton";
-const filterValues = [
-  { text: "همه", value: "all" },
-  { text: "موس", value: "mouse" },
-  { text: "کیبورد", value: "keyboard" },
-  { text: "مانیتور", value: "monitor" },
-];
+import filterValues from "../data/filterButtonsData";
+
 function FilterButtons() {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentFilter = searchParams.get("categories") || "all";

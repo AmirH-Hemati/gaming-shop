@@ -3,7 +3,7 @@ function FilterButton({ text, active, onClick }) {
     <button
       className={`${
         active ? "shadow-custom" : ""
-      } cursor-pointer hover:shadow-custom px-4 py-2  rounded-sm`}
+      } cursor-pointer hover:shadow-custom px- py-2  rounded-sm`}
       onClick={onClick}
     >
       <span>{text}</span>
