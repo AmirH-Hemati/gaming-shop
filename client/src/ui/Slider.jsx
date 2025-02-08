@@ -9,6 +9,7 @@ import {
   Pagination,
   Navigation,
 } from "swiper/modules";
+import { Link } from "react-router-dom";
 function Slider() {
   return (
     <Swiper
@@ -34,12 +35,14 @@ function Slider() {
     >
       {sliderData.map((slide, index) => (
         <SwiperSlide key={index} className=" rounded-sm">
-          <div className="absolute inset-0 bg-black/20"></div>
-          <img
-            src={slide.image}
-            alt=""
-            className="w-full h-full object-cover"
-          />
+          <Link to={`/categories`} className="w-full h-full">
+            <div className="absolute inset-0 bg-black/20"></div>
+            <img
+              src={slide.image}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          </Link>
         </SwiperSlide>
       ))}
     </Swiper>
