@@ -40,7 +40,7 @@ function SignIn({ onToggleLogin }) {
       <TextField
         id="outlined-basic"
         variant="outlined"
-        type="email"
+        type="text"
         label="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}

@@ -43,7 +43,7 @@ function TopMain({ isActiveMenu, setIsActiveMenu, setfirst }) {
           ) : (
             <NavLink
               to={`/auth`}
-              className={`py-0.5 px-3 bg-[#0998a8] rounded-sm`}
+              className={`flex items-center justify-center px-3 py-1 bg-[#0998a8] rounded-sm`}
             >
               ورود
             </NavLink>
