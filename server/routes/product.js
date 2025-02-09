@@ -30,12 +30,12 @@ router.post(
   auth,
   admin,
   upload.fields([
-    { name: "image", maxCount: 1 },   
-    { name: "images", maxCount: 5 },   
+    { name: "image", maxCount: 1 },
+    { name: "images", maxCount: 5 },
   ]),
   createProduct
 );
-router.post("/edit/:id", auth, admin, upload.single("file"), updateProduct);
+router.put("/edit/:id", auth, admin, upload.single("file"), updateProduct);
 router.delete("/:id", deleteProduct);
 router.post("/details", auth, detailsProducts);
 export default router;

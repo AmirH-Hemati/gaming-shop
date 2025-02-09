@@ -46,14 +46,18 @@ export async function updateProduct(req, res) {
     if (product.image) {
       //remove product
     }
-    updateProduct.image = req.file.filename;
+
+    updatedProducts.image = `http://localhost:1212/${req.file.filename}`;
   }
+
   const result = await Products.findByIdAndUpdate(
-    { id: _id },
+    { _id: id },
     updatedProducts,
     { new: true }
   );
-  res.json({ message: "ok", data: reslut });
+  console.log("imagepath", product.image);
+  console.log(result);
+  res.json({ message: "ok", data: result });
 }
 export async function deleteProduct(req, res) {
   const { id } = req.params;

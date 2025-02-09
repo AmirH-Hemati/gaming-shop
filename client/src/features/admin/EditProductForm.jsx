@@ -11,16 +11,14 @@ function EditProductForm({ product, onClose }) {
   const [price, setPrice] = useState(product?.price);
   const [description, setDescription] = useState(product?.description);
   const [file, setFile] = useState("");
-  if (isPending) {
-    return <Loading />;
-  }
+
   function handelEditProduct(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("name", name);
+    formData.append("title", title);
     formData.append("price", price);
     formData.append("file", file);
-
+    console.log(file)
     editProduct({ id: product?._id, formData });
   }
   return (
@@ -53,7 +51,12 @@ function EditProductForm({ product, onClose }) {
           className="outline-none w-full md:w-1/2 text-black border-2 border-black/30 rounded-sm"
         ></textarea>
       </FormLabel>
-      <input type="file" name="file" className="p-2" />
+      <input
+        type="file"
+        name="file"
+        className="p-2"
+        onChange={(e) => setFile(e.target.files[0])}
+      />
 
       <Button
         variant="contained"

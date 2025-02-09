@@ -26,8 +26,8 @@ export async function getProduct(id) {
   return data;
 }
 export async function editProduct({ id, formData }) {
-  const { data } = await axiosInstance.post(`/products/edit/${id}`, {
-    formData,
+  const { data } = await axiosInstance.put(`/products/edit/${id}`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
   });
   return data;
 }

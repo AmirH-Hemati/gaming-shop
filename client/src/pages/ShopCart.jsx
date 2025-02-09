@@ -6,6 +6,7 @@ import Heading from "../ui/Heading";
 import ProductNotExist from "../ui/ProductNotExist";
 import { formatNumber } from "../utils/formatNumber";
 import Loading from "../ui/Loading";
+import axios from "axios";
 
 function ShopCart() {
   const {
@@ -30,6 +31,24 @@ function ShopCart() {
   if (products?.data?.length < 1) {
     return <ProductNotExist>سبد خرید شما خالی است </ProductNotExist>;
   }
+  const handlePayment = async () => {
+    try {
+      const response = await axios.post(
+        "http://192.168.1.4:1212/api/payment/",
+        {
+          amount: totalPrice,
+          description: "خرید لوازم گیمینگ ",
+          email: "test@example.com",
+          mobile: "09123456789",
+        }
+      );
+      if (response.data.url) {
+        window.location.href = response.data.url;
+      }
+    } catch (error) {
+      console.error("خطا در پرداخت:", error);
+    }
+  };
   return (
     <div className="w-full md:p-6  overflow-hidden ">
       <Heading text={`سبد خرید`} />
@@ -96,7 +115,10 @@ function ShopCart() {
           مجموع پرداختی : {formatNumber(totalPrice)}{" "}
           <span className="text-xs text-gray-400">تومان</span>
         </p>
-        <button className="px-6 py-3 bg-bg-main shadow-custom rounded-sm cursor-pointer text-base">
+        <button
+          onClick={handlePayment}
+          className="px-6 py-3 bg-bg-main shadow-custom rounded-sm cursor-pointer text-base"
+        >
           پرداخت
         </button>
       </div>

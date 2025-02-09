@@ -1,8 +1,10 @@
-import { FormLabel, Input } from "@mui/material";
+import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useCurrentUser } from "./useCurrentUser";
 import { useEditUser } from "./useEditUser";
 import Loading from "../../ui/Loading";
+import Input from "../../ui/Input";
+import FormLabel from "../../ui/FormLabel";
 
 function SettingForm() {
   const { user } = useCurrentUser();

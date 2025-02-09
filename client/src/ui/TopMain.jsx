@@ -15,9 +15,7 @@ function TopMain({ isActiveMenu, setIsActiveMenu, setfirst }) {
   return (
     <div
       className={`relative shadow-custom p-4 w-full flex  justify-between duration-500  ${
-        isActiveMenu
-          ? "translate-x-4 px-4 md:px-0 md:translate-x-0"
-          : "translate-x-0"
+        isActiveMenu ? "translate-x-4   md:translate-x-0" : "translate-x-0"
       } `}
     >
       <HambergerMenu
@@ -37,7 +35,7 @@ function TopMain({ isActiveMenu, setIsActiveMenu, setfirst }) {
           {user?.data && token ? (
             <div
               onClick={() => setfirst((first) => !first)}
-              className="flex gap-2 items-center shadow-custom px-4 py-1 cursor-pointer "
+              className="flex gap-2 items-center shadow-custom md:px-4 p-1 cursor-pointer "
             >
               <img src={user?.data?.avatar} className="w-6 h-6 rounded-full" />
               <p>{user?.data?.userName}</p>

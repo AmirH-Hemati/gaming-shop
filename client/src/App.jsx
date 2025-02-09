@@ -19,6 +19,7 @@ import AddProduct from "./pages/AddProduct";
 import EditProducts from "./pages/EditProducts";
 import Users from "./pages/Users";
 import ProductDetails from "./features/products/ProductDetails";
+import Payment from "./pages/Payment";
 
 const queryClient = new QueryClient();
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Routes>
               <Route element={<Layout />}>
                 <Route index element={<Home />} />
+                <Route path="/p" element={<Payment />} />
                 <Route path="/auth" element={<AuthPage />} />
                 <Route path="/categories" element={<Categories />} />
                 <Route path="/products/:id" element={<ProductDetails />} />
