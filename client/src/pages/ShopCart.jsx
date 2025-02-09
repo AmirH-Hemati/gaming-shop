@@ -83,10 +83,7 @@ function ShopCart() {
                     color="#fff"
                     variant="Bold"
                     className="cursor-pointer"
-                    onClick={() => {
-                      console.log(product?._id);
-                      handelIncreaseProduct(product?._id);
-                    }}
+                    onClick={() => handelIncreaseProduct(product?._id)}
                   />
                   <ArrowDown2
                     size="24"

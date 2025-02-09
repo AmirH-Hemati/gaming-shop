@@ -18,7 +18,6 @@ function EditProductForm({ product, onClose }) {
     formData.append("title", title);
     formData.append("price", price);
     formData.append("file", file);
-    console.log(file)
     editProduct({ id: product?._id, formData });
   }
   return (
