@@ -1,48 +1,61 @@
+import axios from "axios";
 import express from "express";
-import ZarinPal from "zarinpal-checkout";
-const router = express.Router();
-const zarinpal_id = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX";
-const zarinpal = ZarinPal.create(zarinpal_id, true);
-router.post("/", async (req, res) => {
-  const { amount, description, email, mobile } = req.body;
-  try {
-    const response = await zarinpal.PaymentRequest({
-      Amount: amount,
-      CallbackURL: "http://localhost:1212/api/payment/verify",
-      Description: description,
-      Email: email,
-      Mobile: mobile,
-    });
 
-    if (response.status === 100) {
-      return res.json({ url: response.url });
-    } else {
-      return res.status(400).json({ message: "خطا در پرداخت" });
-    }
+const router = express.Router();
+router.post("/", async (req, res) => {
+  const { amount } = req.body;
+  const params = {
+    merchant_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    amount: amount,
+    callback_url: "http://localhost:5173/verify",
+    description: "خرید تست",
+  };
+  const response = await axios.post(
+    "https://sandbox.zarinpal.com/pg/v4/payment/request.json",
+    params
+  );
+  if (response.data.data && response.data.data.code == 100) {
+    res.json({
+      message: "ok",
+      url: `https://sandbox.zarinpal.com/pg/StartPay/${response.data.data.authority}`,
+    });
+  } else {
+    res.json({ message: "انجام عملیات پرداخت ناموفق بود" });
+  }
+  try {
   } catch (error) {
     res.status(500).json({ message: "مشکلی پیش آمده است" });
   }
 });
-router.get("/api/payment/verify", async (req, res) => {
+router.get("/verify", async (req, res) => {
   const { amount, Authority, Status } = req.query;
-
+  const params = {
+    merchant_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    amount: amount,
+    authority: Authority,
+  };
   if (Status !== "OK") {
     return res.send("پرداخت ناموفق بود");
   }
 
   try {
-    const response = await zarinpal.PaymentVerification({
-      Amount: amount,
-      Authority,
-    });
-
-    if (response.status === 100 || response.status === 101) {
-      return res.send(`پرداخت موفق بود. کد تراکنش: `);
+    const response = await axios.post(
+      "https://sandbox.zarinpal.com/pg/v4/payment/verify.json",
+      params
+    );
+    if (
+      (response.data.data && response.data.data.code == 101) ||
+      response.data.data.code == 100
+    ) {
+      return res.json({
+        message: "پرداخت موفقیت امیز بود ",
+        data: response.data.data.ref_id,
+      });
     } else {
-      return res.send("پرداخت ناموفق بود");
+      return res.json({ message: "پرداخت موفقیت امیز نبود" });
     }
   } catch (error) {
-    res.send("خطا در تأیید پرداخت");
+    res.json({ message: "خطا در تأیید پرداخت", data: null });
   }
 });
 export default router;

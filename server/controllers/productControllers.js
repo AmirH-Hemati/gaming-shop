@@ -5,7 +5,6 @@ export async function getProducts(req, res) {
   if (categories && categories !== "all") {
     filter.categories = categories;
   }
-  console.log(categories);
   if (search) {
     filter.title = { $regex: search, $options: "i" };
   }
