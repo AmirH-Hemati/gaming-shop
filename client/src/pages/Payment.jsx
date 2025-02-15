@@ -1,12 +1,15 @@
 import { useState } from "react";
-import axios from "axios";
+import axiosInstance from "../services/axiosInstance";
 function Payment() {
   const [amount, setAmount] = useState(10000);
 
   async function handlePayment() {
-    const response = await axios.post("http://localhost:1212/api/payment", {
-      amount,
-    });
+    const response = await axiosInstance.post(
+      "http://localhost:1212/api/payment",
+      {
+        amount,
+      }
+    );
     if (response.data && response.status == 200) {
       window.location.href = response.data.url;
     }
