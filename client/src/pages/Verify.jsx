@@ -1,7 +1,9 @@
 import { useSearchParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axiosInstance from "../services/axiosInstance";
 function Verify() {
+  const [refId, setRefId] = useState("");
+  const [message, setMessage] = useState("");
   const [searchParams] = useSearchParams();
   const Authority = searchParams.get("Authority");
   const Status = searchParams.get("Status");
@@ -9,7 +11,7 @@ function Verify() {
   useEffect(() => {
     async function fetchData() {
       if (!Authority || !Status) {
-        console.log("مشحصات ناقص است");
+        setMessage("مشحصات ناقص است");
         return;
       }
 
@@ -17,15 +19,28 @@ function Verify() {
         const response = await axiosInstance.get(
           `http://localhost:1212/api/payment/verify?Authority=${Authority}&Status=${Status}`
         );
-        console.log(response);
+        setMessage(response.data.message);
+        setRefId(response.data.data);
+        console.log(response.data.data)
       } catch (error) {
-        console.error("Error verifying payment:", error);
+        setMessage("Error verifying payment:");
       }
     }
 
     fetchData();
   }, [Authority, Status]);
-  return <div>verify</div>;
+  return (
+    <div className="flex flex-col items-center justify-center h-full bg-[#192938] shadow-custom">
+      <h2 className="text-2xl font-bold text-green-600">{message}</h2>
+      <p className="text-white">شماره پیگیری: {refId}</p>
+      <a
+        href="/orders"
+        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+      >
+        مشاهده سفارشات
+      </a>
+    </div>
+  );
 }
 
 export default Verify;

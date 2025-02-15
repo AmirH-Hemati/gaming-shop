@@ -4,6 +4,7 @@ import authRouter from "./routes/auth.js";
 import userRouter from "./routes/userRoute.js";
 import productRouter from "./routes/product.js";
 import paymentRouter from "./routes/payment.js";
+import ordersRouter from "./routes/orders.js";
 import cors from "cors";
 
 const app = express();
@@ -26,6 +27,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/products", productRouter);
 app.use("/api/user", userRouter);
 app.use("/api/payment", paymentRouter);
+app.use("/api/orders" ,ordersRouter);
 app.listen(1212, () => {
   console.log("listen on port 1212");
 });
