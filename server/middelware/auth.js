@@ -14,6 +14,6 @@ export async function auth(req, res, next) {
     req.user = user;
     next();
   } catch (error) {
-    res.staus(402).json({ message: "inValid Token", data: null });
+    res.status(402).json({ message: "inValid Token", data: null });
   }
 }

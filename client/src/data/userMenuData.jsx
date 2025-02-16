@@ -19,6 +19,12 @@ const userMenuData = [
     route: "/liberary",
     icon: <Save2 size="32" color="#fff" variant="Bold" />,
   },
+  {
+    id: 3,
+    name: "سفارشات",
+    route: "/ordersProduct",
+    icon: <Save2 size="32" color="#fff" variant="Bold" />,
+  },
 ];
 
 export default userMenuData;

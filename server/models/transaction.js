@@ -2,7 +2,15 @@ import mongoose from "mongoose";
 
 const transactionSchema = new mongoose.Schema(
   {
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
+    userOrder: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    products: [
+      {
+        productId: { type: mongoose.Schema.Types.ObjectId, ref: "product" },
+        title: { type: String },
+        price: { type: Number },
+        image: { type: String },
+      },
+    ],
     amount: { type: Number },
     authority: { type: String },
     ref_id: { type: String, default: null },

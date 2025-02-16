@@ -1,7 +1,7 @@
 import Transaction from "../models/transaction.js";
 import axios from "axios";
 export async function payment(req, res) {
-  const { amount } = req.body;
+  const { amount, products } = req.body;
   const params = {
     merchant_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     amount: amount,
@@ -12,9 +12,18 @@ export async function payment(req, res) {
     "https://sandbox.zarinpal.com/pg/v4/payment/request.json",
     params
   );
+  const finalProducts = products?.map((p) => {
+    return {
+      productId: p._id,
+      title: p.title,
+      price: p.price,
+      image: p.image,
+    };
+  });
   if (response.data.data && response.data.data.code == 100) {
     await Transaction.create({
-      user: req.user._id,
+      userOrder: req.user._id,
+      products: finalProducts,
       amount,
       authority: response.data.data.authority,
       status: "pending",

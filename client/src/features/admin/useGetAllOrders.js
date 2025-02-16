@@ -1,0 +1,10 @@
+import { useQuery } from "@tanstack/react-query";
+import { getAllOrders } from "../../services/apiOrders";
+
+export function useGetAllOrders() {
+  const { data: orders, isPending } = useQuery({
+    queryKey: ["orders"],
+    queryFn: getAllOrders,
+  });
+  return { orders, isPending };
+}

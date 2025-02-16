@@ -6,7 +6,7 @@ import Heading from "../ui/Heading";
 import ProductNotExist from "../ui/ProductNotExist";
 import { formatNumber } from "../utils/formatNumber";
 import Loading from "../ui/Loading";
-import axios from "axios";
+import axiosInstance from "../services/axiosInstance";
 
 function ShopCart() {
   const {
@@ -31,24 +31,19 @@ function ShopCart() {
   if (products?.data?.length < 1) {
     return <ProductNotExist>سبد خرید شما خالی است </ProductNotExist>;
   }
-  const handlePayment = async () => {
-    try {
-      const response = await axios.post(
-        "http://192.168.1.4:1212/api/payment/",
-        {
-          amount: totalPrice,
-          description: "خرید لوازم گیمینگ ",
-          email: "test@example.com",
-          mobile: "09123456789",
-        }
-      );
-      if (response.data.url) {
-        window.location.href = response.data.url;
+  async function handlePayment() {
+    const response = await axiosInstance.post(
+      "http://localhost:1212/api/payment",
+      {
+        amount: totalPrice,
+        products: products?.data,
       }
-    } catch (error) {
-      console.error("خطا در پرداخت:", error);
+    );
+    if (response.data && response.status == 200) {
+      window.location.href = response.data.url;
     }
-  };
+  }
+  console.log(products);
   return (
     <div className="w-full md:p-6  overflow-hidden ">
       <Heading text={`سبد خرید`} />

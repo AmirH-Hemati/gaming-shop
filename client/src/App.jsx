@@ -21,7 +21,8 @@ import Users from "./pages/Users";
 import ProductDetails from "./features/products/ProductDetails";
 import Payment from "./pages/Payment";
 import Verify from "./pages/Verify";
-
+import OrdersProduct from "./pages/OrdersProduct";
+import Orders from "./features/admin/Orders";
 const queryClient = new QueryClient();
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
                   <Route path="/liberary" element={<Liberary />} />
                   <Route path="/shopCart" element={<ShopCart />} />
                   <Route path="/setting" element={<Setting />} />
+                  <Route path="/ordersProduct" element={<OrdersProduct />} />
                   <Route path="/changePassword" element={<ChangePassword />} />
                 </Route>
               </Route>
@@ -50,6 +52,7 @@ function App() {
                   <Route path="/addProduct" element={<AddProduct />} />
                   <Route path="/editProducts" element={<EditProducts />} />
                   <Route path="/users" element={<Users />} />
+                  <Route path="/orders" element={<Orders />} />
                 </Route>
               </Route>
             </Routes>

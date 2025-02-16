@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axiosInstance from "../services/axiosInstance";
 function Verify() {
@@ -21,7 +21,6 @@ function Verify() {
         );
         setMessage(response.data.message);
         setRefId(response.data.data);
-        console.log(response.data.data)
       } catch (error) {
         setMessage("Error verifying payment:");
       }
@@ -33,12 +32,12 @@ function Verify() {
     <div className="flex flex-col items-center justify-center h-full bg-[#192938] shadow-custom">
       <h2 className="text-2xl font-bold text-green-600">{message}</h2>
       <p className="text-white">شماره پیگیری: {refId}</p>
-      <a
-        href="/orders"
+      <Link
+        to="/ordersProduct"
         className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
       >
         مشاهده سفارشات
-      </a>
+      </Link>
     </div>
   );
 }
