@@ -1,32 +1,45 @@
 import { Profile2User, ShoppingBag } from "iconsax-react";
 import Stat from "./Stat";
+import { useGetProducts } from "../features/products/useGetProducts";
+import { useGetAllUsers } from "../features/admin/useGetAllUsers";
+import { useGetAllOrders } from "../features/admin/useGetAllOrders";
 
 function Stats() {
+  const { products } = useGetProducts();
+  const { users } = useGetAllUsers();
+  const { orders } = useGetAllOrders();
+  console.log(orders);
+  const succsussProduct = orders?.data?.filter(
+    (order) => order.paymentStatus == "paid"
+  ).length;
+  const unSuccsussProduct = orders?.data?.filter(
+    (order) => order.paymentStatus !== "paid"
+  ).length;
   return (
     <div className="flex flex-wrap gap-4">
       <Stat
         title={`محصولات`}
-        value={"255"}
+        value={products?.data?.length}
         icon={<ShoppingBag size="32" color="#192938" />}
-        color={`#E0F2FE`}
+        color={`#6258f5d3`}
       />
       <Stat
         title={`کاربران`}
-        value={"255"}
+        value={users?.data?.length}
         icon={<Profile2User size="32" color="#192938" />}
-        color={`#DCFCE7`}
+        color={`#4aec83`}
       />
       <Stat
-        title={`فروش`}
-        value={"255,874"}
+        title={`سفارشات موفق`}
+        value={succsussProduct}
         icon={<ShoppingBag size="32" color="#192938" />}
-        color={`#FEF9C3`}
+        color={`#94e400`}
       />
       <Stat
-        title={`محصولات`}
-        value={"255"}
+        title={`سفارشات ناموفق`}
+        value={unSuccsussProduct}
         icon={<ShoppingBag size="32" color="#192938" />}
-        color={`#E0F2FE`}
+        color={`#0d92f8`}
       />
     </div>
   );

@@ -55,7 +55,7 @@ export async function verify(req, res) {
   };
 
   if (Status !== "OK") {
-    return res.send("پرداخت ناموفق بود");
+    return res.json({ message: "پرداخت ناموفق بود", data: null });
   }
 
   try {
@@ -80,7 +80,7 @@ export async function verify(req, res) {
         { authority: Authority },
         { paymentStatus: "failed" }
       );
-      return res.json({ message: "پرداخت موفقیت امیز نبود" });
+      return res.json({ message: "پرداخت موفقیت امیز نبود", data: null });
     }
   } catch (error) {
     res.json({ message: "خطا در تأیید پرداخت", data: null });
