@@ -11,3 +11,8 @@ export async function myOrders(req, res) {
   const orders = await Transaction.find({ userOrder: id });
   res.json({ message: "ok", data: orders });
 }
+export async function order(req, res) {
+  const { id } = req.params;
+  const order = await Transaction.find({ userOrder: id });
+  res.json({ message: "ok", data: order });
+}

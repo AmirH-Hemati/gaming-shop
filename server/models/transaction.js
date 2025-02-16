@@ -14,10 +14,15 @@ const transactionSchema = new mongoose.Schema(
     amount: { type: Number },
     authority: { type: String },
     ref_id: { type: String, default: null },
-    status: {
+    paymentStatus: {
       type: String,
       enum: ["pending", "paid", "failed"],
       default: "pending",
+    },
+    orderStatus: {
+      type: String,
+      enum: ["processing", "shipped", "delivered", "cancelled"],
+      default: "processing",
     },
   },
   { timestamps: true }

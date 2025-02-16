@@ -23,6 +23,7 @@ import Payment from "./pages/Payment";
 import Verify from "./pages/Verify";
 import OrdersProduct from "./pages/OrdersProduct";
 import Orders from "./features/admin/Orders";
+import Order from "./features/admin/Order";
 const queryClient = new QueryClient();
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
                   <Route path="/editProducts" element={<EditProducts />} />
                   <Route path="/users" element={<Users />} />
                   <Route path="/orders" element={<Orders />} />
+                  <Route path="/orders:id" element={<Order />} />
                 </Route>
               </Route>
             </Routes>

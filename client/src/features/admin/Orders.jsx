@@ -1,26 +1,40 @@
-import { Trash } from "iconsax-react";
+import { MoreSquare } from "iconsax-react";
 import { useGetAllOrders } from "./useGetAllOrders";
 
 function Orders() {
   const { orders } = useGetAllOrders();
   console.log(orders);
   return (
-    <div className="flex-1 flex flex-col  w-full overflow-hidden  text-sm md:text-base text-[#192938] font-semibold">
-      <div className="w-full font-semibold md:mt-8 grid grid-cols-[1fr_2fr_1fr_1fr] gap-3  bg-[#edeff0]  md:gap-6 rounded-t-md p-4 border-2 border-black/10">
-        <p>عکس</p>
-        <p>نام محصول</p>
-        <p>قیمت</p>
-        <p>تنظیمات</p>
-      </div>
-      <ul className="  w-full flex flex-col overflow-y-auto h-full md:h-full    ">
+    <div className="flex flex-col gap-6 mt-10">
+      <h1 className="font-semibold text-2xl">سفارشات شما</h1>
+      <ul className="flex flex-col gap-3.5">
+        <li className="p-6 rounded-sm grid grid-cols-6 gap-5 items-center font-semibold border-2 border-black/40">
+          <p>عکس</p>
+          <p>نام </p>
+          <p>قیمت </p>
+          <p> شماره پیگیری </p>
+          <p> وضعیت </p>
+          <p> </p>
+        </li>
         {orders?.data?.map((order) => (
           <li
-            key={order?._id}
-            className="odd:bg-white even:bg-[#edeff0] grid grid-cols-[1fr_2fr_1fr_1fr] gap-3 w-full   px-4 py-6 md:gap-6 border-2 border-black/10"
+            key={order._id}
+            className="p-6 rounded-sm items-center grid grid-cols-6 gap-5 border-2 border-black/40"
           >
-            <img src={order?.image} alt="" className="w-20  object-cover" />
-            <p className="truncate flex items-center">{order?.title}</p>
-            <div className="flex items-center gap-2 md:gap-7"></div>
+            <img
+              className="w-20 rounded-sm aspect-square"
+              src={order.products[0].image}
+              alt=""
+            />
+            <p>{order.products[0].title}</p>
+            <p>{order.amount}</p>
+            <p>{order.ref_id}</p>
+            <p>{order.orderStatus}</p>
+            <MoreSquare
+              size="32"
+              color="black"
+              className="mr-auto cursor-pointer"
+            />
           </li>
         ))}
       </ul>

@@ -25,5 +25,11 @@ const data = [
     route: "/users",
     icon: <UserSearch size="32" color="#192938" variant="Bold" />,
   },
+  {
+    id: 5,
+    name: "سفارشات",
+    route: "/orders",
+    icon: <UserSearch size="32" color="#192938" variant="Bold" />,
+  },
 ];
 export default data;

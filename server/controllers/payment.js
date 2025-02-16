@@ -26,7 +26,7 @@ export async function payment(req, res) {
       products: finalProducts,
       amount,
       authority: response.data.data.authority,
-      status: "pending",
+      paymentStatus: "pending",
     });
     res.json({
       message: "ok",
@@ -67,7 +67,7 @@ export async function verify(req, res) {
     ) {
       await Transaction.findOneAndUpdate(
         { authority: Authority },
-        { status: "paid", ref_id: response.data.data.ref_id }
+        { paymentStatus: "paid", ref_id: response.data.data.ref_id }
       );
       return res.json({
         message: "پرداخت موفقیت امیز بود ",
@@ -76,7 +76,7 @@ export async function verify(req, res) {
     } else {
       await Transaction.findOneAndUpdate(
         { authority: Authority },
-        { status: "failed" }
+        { paymentStatus: "failed" }
       );
       return res.json({ message: "پرداخت موفقیت امیز نبود" });
     }
