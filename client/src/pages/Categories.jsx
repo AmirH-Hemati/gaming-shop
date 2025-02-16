@@ -10,7 +10,7 @@ function Categories() {
     <div className="w-full h-full">
       <div className="flex gap-3 flex-col md:flex-row w-full justify-between my-4">
         <FilterButtons />
-        <Search />
+        <Search filedSearch="search" color={`#fff`} />
       </div>
       <AllProducts products={products?.data} />
     </div>
