@@ -54,15 +54,15 @@ export async function updateProduct(req, res) {
     updatedProducts,
     { new: true }
   );
-  console.log("imagepath", product.image);
-  console.log(result);
   res.json({ message: "ok", data: result });
 }
+
 export async function deleteProduct(req, res) {
   const { id } = req.params;
   const reslut = await Products.deleteOne({ _id: id });
   res.json({ message: "ok", data: reslut });
 }
+
 export async function detailsProducts(req, res) {
   const { items } = req.body;
   const productIds = items?.map((item) => item.id);
@@ -71,6 +71,5 @@ export async function detailsProducts(req, res) {
     const item = items.find((i) => i.id === product._id.toString());
     return { ...product.toObject(), qty: item.qty };
   });
-  console.log(enrichedProducts);
   res.json({ message: "ok", data: enrichedProducts });
 }

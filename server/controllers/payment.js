@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Transaction from "../models/transaction.js";
 import axios from "axios";
 export async function payment(req, res) {
@@ -14,7 +15,7 @@ export async function payment(req, res) {
   );
   const finalProducts = products?.map((p) => {
     return {
-      productId: p._id,
+      productId: mongoose.Types.ObjectId.createFromHexString(p._id),
       title: p.title,
       price: p.price,
       image: p.image,

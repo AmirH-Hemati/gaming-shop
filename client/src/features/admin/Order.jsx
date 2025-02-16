@@ -1,10 +1,11 @@
 import { Bag2 } from "iconsax-react";
 import { useGetOrder } from "./useGetOrder";
 import { formatNumber } from "../../utils/formatNumber";
+import { useUpdateOrder } from "./useUpdateOrder";
 
 function Order() {
   const { order } = useGetOrder();
-  console.log(order);
+  const { updateOrder } = useUpdateOrder();
   return (
     <div className="w-full h-full flex flex-col gap-6 shadow-custom p-2 rounded-sm mt-4">
       <h1 className="font-semibold text-2xl">سفارش #{order?.data.ref_id}</h1>
@@ -55,6 +56,23 @@ function Order() {
             </p>
           </div>
         ))}
+      </div>
+      <div className="mt-6">
+        <label className="block text-gray-700 font-semibold mb-2">
+          وضعیت سفارش:
+        </label>
+        <select
+          value={order?.data?.orderStatus}
+          className="p-2 border rounded-md w-full"
+          onChange={(e) =>
+            updateOrder({ orderStatus: e.target.value, id: order?.data?._id })
+          }
+        >
+          <option value="processing"> در حال پردازش</option>
+          <option value="shipped"> ارسال‌شده</option>
+          <option value="delivered"> تحویل داده‌شده</option>
+          <option value="canceled"> لغو شده</option>
+        </select>
       </div>
     </div>
   );
