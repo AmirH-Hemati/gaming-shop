@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
-function Search() {
+function Search({ color }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const searchValue = searchParams.get("search") || "";
@@ -20,7 +20,7 @@ function Search() {
       value={searchValue}
       placeholder="جستجو کنید ..."
       onChange={handelSeachChange}
-      className="rounded-sm shadow-custom px-4 py-2 outline-none text-white"
+      className="w-1/2 rounded-sm border-2 border-black/20 px-4 py-2 outline-none text-black"
     />
   );
 }

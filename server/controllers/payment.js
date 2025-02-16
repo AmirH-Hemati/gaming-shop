@@ -18,6 +18,7 @@ export async function payment(req, res) {
       title: p.title,
       price: p.price,
       image: p.image,
+      qty: p.qty,
     };
   });
   if (response.data.data && response.data.data.code == 100) {

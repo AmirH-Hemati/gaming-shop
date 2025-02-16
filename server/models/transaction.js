@@ -8,6 +8,7 @@ const transactionSchema = new mongoose.Schema(
         productId: { type: mongoose.Schema.Types.ObjectId, ref: "product" },
         title: { type: String },
         price: { type: Number },
+        qty: { type: String },
         image: { type: String },
       },
     ],

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 export function useGetOrder() {
   const { id } = useParams();
   const { data: order } = useQuery({
-    queryKey: ["order"],
+    queryKey: ["orders", id],
     queryFn: () => getOrder(id),
   });
   return { order };
