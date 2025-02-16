@@ -1,7 +1,7 @@
 import axiosInstance from "./axiosInstance";
 
-export async function getAllOrders() {
-  const { data } = await axiosInstance.get("/orders");
+export async function getAllOrders(search) {
+  const { data } = await axiosInstance.get(`/orders?search=${search}`);
   return data;
 }
 export async function myOrders() {

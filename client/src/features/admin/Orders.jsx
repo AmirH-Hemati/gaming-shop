@@ -6,11 +6,12 @@ import Search from "../../ui/Search";
 
 function Orders() {
   const { orders } = useGetAllOrders();
+  console.log(orders)
   return (
     <div className="w-full h-full flex flex-col gap-6 mt-10">
       <div className="flex w-full justify-between">
         <h1 className="font-semibold text-2xl">سفارشات شما</h1>
-        <Search type="text" placeholder={`جستجو کنید`} />
+        <Search filedSearch="searchOrders" placeholder={`جستجو کنید`} />
       </div>
       <ul className="flex flex-col h-2/3 overflow-auto">
         <li className="bg-[#6366F1] text-white p-6 rounded-t-sm grid grid-cols-7 gap-5 items-center font-semibold ">

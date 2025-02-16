@@ -1,6 +1,12 @@
 import Transaction from "../models/transaction.js";
 export async function orders(req, res) {
-  const allOrders = await Transaction.find({}).populate(
+  const { search } = req.query;
+  const filter = {};
+  if (search) {
+    filter.ref_id = { $regex: search };
+  }
+  console.log(filter);
+  const allOrders = await Transaction.find(filter).populate(
     "userOrder",
     "userName email"
   );
