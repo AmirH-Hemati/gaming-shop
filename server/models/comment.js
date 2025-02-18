@@ -3,7 +3,7 @@ const commentSchema = new mongoose.Schema(
   {
     productId: { type: mongoose.Schema.Types.ObjectId, ref: "product" },
     user: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
-    text: { type: string },
+    text: { type: String },
   },
   { timestamps: true }
 );
