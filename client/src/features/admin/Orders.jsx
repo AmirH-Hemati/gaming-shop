@@ -20,8 +20,8 @@ function Orders() {
         <li className="bg-[#6366F1] text-white p-6 rounded-t-sm grid grid-cols-7 gap-5 items-center font-semibold ">
           <p>کد سفارش</p>
           <p>کاربر</p>
-          <p>نام محصول</p>
           <p>مبلغ کل </p>
+          <p>نام محصول</p>
           <p> وضعیت سفارش </p>
           <p>تاریخ سفارش</p>
           <p> </p>

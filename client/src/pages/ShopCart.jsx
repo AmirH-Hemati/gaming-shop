@@ -43,7 +43,7 @@ function ShopCart() {
       window.location.href = response.data.url;
     }
   }
-  console.log(products);
+
   return (
     <div className="w-full md:p-6  overflow-hidden ">
       <Heading text={`سبد خرید`} />
