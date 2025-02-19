@@ -14,7 +14,6 @@ function AddProductForm() {
   const [previowImages, setPreviowImages] = useState([]);
   const [newSpec, setNewSpec] = useState({});
   const [sepcs, setSepcs] = useState([]);
-  console.log(sepcs);
   if (isPending) {
     return <Loading />;
   }
@@ -28,17 +27,18 @@ function AddProductForm() {
     const brand = e.target.brand.value;
     const image = e.target.image.files[0];
     const images = e.target.images.files;
-    // if (
-    //   !title ||
-    //   !price ||
-    //   !image ||
-    //   !description ||
-    //   !categories ||
-    //   !stock ||
-    //   !brand
-    // ) {
-    //   return toast.error("لطفاً همه فیلدها را پر کنید.");
-    // }
+    if (
+      !title ||
+      !price ||
+      !image ||
+      !description ||
+      !categories ||
+      !stock ||
+      !brand ||
+      sepcs.length == 0
+    ) {
+      return toast.error("لطفاً همه فیلدها را پر کنید.");
+    }
     const formData = new FormData();
     formData.append("title", title);
     formData.append("price", price);
@@ -115,15 +115,24 @@ function AddProductForm() {
           }
         />
       </div>
-      <Button
-        variant="contained"
-        type="submit"
-        sx={{ backgroundColor: "#192938", padding: "12px" }}
-        className="w-full md:w-1/3 self-end"
-        onClick={() => setSepcs((sepcs) => [...sepcs, newSpec])}
-      >
-        اضافه کنید
-      </Button>
+      <div className="flex justify-between">
+        <div className="text-xs  flex flex-wrap w-1/2 gap-2">
+          {sepcs.map((spec, index) => (
+            <p key={index} className="flex gap-2">
+              <span className="text-red-500 font-semibold">{spec.key}</span>:
+              <span className="font-semibold">{spec.value}</span>
+            </p>
+          ))}
+        </div>
+        <Button
+          variant="contained"
+          sx={{ backgroundColor: "#192938" }}
+          className="w-full md:w-1/6 self-end"
+          onClick={() => setSepcs((sepcs) => [...sepcs, newSpec])}
+        >
+          ثبت{" "}
+        </Button>
+      </div>
       <ImageProduct preview={preview} setPriview={setPriview} />
       <ImagesProduct
         previowImages={previowImages}
