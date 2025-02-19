@@ -19,35 +19,34 @@ function ProductDetails() {
   useEffect(() => {
     setActiveImage(product?.data?.image);
   }, [product?.data?.image]);
+
   if (isPending) {
     return <Loading />;
   }
-  console.log(comments?.data);
-  if (isPending) {
-    return <Loading />;
-  }
+  console.log(product?.data);
+
   let allImage;
   if (product?.data?.images && product?.data?.image)
     allImage = [product.data.image, ...product.data.images];
   return (
-    <div className="box-border  w-full h-full shadow-custom  flex flex-col items-center pt-3 overflow-auto">
-      <div className="w-full h-1/2 md:w-[65%]  rounded-sm flex flex-col md:flex-row-reverse gap-2">
+    <div className="box-border  w-full h-full shadow-custom gap-2  flex  p-4 overflow-auto">
+      <div className="w-full h-2/3  md:w-1/2  rounded-sm space-y-2">
         <img
           src={activeImage}
           alt=""
-          className="w-full h-full md:w-[80%] object-cover rounded-sm"
+          className="w-full h-[80%] object-cover rounded-sm"
         />
-        <div className=" w-full h-full  p-2  md:w-[20%] flex flex-row   md:flex-col gap-1 ">
+        <div className=" w-full h-[20%] flex gap-2 overflow-auto ">
           {allImage?.map((image, index) => (
             <div
+              className="w-18 h-18 "
               key={index}
-              style={{ height: `${100 / allImage.length}%` }}
               onClick={() => setActiveImage(image)}
             >
               <img
                 src={image}
-                className={`w-36  h-full  object-cover border-6 ${
-                  activeImage == image ? "border-[#192938]" : "border-[#0998A8]"
+                className={`cursor-pointer rounded-sm object-cover border-6 ${
+                  activeImage == image ? "border-red-500" : "border-[#0998A8]"
                 } `}
                 alt=""
               />
@@ -55,13 +54,26 @@ function ProductDetails() {
           ))}
         </div>
       </div>
-      <div className="flex h-1/2 flex-col w-full md:w-[65%] my-6  justify-between">
-        <div className="flex justify-between items-center w-full">
-          <h1 className="md:text-2xl text-lg font-bold">
+      <div className="flex h-2/3 text-sm flex-col w-full md:w-[65%] justify-between p-4 shadow-custom rounded-sm">
+        <div className="flex justify-between items-center w-full border-b-2 border-white/30 pb-3">
+          <h1 className="md:text-2xl text-lg font-bold ">
             {product?.data?.title}
           </h1>
           <AddToFavorite product={product?.data} />
         </div>
+        <div className="space-y-2">
+          <p>برند : {product?.data?.brand}</p>
+          <p className="border-b-2 border-white/30 ">
+            دسته بندی : {product?.data?.categories}
+          </p>
+        </div>
+
+        <p className="space-x-2 border-b-2 border-white/30 pb-3">
+          <span>تاریخ بروز رسانی :</span>
+          <span>
+            {new Date(product?.data?.updatedAt).toLocaleDateString("fa-IR")}
+          </span>
+        </p>
         <p className="text-gray-400  md:text-sm text-xs">
           {product?.data?.description}
         </p>
@@ -83,7 +95,13 @@ function ProductDetails() {
           </Button>
         )}
       </div>
-      <div className="flex flex-col w-full p-4 gap-4">
+    </div>
+  );
+}
+
+export default ProductDetails;
+{
+  /* <div className="flex flex-col w-full p-4 gap-4">
         <textarea
           rows={4}
           name="comment"
@@ -106,14 +124,13 @@ function ProductDetails() {
           <div className="text-white bg-red-500 p-4" key={comment?._id}>
             <div className="flex gap-10 p-2">
               <p>{comment.user.userName}</p>
-              <p>تاریخ : {new Date(comment.createdAt).toLocaleDateString("fa-IR")}</p>
+              <p>
+                تاریخ :{" "}
+                {new Date(comment.createdAt).toLocaleDateString("fa-IR")}
+              </p>
             </div>
             <p>{comment.text}</p>
           </div>
         ))}
-      </div>
-    </div>
-  );
+      </div> */
 }
-
-export default ProductDetails;
