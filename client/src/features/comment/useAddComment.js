@@ -7,6 +7,9 @@ export function useAddComment() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["comment"] });
     },
+    onError: (err) => {
+      console.log(err);
+    },
   });
   return { addComment, isPending };
 }

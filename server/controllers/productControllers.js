@@ -13,20 +13,23 @@ export async function getProducts(req, res) {
 }
 
 export async function createProduct(req, res) {
-  const { title, price, description, categories } = req.body;
-  const imagePath = `http://localhost:1212/${req.files["image"][0].filename}`;
-  const images = req.files["images"].map(
-    (image) => `http://localhost:1212/${image.filename}`
-  );
-  const product = await Products.create({
-    title,
-    price,
-    description,
-    categories,
-    image: imagePath,
-    images,
-  });
-  res.json({ message: "ok", data: product });
+  const { title, price, description, categories, brand, stock, technical } =
+    req.body;
+  console.log(JSON.parse(technical));
+  // const imagePath = `http://localhost:1212/${req.files["image"][0].filename}`;
+  // const images = req.files["images"].map(
+  //   (image) => `http://localhost:1212/${image.filename}`
+  // );
+  // const product = await Products.create({
+  //   title,
+  //   price,
+  //   description,
+  //   categories,
+  //   image: imagePath,
+  //   images,
+  // });
+  // res.json({ message: "ok", data: product });
+  res.send("hellow");
 }
 export async function getProduct(req, res) {
   const { id } = req.params;
