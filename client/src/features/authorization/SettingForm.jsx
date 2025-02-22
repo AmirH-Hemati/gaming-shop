@@ -14,10 +14,15 @@ function SettingForm() {
   const [userName, setUserName] = useState("");
   const [image, setImage] = useState("");
   const [file, setFile] = useState("");
-  const [province, setProvince] = useState("");
-  const [city, setCity] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState({
+    province: "",
+    city: "",
+    postalCode: "",
+    street: "",
+  });
+  function onChangeAddress(e) {
+    setAddress((address) => ({ ...address, [e.target.name]: e.target.value }));
+  }
   useEffect(() => {
     if (user?.data) {
       setEmail(user?.data?.email);
@@ -33,10 +38,7 @@ function SettingForm() {
     const formData = new FormData();
     formData.append("userName", userName);
     formData.append("email", email);
-    formData.append("province", province);
-    formData.append("city", city);
-    formData.append("postalCode", postalCode);
-    formData.append("address", address);
+    formData.append("address", JSON.stringify(address));
     formData.append("file", file);
     editUser(formData);
   }
@@ -62,33 +64,33 @@ function SettingForm() {
       <FormLabel label={`استان`}>
         <Input
           type={`text`}
-          value={province}
+          value={address.province}
           name={`province`}
-          onChange={(e) => setProvince(e.target.value)}
+          onChange={onChangeAddress}
         />
       </FormLabel>
       <FormLabel label={`شهر`}>
         <Input
           type={`text`}
-          value={city}
+          value={address.city}
           name={`city`}
-          onChange={(e) => setCity(e.target.value)}
+          onChange={onChangeAddress}
         />
       </FormLabel>
       <FormLabel label={`آدرس`}>
         <Input
           type={`text`}
-          value={address}
-          name={`address`}
-          onChange={(e) => setAddress(e.target.value)}
+          value={address.street}
+          name={`street`}
+          onChange={onChangeAddress}
         />
       </FormLabel>
       <FormLabel label={`کد پستی`}>
         <Input
           type={`text`}
-          value={postalCode}
+          value={address.postalCode}
           name={`postalCode`}
-          onChange={(e) => setPostalCode(e.target.value)}
+          onChange={onChangeAddress}
         />
       </FormLabel>
       <div className="flex w-full justify-between  font-semibold ">
