@@ -1,136 +1,70 @@
-import { Button } from "@mui/material";
-import AddToFavorite from "../../ui/AddToFavorite";
+import { useState } from "react";
+import ProductInformation from "./ProductInformation";
 import { useGetProduct } from "./useGetProduct";
-import { useAddToCart } from "../../context/ShoppingContext";
-import ButtonAddToCarts from "../../ui/ButtonAddToCarts";
-import { useEffect, useState } from "react";
-import { formatNumber } from "../../utils/formatNumber";
-import Loading from "../../ui/Loading";
-import { useAddComment } from "../comment/useAddComment";
-import { useGetComments } from "../comment/useGetComments";
-
+import AddComment from "../comment/AddComment";
+import Modal from "../../ui/Modal";
+import Comments from "../comment/Comments";
 function ProductDetails() {
-  const [activeImage, setActiveImage] = useState("");
-  const [comment, setComment] = useState("");
+  const [tabs, setTabs] = useState("specs");
   const { product, isPending } = useGetProduct();
-  const { handelIncreaseProduct, getProductQty } = useAddToCart();
-  const { addComment } = useAddComment();
-  const { comments } = useGetComments(product?.data?._id);
-  useEffect(() => {
-    setActiveImage(product?.data?.image);
-  }, [product?.data?.image]);
-
-  if (isPending) {
-    return <Loading />;
-  }
-  console.log(product?.data);
-
-  let allImage;
-  if (product?.data?.images && product?.data?.image)
-    allImage = [product.data.image, ...product.data.images];
   return (
-    <div className="box-border  w-full h-full shadow-custom gap-2  flex  p-4 overflow-auto">
-      <div className="w-full h-2/3  md:w-1/2  rounded-sm space-y-2">
-        <img
-          src={activeImage}
-          alt=""
-          className="w-full h-[80%] object-cover rounded-sm"
-        />
-        <div className=" w-full h-[20%] flex gap-2 overflow-auto ">
-          {allImage?.map((image, index) => (
+    <div className="w-full h-full flex-col p-4  overflow-auto mb-4">
+      <ProductInformation product={product} isPending={isPending} />
+      <div className="flex gap-4 mt-10">
+        <p
+          className={`select-none shadow-custom p-2 rounded-sm cursor-pointer font-semibold ${
+            tabs == "specs" && "text-[#0998A8]"
+          }`}
+          onClick={() => setTabs("specs")}
+        >
+          ویزگی محصول
+        </p>
+        <p
+          className={`select-none shadow-custom p-2 rounded-sm cursor-pointer font-semibold ${
+            tabs == "comments" && "text-[#0998A8]"
+          }`}
+          onClick={() => setTabs("comments")}
+        >
+          کامند ها
+        </p>
+      </div>
+      {tabs == "specs" && (
+        <div className="w-full mt-4">
+          {product?.data?.technicalSpecs.map((spec, index) => (
             <div
-              className="w-18 h-18 "
               key={index}
-              onClick={() => setActiveImage(image)}
+              className="bg-white even:bg-[#0998A8] p-2 rounded-sm  text-black w-full"
             >
-              <img
-                src={image}
-                className={`cursor-pointer rounded-sm object-cover border-6 ${
-                  activeImage == image ? "border-red-500" : "border-[#0998A8]"
-                } `}
-                alt=""
-              />
+              <p className="space-x-10">
+                <span>{spec.key}</span>
+                <span>{spec.value}</span>
+              </p>
             </div>
           ))}
         </div>
-      </div>
-      <div className="flex h-2/3 text-sm flex-col w-full md:w-[65%] justify-between p-4 shadow-custom rounded-sm">
-        <div className="flex justify-between items-center w-full border-b-2 border-white/30 pb-3">
-          <h1 className="md:text-2xl text-lg font-bold ">
-            {product?.data?.title}
-          </h1>
-          <AddToFavorite product={product?.data} />
-        </div>
-        <div className="space-y-2">
-          <p>برند : {product?.data?.brand}</p>
-          <p className="border-b-2 border-white/30 ">
-            دسته بندی : {product?.data?.categories}
-          </p>
-        </div>
-
-        <p className="space-x-2 border-b-2 border-white/30 pb-3">
-          <span>تاریخ بروز رسانی :</span>
-          <span>
-            {new Date(product?.data?.updatedAt).toLocaleDateString("fa-IR")}
-          </span>
-        </p>
-        <p className="text-gray-400  md:text-sm text-xs">
-          {product?.data?.description}
-        </p>
-        <p className="text-xl font-semibold text-[#0998a8]">
-          {formatNumber(product?.data?.price)} تومان
-        </p>
-        {getProductQty(product?.data._id) > 0 ? (
-          <div className="w-full md:w-1/2 self-end">
-            <ButtonAddToCarts product={product?.data} />
+      )}
+      {tabs == "comments" && (
+        <div className="w-full mt-4 flex flex-col  gap-4">
+          <h1 className="font-semibold text-lg">امتیاز و نظرات کاربران</h1>
+          <div className="flex items-start w-full justify-between">
+            <Modal>
+              <Modal.Open>
+                <button className="bg-[#0998A8] text-white p-2 ">
+                  ثبت دیدگاه
+                </button>
+              </Modal.Open>
+              <Modal.Window>
+                <AddComment productId={product?.data?._id} />
+              </Modal.Window>
+            </Modal>
+            <div className="w-[70%] ">
+              <Comments id={product?.data?._id} />
+            </div>
           </div>
-        ) : (
-          <Button
-            variant="contained"
-            type="submit"
-            sx={{ backgroundColor: "#0998a8", padding: "12px" }}
-            onClick={() => handelIncreaseProduct(product.data._id)}
-          >
-            افزودن به سبد خرید
-          </Button>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
 
 export default ProductDetails;
-{
-  /* <div className="flex flex-col w-full p-4 gap-4">
-        <textarea
-          rows={4}
-          name="comment"
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          className="border-2 border-white outline-none "
-        ></textarea>
-        <button
-          className="bg-red-500 text-white p-4"
-          onClick={() =>
-            addComment({ text: comment, productId: product?.data?._id })
-          }
-        >
-          ارسال
-        </button>
-      </div>
-      <div className="w-full flex flex-col gap-4">
-        <h1 className="font-semibold text-2xl">نظرات کاربران</h1>
-        {comments?.data?.map((comment) => (
-          <div className="text-white bg-red-500 p-4" key={comment?._id}>
-            <div className="flex gap-10 p-2">
-              <p>{comment.user.userName}</p>
-              <p>
-                تاریخ :{" "}
-                {new Date(comment.createdAt).toLocaleDateString("fa-IR")}
-              </p>
-            </div>
-            <p>{comment.text}</p>
-          </div>
-        ))}
-      </div> */
-}
