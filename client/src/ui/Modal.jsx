@@ -34,7 +34,7 @@ function Window({ children, name }) {
       >
         <CloseSquare
           size="32"
-          color="#FF8A65"
+          color="#0998A8"
           className="cursor-pointer self-end"
           onClick={close}
         />
