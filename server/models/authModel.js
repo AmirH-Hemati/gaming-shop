@@ -9,7 +9,16 @@ const userSchema = new mongoose.Schema({
     default:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4n4D5jth4fm4GE7ut7lWW-04lnDO2OkD-sg&s",
   },
-  date: { type: Date, default: Date.now },
   role: { type: String, default: "user" },
+  phoneNumber: { type: String },
+  addresses: [
+    {
+      province: { type: String },
+      city: { type: String },
+      street: { type: String },
+      postalCode: { type: String },
+    },
+  ],
+  date: { type: Date, default: Date.now },
 });
 export default mongoose.model("User", userSchema);

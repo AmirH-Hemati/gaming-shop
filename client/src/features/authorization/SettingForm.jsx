@@ -14,6 +14,10 @@ function SettingForm() {
   const [userName, setUserName] = useState("");
   const [image, setImage] = useState("");
   const [file, setFile] = useState("");
+  const [province, setProvince] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [address, setAddress] = useState("");
   useEffect(() => {
     if (user?.data) {
       setEmail(user?.data?.email);
@@ -29,6 +33,10 @@ function SettingForm() {
     const formData = new FormData();
     formData.append("userName", userName);
     formData.append("email", email);
+    formData.append("province", province);
+    formData.append("city", city);
+    formData.append("postalCode", postalCode);
+    formData.append("address", address);
     formData.append("file", file);
     editUser(formData);
   }
@@ -42,12 +50,45 @@ function SettingForm() {
           onChange={(e) => setUserName(e.target.value)}
         />
       </FormLabel>
+
       <FormLabel label={`ایمیـــــــل`}>
         <Input
           type={`text`}
           value={email}
           name={`email`}
           onChange={(e) => setEmail(e.target.value)}
+        />
+      </FormLabel>
+      <FormLabel label={`استان`}>
+        <Input
+          type={`text`}
+          value={province}
+          name={`province`}
+          onChange={(e) => setProvince(e.target.value)}
+        />
+      </FormLabel>
+      <FormLabel label={`شهر`}>
+        <Input
+          type={`text`}
+          value={city}
+          name={`city`}
+          onChange={(e) => setCity(e.target.value)}
+        />
+      </FormLabel>
+      <FormLabel label={`آدرس`}>
+        <Input
+          type={`text`}
+          value={address}
+          name={`address`}
+          onChange={(e) => setAddress(e.target.value)}
+        />
+      </FormLabel>
+      <FormLabel label={`کد پستی`}>
+        <Input
+          type={`text`}
+          value={postalCode}
+          name={`postalCode`}
+          onChange={(e) => setPostalCode(e.target.value)}
         />
       </FormLabel>
       <div className="flex w-full justify-between  font-semibold ">
