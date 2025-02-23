@@ -5,11 +5,11 @@ import { useEditUser } from "./useEditUser";
 import Loading from "../../ui/Loading";
 import Input from "../../ui/Input";
 import FormLabel from "../../ui/FormLabel";
+import AddressForm from "../../ui/AddressForm";
 
 function SettingForm() {
   const { user } = useCurrentUser();
   const { editUser, isPending } = useEditUser();
-
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [image, setImage] = useState("");
@@ -20,9 +20,6 @@ function SettingForm() {
     postalCode: "",
     street: "",
   });
-  function onChangeAddress(e) {
-    setAddress((address) => ({ ...address, [e.target.name]: e.target.value }));
-  }
   useEffect(() => {
     if (user?.data) {
       setEmail(user?.data?.email);
@@ -61,38 +58,7 @@ function SettingForm() {
           onChange={(e) => setEmail(e.target.value)}
         />
       </FormLabel>
-      <FormLabel label={`استان`}>
-        <Input
-          type={`text`}
-          value={address.province}
-          name={`province`}
-          onChange={onChangeAddress}
-        />
-      </FormLabel>
-      <FormLabel label={`شهر`}>
-        <Input
-          type={`text`}
-          value={address.city}
-          name={`city`}
-          onChange={onChangeAddress}
-        />
-      </FormLabel>
-      <FormLabel label={`آدرس`}>
-        <Input
-          type={`text`}
-          value={address.street}
-          name={`street`}
-          onChange={onChangeAddress}
-        />
-      </FormLabel>
-      <FormLabel label={`کد پستی`}>
-        <Input
-          type={`text`}
-          value={address.postalCode}
-          name={`postalCode`}
-          onChange={onChangeAddress}
-        />
-      </FormLabel>
+      <AddressForm setAddress={setAddress} address={address} />
       <div className="flex w-full justify-between  font-semibold ">
         <p>عکس پروفایـــل شما *</p>
         <label htmlFor="file">

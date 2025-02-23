@@ -7,6 +7,7 @@ import ProductNotExist from "../ui/ProductNotExist";
 import { formatNumber } from "../utils/formatNumber";
 import Loading from "../ui/Loading";
 import axiosInstance from "../services/axiosInstance";
+import { useNavigate } from "react-router-dom";
 
 function ShopCart() {
   const {
@@ -16,7 +17,7 @@ function ShopCart() {
     removeProduct,
   } = useAddToCart();
   const { mutate, products, isPending } = useGetDetails();
-
+  const navigate = useNavigate();
   useEffect(() => {
     mutate(addToCart);
   }, [addToCart, mutate]);
@@ -30,18 +31,6 @@ function ShopCart() {
   const totalItems = products?.data?.length;
   if (products?.data?.length < 1) {
     return <ProductNotExist>سبد خرید شما خالی است </ProductNotExist>;
-  }
-  async function handlePayment() {
-    const response = await axiosInstance.post(
-      "http://localhost:1212/api/payment",
-      {
-        amount: totalPrice,
-        products: products?.data,
-      }
-    );
-    if (response.data && response.status == 200) {
-      window.location.href = response.data.url;
-    }
   }
 
   return (
@@ -108,7 +97,7 @@ function ShopCart() {
           <span className="text-xs text-gray-400">تومان</span>
         </p>
         <button
-          onClick={handlePayment}
+          onClick={() => navigate(`/payment?totalPrice=${totalPrice}`)}
           className="px-6 py-3 bg-bg-main shadow-custom rounded-sm cursor-pointer text-base"
         >
           پرداخت
