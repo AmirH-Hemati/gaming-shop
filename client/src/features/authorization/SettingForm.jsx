@@ -40,7 +40,10 @@ function SettingForm() {
     editUser(formData);
   }
   return (
-    <form className="w-full flex flex-col gap-6" onSubmit={handelChangeProfile}>
+    <form
+      className="w-full flex flex-col gap-6"
+      onSubmit={handelChangeProfile}
+    >
       <FormLabel label={`نام کاربــــری`}>
         <Input
           type={`text`}

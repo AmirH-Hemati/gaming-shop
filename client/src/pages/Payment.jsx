@@ -4,6 +4,7 @@ import { formatNumber } from "../utils/formatNumber";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useGetDetails } from "../features/products/useGetDetails";
 import Modal from "../ui/Modal";
+import EditAddress from "../ui/EditAddress";
 function Payment() {
   const { user } = useCurrentUser();
   const { products } = useGetDetails();
@@ -50,7 +51,9 @@ function Payment() {
                 ویرایش آدرس
               </button>
             </Modal.Open>
-            <Modal.Window></Modal.Window>
+            <Modal.Window>
+              <EditAddress />
+            </Modal.Window>
           </Modal>
         </div>
 

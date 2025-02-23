@@ -6,7 +6,7 @@ function SettingFormLayout() {
   const { user } = useCurrentUser();
 
   return (
-    <div className="w-full shadow-custom h-full flex flex-col items-center p-4 text-sm">
+    <div className="w-full shadow-custom overflow-auto h-full flex flex-col items-center p-4 text-sm">
       <div className="w-full shadow-custom flex gap-4">
         <img
           src={user?.data?.avatar}

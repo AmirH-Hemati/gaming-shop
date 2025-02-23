@@ -3,7 +3,7 @@ import { useCurrentUser } from "../features/authorization/useCurrentUser";
 import FormLabel from "./FormLabel";
 import Input from "./Input";
 
-function AddressForm({ setAddress, address }) {
+function AddressForm({ setAddress, address, color }) {
   const { user } = useCurrentUser();
   function onChangeAddress(e) {
     setAddress((address) => ({ ...address, [e.target.name]: e.target.value }));
@@ -19,7 +19,7 @@ function AddressForm({ setAddress, address }) {
   }, [user?.data.addresses, setAddress]);
 
   return (
-    <div>
+    <div className={`text-${color}`}>
       <FormLabel label={`استان`}>
         <Input
           type={`text`}
