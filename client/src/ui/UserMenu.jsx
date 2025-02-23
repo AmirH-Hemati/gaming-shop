@@ -3,12 +3,13 @@ import { useClickOutSide } from "../hooks/useClickOutSide";
 import userMenuData from "../data/userMenuData";
 import NavListItem from "./NavListItem";
 import { useAuth } from "../context/authContext";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useCurrentUser } from "../features/authorization/useCurrentUser";
 function UserMenu({ first, close }) {
   const { user } = useCurrentUser();
   const { token, role, logout } = useAuth();
   const ref = useClickOutSide(close);
+  const navigate = useNavigate();
   return (
     <div
       ref={ref}
@@ -53,7 +54,10 @@ function UserMenu({ first, close }) {
         )}
 
         <li
-          onClick={logout}
+          onClick={() => {
+            logout();
+            navigate("/");
+          }}
           className=" mt-auto mb-6 flex items-center gap-2 p-3 cursor-pointer rounded-sm  hover:shadow-custom"
         >
           <LogoutCurve size="24" color="#fff" />

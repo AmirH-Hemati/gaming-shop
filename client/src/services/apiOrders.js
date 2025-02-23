@@ -14,7 +14,11 @@ export async function updateOrder({ orderStatus, id }) {
   return data;
 }
 export async function myOrders() {
-  console.log("test")
+  console.log("test");
   const { data } = await axiosInstance.get("/orders/myOrders");
+  return data;
+}
+export async function myOrder(id) {
+  const { data } = await axiosInstance.get(`/orders/myOrders/${id}`);
   return data;
 }

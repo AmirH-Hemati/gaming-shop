@@ -24,6 +24,7 @@ import Verify from "./pages/Verify";
 import OrdersProduct from "./pages/OrdersProduct";
 import Orders from "./features/admin/Orders";
 import Order from "./features/admin/Order";
+import OrderProduct from "./pages/OrderProduct";
 const queryClient = new QueryClient();
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
                   <Route path="/shopCart" element={<ShopCart />} />
                   <Route path="/setting" element={<Setting />} />
                   <Route path="/ordersProduct" element={<OrdersProduct />} />
+                  <Route path="/orderProduct/:id" element={<OrderProduct />} />
                   <Route path="/changePassword" element={<ChangePassword />} />
                 </Route>
               </Route>

@@ -9,9 +9,10 @@ export async function allUsers(req, res) {
 }
 
 export async function editUser(req, res) {
-  const { userName, email, postalCode, address } = req.body;
-  console.log([JSON.parse(address)]);
-  const updatedUser = { email, userName, addresses: [JSON.parse(address)] };
+  const { userName, email, address } = req.body;
+  const addressObject = JSON.parse(address);
+  const updatedUser = { email, userName, addresses: [addressObject] };
+  console.log(updatedUser);
   const currentUser = await User.findOne({ _id: req.user._id });
   if (!currentUser) {
     return res.status(400).json({ message: "User Not Found", data: nulls });
@@ -23,7 +24,13 @@ export async function editUser(req, res) {
   const isDataChanged =
     (userName && currentUser.userName !== userName) ||
     (email && currentUser.email !== email) ||
-    (req.file && currentUser.avatar !== updatedUser.avatar);
+    (req.file && currentUser.avatar !== updatedUser.avatar) ||
+    (addressObject.province &&
+      currentUser.province !== addressObject.province) ||
+    (addressObject.city && currentUser.city !== addressObject.city) ||
+    (addressObject.postalCode &&
+      currentUser.postalCode !== addressObject.postalCode) ||
+    (addressObject.street && currentUser.street !== addressObject.street);
 
   if (!isDataChanged) {
     return res

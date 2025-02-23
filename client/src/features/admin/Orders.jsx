@@ -34,7 +34,7 @@ function Orders() {
             <p>{order.ref_id ? order.ref_id : "وجود ندارد"}</p>
             <p>{order.userOrder.email}</p>
             <p>{formatNumber(order.amount)}</p>
-            <p>{order.products[0].title}</p>
+            <p>{order.products[0]?.title}</p>
             <p>
               {order.paymentStatus == "paid" ? "پرداخت شده" : "پرداخت نشده"}
             </p>

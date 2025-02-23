@@ -14,8 +14,10 @@ function EditAddress() {
   });
   function handelChangeAddress(e) {
     e.preventDefault();
-    if (address.province === "" || address.city === "") return;
-    editUser(address);
+    if (address?.province === "" || address?.city === "") return;
+    const formData = new FormData();
+    formData.append("address", JSON.stringify(address));
+    editUser(formData);
   }
   return (
     <form onSubmit={handelChangeAddress}>

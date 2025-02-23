@@ -5,13 +5,22 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useGetDetails } from "../features/products/useGetDetails";
 import Modal from "../ui/Modal";
 import EditAddress from "../ui/EditAddress";
+import { toast } from "react-toastify";
 function Payment() {
   const { user } = useCurrentUser();
   const { products } = useGetDetails();
   const address = user?.data?.addresses[0];
   const [searchParams] = useSearchParams();
   const totalPrice = searchParams.get("totalPrice");
+  const isAddressCompelete =
+    address?.province &&
+    address?.postalCode &&
+    address?.city &&
+    address?.street;
   async function handlePayment() {
+    if (!isAddressCompelete) {
+      toast.error("لطفا اطلاعات خود را تکمیل کنید");
+    }
     const response = await axiosInstance.post(
       "http://localhost:1212/api/payment",
       {
@@ -23,11 +32,6 @@ function Payment() {
       window.location.href = response.data.url;
     }
   }
-  const isAddressCompelete =
-    address?.province &&
-    address?.postalCode &&
-    address?.city &&
-    address?.street;
 
   return (
     <div className="flex flex-col items-center justify-center h-full p-6">
@@ -41,10 +45,12 @@ function Payment() {
             {!isAddressCompelete && "لطفا جزعیات ادرس خود را تکمیل کنید"}
           </p>
           <p className="text-gray-600 font-medium">
-            شهر : {address?.province} - {address?.city}
+            شهر : {address?.province} - {address?.city || "نامشخص"}
           </p>
-          <p className="text-gray-500">آدرس :{address?.street}</p>
-          <p className="text-gray-500">کد پستی : {address?.postalCode}</p>
+          <p className="text-gray-500">آدرس :{address?.street || "نامخشص"}</p>
+          <p className="text-gray-500">
+            کد پستی : {address?.postalCode || "نامشخص"}
+          </p>
           <Modal>
             <Modal.Open>
               <button className="bg-[#0998a8] text-white px-4 py-2 rounded-md mt-4">
@@ -65,6 +71,7 @@ function Payment() {
         </p>
 
         <button
+          disabled={!isAddressCompelete}
           className="mt-4 w-full bg-[#192938] hover:bg-[#192938]/90 cursor-pointer text-white font-bold py-3 rounded-lg shadow-md transition-all duration-300"
           onClick={handlePayment}
         >

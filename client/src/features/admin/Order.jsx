@@ -6,6 +6,7 @@ import { useUpdateOrder } from "./useUpdateOrder";
 function Order() {
   const { order } = useGetOrder();
   const { updateOrder } = useUpdateOrder();
+  console.log(order?.data?.userOrder?.addresses);
   return (
     <div className="w-full h-full flex flex-col gap-6 shadow-custom p-2 rounded-sm mt-4">
       <h1 className="font-semibold text-2xl">سفارش #{order?.data.ref_id}</h1>
@@ -29,6 +30,13 @@ function Order() {
         <p>
           <strong>تاریخ سفارش:</strong>{" "}
           {new Date(order?.data?.createdAt).toLocaleString("fa-IR")}
+        </p>
+        <p>
+          <strong> آدرس سفارش :</strong>{" "}
+          {order?.data?.userOrder?.addresses[0]?.province}-
+          {order?.data?.userOrder?.addresses[0]?.city}-
+          {order?.data?.userOrder?.addresses[0]?.street}-
+          {order?.data?.userOrder?.addresses[0]?.postalCode}
         </p>
       </div>
 

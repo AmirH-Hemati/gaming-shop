@@ -11,10 +11,10 @@ function AddressForm({ setAddress, address, color }) {
 
   useEffect(() => {
     setAddress({
-      province: user?.data.addresses[0].province,
-      city: user?.data.addresses[0].city,
-      street: user?.data.addresses[0].street,
-      postalCode: user?.data.addresses[0].postalCode,
+      province: user?.data?.addresses[0]?.province,
+      city: user?.data?.addresses[0]?.city,
+      street: user?.data?.addresses[0]?.street,
+      postalCode: user?.data?.addresses[0]?.postalCode,
     });
   }, [user?.data.addresses, setAddress]);
 
@@ -23,7 +23,7 @@ function AddressForm({ setAddress, address, color }) {
       <FormLabel label={`استان`}>
         <Input
           type={`text`}
-          value={address.province}
+          value={address?.province}
           name={`province`}
           onChange={onChangeAddress}
         />
@@ -31,7 +31,7 @@ function AddressForm({ setAddress, address, color }) {
       <FormLabel label={`شهر`}>
         <Input
           type={`text`}
-          value={address.city}
+          value={address?.city}
           name={`city`}
           onChange={onChangeAddress}
         />
@@ -39,7 +39,7 @@ function AddressForm({ setAddress, address, color }) {
       <FormLabel label={`آدرس`}>
         <Input
           type={`text`}
-          value={address.street}
+          value={address?.street}
           name={`street`}
           onChange={onChangeAddress}
         />
@@ -47,7 +47,7 @@ function AddressForm({ setAddress, address, color }) {
       <FormLabel label={`کد پستی`}>
         <Input
           type={`text`}
-          value={address.postalCode}
+          value={address?.postalCode}
           name={`postalCode`}
           onChange={onChangeAddress}
         />
