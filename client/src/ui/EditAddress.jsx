@@ -12,13 +12,13 @@ function EditAddress() {
     postalCode: "",
     street: "",
   });
-  function handelChangeProfile(e) {
+  function handelChangeAddress(e) {
     e.preventDefault();
     if (address.province === "" || address.city === "") return;
     editUser(address);
   }
   return (
-    <form onSubmit={handelChangeProfile}>
+    <form onSubmit={handelChangeAddress}>
       <AddressForm setAddress={setAddress} address={address} color={`black`} />
       <Button
         variant="contained"
