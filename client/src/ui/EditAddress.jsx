@@ -1,17 +1,33 @@
 import { useState } from "react";
 import AddressForm from "./AddressForm";
+import { Button } from "@mui/material";
+import { useEditUser } from "../features/authorization/useEditUser";
 
 function EditAddress() {
+  const { editUser, isPending } = useEditUser();
+
   const [address, setAddress] = useState({
     province: "",
     city: "",
     postalCode: "",
     street: "",
   });
+  function handelChangeProfile(e) {
+    e.preventDefault();
+    if (address.province === "" || address.city === "") return;
+    editUser(address);
+  }
   return (
-    <form>
+    <form onSubmit={handelChangeProfile}>
       <AddressForm setAddress={setAddress} address={address} color={`black`} />
-      <button type="submit">ذخیره کردن</button>
+      <Button
+        variant="contained"
+        type="submit"
+        sx={{ backgroundColor: "#0998a8" }}
+        className="w-full md:w-1/3 self-end"
+      >
+        ذخیره کردن
+      </Button>{" "}
     </form>
   );
 }
