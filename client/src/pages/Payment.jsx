@@ -16,7 +16,8 @@ function Payment() {
     address?.province &&
     address?.postalCode &&
     address?.city &&
-    address?.street;
+    address?.street &&
+    address?.phone;
   async function handlePayment() {
     if (!isAddressCompelete) {
       toast.error("لطفا اطلاعات خود را تکمیل کنید");
@@ -50,6 +51,9 @@ function Payment() {
           <p className="text-gray-500">آدرس :{address?.street || "نامخشص"}</p>
           <p className="text-gray-500">
             کد پستی : {address?.postalCode || "نامشخص"}
+          </p>
+          <p className="text-gray-500">
+            شماره تلفن همراه: {address?.phone || "نامشخص"}
           </p>
           <Modal>
             <Modal.Open>

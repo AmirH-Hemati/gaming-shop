@@ -15,6 +15,7 @@ function AddressForm({ setAddress, address, color }) {
       city: user?.data?.addresses[0]?.city,
       street: user?.data?.addresses[0]?.street,
       postalCode: user?.data?.addresses[0]?.postalCode,
+      phone: user?.data?.addresses[0]?.phone,
     });
   }, [user?.data.addresses, setAddress]);
 
@@ -49,6 +50,14 @@ function AddressForm({ setAddress, address, color }) {
           type={`text`}
           value={address?.postalCode}
           name={`postalCode`}
+          onChange={onChangeAddress}
+        />
+      </FormLabel>
+      <FormLabel label={`شماره تلفن همراه`}>
+        <Input
+          type={`text`}
+          value={address?.phone}
+          name={`phone`}
           onChange={onChangeAddress}
         />
       </FormLabel>

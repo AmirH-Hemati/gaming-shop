@@ -19,6 +19,7 @@ function SettingForm() {
     city: "",
     postalCode: "",
     street: "",
+    phone: "",
   });
   useEffect(() => {
     if (user?.data) {
@@ -31,7 +32,7 @@ function SettingForm() {
   }
   function handelChangeProfile(e) {
     e.preventDefault();
-    if (email === "" || userName === "") return;
+    if (email === "" || userName === "" || setAddress.phone == "") return;
     const formData = new FormData();
     formData.append("userName", userName);
     formData.append("email", email);
@@ -40,10 +41,7 @@ function SettingForm() {
     editUser(formData);
   }
   return (
-    <form
-      className="w-full flex flex-col gap-6"
-      onSubmit={handelChangeProfile}
-    >
+    <form className="w-full flex flex-col gap-6" onSubmit={handelChangeProfile}>
       <FormLabel label={`نام کاربــــری`}>
         <Input
           type={`text`}

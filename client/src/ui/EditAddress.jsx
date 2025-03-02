@@ -11,6 +11,7 @@ function EditAddress() {
     city: "",
     postalCode: "",
     street: "",
+    phone: "",
   });
   function handelChangeAddress(e) {
     e.preventDefault();
