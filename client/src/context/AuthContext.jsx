@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import { useCurrentUser } from "../features/authorization/useCurrentUser";
 import Loading from "../ui/Loading";
 
+
 const authContext = createContext();
 function AuthContextProvider({ children }) {
   const { user, isPending } = useCurrentUser();
@@ -17,9 +18,9 @@ function AuthContextProvider({ children }) {
       setRole("");
     }
   }, [token]);
-  if (isPending) {
-    return <Loading />;
-  }
+  // if (isPending) {
+  //   return <Loading />;
+  // }
   function loginStoredToken(token) {
     localStorage.setItem("token", token);
     setToken(token);

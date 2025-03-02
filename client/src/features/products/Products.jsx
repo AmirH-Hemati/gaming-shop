@@ -7,7 +7,7 @@ import Loading from "../../ui/Loading";
 
 function Products() {
   const { products, isPending } = useGetProducts();
-
+console.log(products)
   if (isPending) {
     return <Loading />;
   }
@@ -23,7 +23,7 @@ function Products() {
           <span>همه محصولات</span>
         </Link>
       </div>
-      <AllProducts products={products?.data.slice(0,6)} />
+      <AllProducts products={products?.data.slice(0, 6)} />
     </>
   );
 }
