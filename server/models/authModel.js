@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema({
       city: { type: String },
       street: { type: String },
       postalCode: { type: String },
+      phone: { type: String },
     },
   ],
   date: { type: Date, default: Date.now },

@@ -12,7 +12,6 @@ export async function editUser(req, res) {
   const { userName, email, address } = req.body;
   const addressObject = JSON.parse(address);
   const updatedUser = { email, userName, addresses: [addressObject] };
-  console.log(updatedUser);
   const currentUser = await User.findOne({ _id: req.user._id });
   if (!currentUser) {
     return res.status(400).json({ message: "User Not Found", data: nulls });
@@ -30,7 +29,8 @@ export async function editUser(req, res) {
     (addressObject.city && currentUser.city !== addressObject.city) ||
     (addressObject.postalCode &&
       currentUser.postalCode !== addressObject.postalCode) ||
-    (addressObject.street && currentUser.street !== addressObject.street);
+    (addressObject.street && currentUser.street !== addressObject.street) ||
+    (addressObject.phone && currentUser.phone !== addressObject.phone);
 
   if (!isDataChanged) {
     return res
