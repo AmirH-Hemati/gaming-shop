@@ -6,7 +6,7 @@ function OrderProduct() {
   order = order?.data;
   console.log(order);
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <div className="w-4/5  mx-auto p-6 bg-white shadow-lg rounded-lg">
       {/* عنوان */}
       <h2 className="text-2xl font-bold text-gray-800 border-b pb-3">
         جزئیات سفارش
@@ -47,6 +47,9 @@ function OrderProduct() {
         </p>
         <p className="text-gray-700">
           کد پستی: {order?.userOrder?.addresses[0]?.postalCode}
+        </p>
+        <p className="text-gray-700">
+          شماره تلفن همراه : {order?.userOrder?.addresses[0]?.phone}
         </p>
       </div>
 
