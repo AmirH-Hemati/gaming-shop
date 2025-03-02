@@ -7,7 +7,6 @@ import Loading from "../../ui/Loading";
 
 function Products() {
   const { products, isPending } = useGetProducts();
-console.log(products)
   if (isPending) {
     return <Loading />;
   }

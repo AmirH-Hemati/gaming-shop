@@ -8,6 +8,7 @@ import ImagesProduct from "../../ui/ImagesProduct";
 import { toast } from "react-toastify";
 import FormLabel from "../../ui/FormLabel";
 import Input from "../../ui/Input";
+import { CloseSquare } from "iconsax-react";
 function AddProductForm() {
   const { createProduct, isPending } = useCreateProduct();
   const [preview, setPriview] = useState("");
@@ -60,6 +61,13 @@ function AddProductForm() {
     const files = Array.from(e.target.files);
     const imageUrls = files.map((image) => URL.createObjectURL(image));
     setPreviowImages(imageUrls);
+  }
+  function handelAddSepcs() {
+    setSepcs((sepcs) => [...sepcs, newSpec]);
+    toast.warn("میتوانید ویژگی های فنی بیشتری اضافه کنید");
+  }
+  function handelRemoveSepc(id) {
+    setSepcs((sepc) => sepc.filter((sepc, index) => index !== id));
   }
   return (
     <form
@@ -118,17 +126,28 @@ function AddProductForm() {
       <div className="flex justify-between">
         <div className="text-xs  flex flex-wrap w-1/2 gap-2">
           {sepcs.map((spec, index) => (
-            <p key={index} className="flex gap-2">
-              <span className="text-red-500 font-semibold">{spec.key}</span>:
-              <span className="font-semibold">{spec.value}</span>
-            </p>
+            <div
+              key={index}
+              className="flex gap-2 items-center border-2 border-black/30 p-2 rounded-sm "
+            >
+              <CloseSquare
+                size="22"
+                color="black"
+                className="cursor-pointer"
+                onClick={() => handelRemoveSepc(index)}
+              />
+              <p className="space-x-2">
+                <span className="text-red-500 font-semibold">{spec.key}</span>:
+                <span className="font-semibold">{spec.value}</span>
+              </p>
+            </div>
           ))}
         </div>
         <Button
           variant="contained"
           sx={{ backgroundColor: "#192938" }}
           className="w-full md:w-1/6 self-end"
-          onClick={() => setSepcs((sepcs) => [...sepcs, newSpec])}
+          onClick={handelAddSepcs}
         >
           ثبت{" "}
         </Button>
