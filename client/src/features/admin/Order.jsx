@@ -38,6 +38,10 @@ function Order() {
           {order?.data?.userOrder?.addresses[0]?.street}-
           {order?.data?.userOrder?.addresses[0]?.postalCode}
         </p>
+        <p>
+          <strong> شماره تلفن همراه : </strong>{" "}
+          {order?.data?.userOrder?.addresses[0]?.phone}
+        </p>
       </div>
 
       <h3 className="text-xl font-semibold mb-2">محصولات خریداری‌شده</h3>
