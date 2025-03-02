@@ -15,6 +15,8 @@ function AddProductForm() {
   const [previowImages, setPreviowImages] = useState([]);
   const [newSpec, setNewSpec] = useState({});
   const [sepcs, setSepcs] = useState([]);
+  const [keyWord, setKeyWord] = useState("");
+  const [keyWords, setKeyWords] = useState([]);
   if (isPending) {
     return <Loading />;
   }
@@ -28,6 +30,8 @@ function AddProductForm() {
     const brand = e.target.brand.value;
     const image = e.target.image.files[0];
     const images = e.target.images.files;
+    const seoTitle = e.target.seoTitle.value;
+    const seoDescription = e.target.seoDescription.value;
     if (
       !title ||
       !price ||
@@ -48,6 +52,9 @@ function AddProductForm() {
     formData.append("brand", brand);
     formData.append("stock", stock);
     formData.append("technical", JSON.stringify(sepcs));
+    formData.append("seoTitle", seoTitle);
+    formData.append("seoDescription", seoDescription);
+    formData.append("keywords", JSON.stringify(keyWords));
 
     formData.append("image", image);
     for (let i = 0; i < images.length; i++) {
@@ -69,11 +76,75 @@ function AddProductForm() {
   function handelRemoveSepc(id) {
     setSepcs((sepc) => sepc.filter((sepc, index) => index !== id));
   }
+  function handelAddKeyWord() {
+    setKeyWords((keyWords) => [...keyWords, keyWord]);
+    toast.warn("میتوانید کلمات کلیدی بیشتری اضافه کنید");
+  }
+  function handelRemoveKeyword(id) {
+    setKeyWords((kewWords) =>
+      kewWords.filter((kewWord, index) => index !== id)
+    );
+  }
   return (
     <form
       onSubmit={handelCreateProduct}
       className="flex-1 w-full  flex flex-col gap-3"
     >
+      <FormLabel label={`عنوان سئو `}>
+        <Input
+          name={`seoTitle`}
+          id={`seoTitle`}
+          type={`text`}
+          style={`text-black`}
+          placeholder="مثلاً خرید موس لاجیتک G502 Hero با بهترین قیمت"
+        />
+      </FormLabel>
+      <FormLabel label={`توضیحات سئو `}>
+        <Input
+          name={`seoDescription`}
+          id={`seoDescription`}
+          type={`text`}
+          style={`text-black`}
+        />
+      </FormLabel>
+      <h3 className="font-semibold text-xl">کلمات کلیدی سعو </h3>
+
+      <div className="flex justify-between w-full mt-6 border-b-2 border-black/20 p-3">
+        <div className="w-full flex flex-col gap-2">
+          <Input
+            name={`seoTitle`}
+            id={`seoTitle`}
+            type={`text`}
+            style={`text-black`}
+            value={keyWord}
+            onChange={(e) => setKeyWord(e.target.value)}
+          />
+          <div className="text-xs  flex flex-wrap w-1/2 gap-2">
+            {keyWords.map((keyWord, index) => (
+              <div
+                key={index}
+                className="flex gap-2 items-center border-2 border-black/30 p-1 rounded-sm "
+              >
+                <CloseSquare
+                  size="19"
+                  color="black"
+                  className="cursor-pointer"
+                  onClick={() => handelRemoveKeyword(index)}
+                />
+                <p className="space-x-2">{keyWord}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <Button
+          variant="contained"
+          sx={{ backgroundColor: "#192938" }}
+          className="w-full md:w-1/6 self-end"
+          onClick={handelAddKeyWord}
+        >
+          ثبت{" "}
+        </Button>
+      </div>
       <FormLabel label={`نام محصول`}>
         <Input name={`title`} id={`title`} type={`text`} style={`text-black`} />
       </FormLabel>

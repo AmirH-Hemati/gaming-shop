@@ -20,6 +20,10 @@ const productSchema = new mongoose.Schema(
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYJPPKxGMgzMNURTx8m2YgHyA_WMoIjcq2FQ&s",
     },
     images: { type: [String], default: [] },
+
+    seoTitle: { type: String, required: false },
+    seoDescription: { type: String, required: false },
+    keywords: [{ type: String }],
   },
   { timestamps: true }
 );

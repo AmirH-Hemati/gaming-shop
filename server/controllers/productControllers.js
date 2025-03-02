@@ -13,8 +13,18 @@ export async function getProducts(req, res) {
 }
 
 export async function createProduct(req, res) {
-  const { title, price, description, categories, brand, stock, technical } =
-    req.body;
+  const {
+    title,
+    price,
+    description,
+    categories,
+    brand,
+    stock,
+    technical,
+    seoTitle,
+    seoDescription,
+    keywords,
+  } = req.body;
   const imagePath = `http://localhost:1212/${req.files["image"][0].filename}`;
   const images = req.files["images"].map(
     (image) => `http://localhost:1212/${image.filename}`
@@ -29,6 +39,9 @@ export async function createProduct(req, res) {
     technicalSpecs: JSON.parse(technical),
     image: imagePath,
     images,
+    seoTitle,
+    seoDescription,
+    keywords: JSON.parse(keywords),
   });
   res.json({ message: "ok", data: product });
 }
